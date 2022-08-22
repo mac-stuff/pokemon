@@ -1,10 +1,19 @@
-import Navbar from "./components/navbar/Navbar";
+import Feed from "./components/Feed";
+import Navbar from "./components/Navbar";
+import Rightbar from "./components/Rightbar";
+import Sidebar from "./components/Sidebar";
+import { Container, Stack } from "@mui/system";
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <Navbar></Navbar>
-    </div>
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Sidebar></Sidebar>
+        <Feed></Feed>
+        <Rightbar></Rightbar>
+      </Stack>
+    </Container>
   );
 }
 
