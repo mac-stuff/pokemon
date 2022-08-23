@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/index";
 import { Container } from "@mui/system";
 import { Stack } from "@mui/material";
 import Rightbar from "./components/Rightbar";
