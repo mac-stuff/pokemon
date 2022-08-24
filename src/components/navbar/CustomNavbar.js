@@ -28,7 +28,7 @@ const CustomToolbar = styled(Toolbar)({
 
 const CustomNavbar = () => {
   return (
-    <AppBar position="sticky">
+    <AppBar position="static">
       <CustomToolbar>
         <Typography sx={{ display: { xs: "none", sm: "block" } }}>
           Pokedex

@@ -11,15 +11,18 @@ const CustomInputBase = styled(InputBase)({
   padding: "5px",
   border: "1px solid #C7C7CD",
   borderRadius: "5px",
-  width: "40%",
+  width: "50%",
   backgroundColor: "#a1dae8",
 });
 
-const CustomSearch = () => {
+const CustomSearch = ({ setUserInput }) => {
   return (
     <AppBar position="sticky">
       <CustomToolbar>
-        <CustomInputBase placeholder="Search" />
+        <CustomInputBase
+          placeholder="Search"
+          onChange={(event) => setUserInput(event.target.value)}
+        />
       </CustomToolbar>
     </AppBar>
   );
