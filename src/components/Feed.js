@@ -4,7 +4,7 @@ import PokemonPage from "./pokemon-list/index";
 
 const Feed = () => {
   return (
-    <Box flex={4} p={2}>
+    <Box flex={6} p={2}>
       <PokemonPage />
     </Box>
   );

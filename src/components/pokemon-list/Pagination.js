@@ -12,8 +12,8 @@ const Pagination = ({ setCurrentPage, prevPage, nextPage }) => {
 
   return (
     <Stack direction="row" spacing={1} justifyContent="space-between">
-      {prevPage && <Button onClick={handleButtonPrevPage}>prev</Button>}
-      {nextPage && <Button onClick={handleButtonNextPage}>next</Button>}
+      {prevPage && <Button variant="contained" onClick={handleButtonPrevPage}>prev</Button>}
+      {nextPage && <Button variant="contained" onClick={handleButtonNextPage}>next</Button>}
     </Stack>
   );
 };

@@ -1,6 +1,7 @@
-import { Card, CardMedia, Stack, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination";
+import PokemonCard from "./PokemonCard";
 
 const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -13,7 +14,7 @@ const PokemonList = () => {
   useEffect(() => {
     (async function () {
       const data = await fetch(currentPage).then((res) => res.json());
-      setPokemonList([])
+      setPokemonList([]);
       getPokemons(data.results);
       setPrevPage(data.previous);
       setNextPage(data.next);
@@ -31,44 +32,18 @@ const PokemonList = () => {
   };
 
   return (
-    <Stack spacing={1} justifyContent="space-between">
+    <Grid container spacing={2}>
       {pokemonList.map((pokemon) => (
-        <Card key={pokemon.id}>
-          <CardMedia
-            component="img"
-            image={pokemon.sprites.other.dream_world.front_default}
-            alt={pokemon.name}
-            sx={{
-              pt: "5%",
-              borderRadius: "5%",
-              padding: "5px",
-              width: "15%",
-            }}
-          />
-          <Typography variant="body1" gutterBottom color="textSecondary">
-            {pokemon.name}
-          </Typography>
-          <Typography variant="body1" gutterBottom color="textSecondary">
-            {pokemon.height}
-          </Typography>
-          <Typography variant="body1" gutterBottom color="textSecondary">
-            {pokemon.weight}
-          </Typography>
-          <Typography variant="body1" gutterBottom color="textSecondary">
-            {pokemon.base_experience}
-          </Typography>
-          <Typography variant="body1" gutterBottom color="textSecondary">
-            {pokemon.abilities[0] && pokemon.abilities[0].ability.name} -
-            {pokemon.abilities[1] && pokemon.abilities[1].ability.name}
-          </Typography>
-        </Card>
+        <Grid item key={pokemon.id}>
+          <PokemonCard pokemon={pokemon}> </PokemonCard>
+        </Grid>
       ))}
       <Pagination
         setCurrentPage={setCurrentPage}
         prevPage={prevPage}
         nextPage={nextPage}
       />
-    </Stack>
+    </Grid>
   );
 };
 

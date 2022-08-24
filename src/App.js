@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Search />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Sidebar></Sidebar>
+        {/* <Sidebar></Sidebar> */}
         <Feed></Feed>
         <Rightbar></Rightbar>
       </Stack>
