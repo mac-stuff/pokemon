@@ -55,7 +55,9 @@ const CustomNavbar = () => {
               </Button>
               <Menu {...bindMenu(popupState)}>
                 {buttons.map((button) => (
-                  <MenuItem onClick={popupState.close}>{button}</MenuItem>
+                  <MenuItem key={button} onClick={popupState.close}>
+                    {button}
+                  </MenuItem>
                 ))}
               </Menu>
             </Fragment>

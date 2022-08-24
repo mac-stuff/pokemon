@@ -12,13 +12,14 @@ const CustomInputBase = styled(InputBase)({
   border: "1px solid #C7C7CD",
   borderRadius: "5px",
   width: "40%",
+  backgroundColor: "#a1dae8",
 });
 
 const CustomSearch = () => {
   return (
     <AppBar position="sticky">
       <CustomToolbar>
-        <CustomInputBase placeholder="Search"/>
+        <CustomInputBase placeholder="Search" />
       </CustomToolbar>
     </AppBar>
   );
