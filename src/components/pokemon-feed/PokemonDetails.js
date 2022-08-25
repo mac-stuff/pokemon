@@ -1,14 +1,19 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import React from "react";
+import React, { useState } from "react";
 
 const PokemonDetails = ({
   pokemonChoice,
   setPokemonChoice,
   setFavoritePokemon,
 }) => {
+  const [isActive, setIsActive] = useState(false);
+
   const handleClickButton = () => {
     setPokemonChoice(null);
+  };
+  const handleClick = () => {
+    setIsActive((current) => !current);
   };
   return (
     <Grid container spacing={2}>
@@ -64,7 +69,7 @@ const PokemonDetails = ({
             </Stack>
             <Stack direction="row" spacing={5}>
               <Button variant="contained" onClick={handleClickButton}>
-                BACK TO MAIN PAGE
+                Strona Główna
               </Button>
             </Stack>
           </Stack>
@@ -73,9 +78,12 @@ const PokemonDetails = ({
           aria-label="add to favorites"
           onClick={() => {
             setFavoritePokemon(pokemonChoice);
+            setIsActive((current) => !current);
           }}
         >
-          <FavoriteIcon />
+          <FavoriteIcon
+            sx={{ color: isActive ? "tomato" : "" }}
+          />
         </IconButton>
       </Grid>
     </Grid>
