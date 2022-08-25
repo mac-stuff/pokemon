@@ -15,7 +15,8 @@ function App() {
       <Navbar setSelectedPage={setSelectedPage} />
       <Search setPokemonSearch={setPokemonSearch} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Feed selectedPage={selectedPage} pokemonSearch={pokemonSearch}></Feed>
+        <Feed selectedPage={selectedPage} 
+        setSelectedPage={setSelectedPage} pokemonSearch={pokemonSearch}></Feed>
         <Rightbar />
       </Stack>
     </Container>

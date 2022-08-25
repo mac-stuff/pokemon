@@ -2,7 +2,14 @@ import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React from "react";
 
-const PokemonDetails = ({ pokemonChoice, setFavoritePokemon }) => {
+const PokemonDetails = ({
+  pokemonChoice,
+  setPokemonChoice,
+  setFavoritePokemon,
+}) => {
+  const handleClickButton = () => {
+    setPokemonChoice(null);
+  };
   return (
     <Grid container spacing={2}>
       <Grid item>
@@ -45,7 +52,6 @@ const PokemonDetails = ({ pokemonChoice, setFavoritePokemon }) => {
               <Typography variant="body1" gutterBottom color="textSecondary">
                 {pokemonChoice.abilities[0] &&
                   pokemonChoice.abilities[0].ability.name}
-                {/* {pokemon.abilities[1] && pokemon.abilities[1].ability.name} */}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
@@ -57,7 +63,9 @@ const PokemonDetails = ({ pokemonChoice, setFavoritePokemon }) => {
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
-              <Button>BACK TO MAIN PAGE</Button>
+              <Button variant="contained" onClick={handleClickButton}>
+                BACK TO MAIN PAGE
+              </Button>
             </Stack>
           </Stack>
         </Stack>

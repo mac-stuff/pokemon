@@ -1,8 +1,9 @@
 import PokemonList from "./PokemonList";
 import React, { useEffect, useState } from "react";
 import PokemonDetails from "./PokemonDetails";
+import { Box } from "@mui/system";
 
-const PokemonPage = ({ selectedPage, pokemonSearch }) => {
+const PokemonPage = ({ pokemonSearch }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [currentPage, setCurrentPage] = useState(
     `https://pokeapi.co/api/v2/pokemon?limit=15&offset=15`
@@ -50,24 +51,25 @@ const PokemonPage = ({ selectedPage, pokemonSearch }) => {
     });
   };
   return (
-    <>
-      <PokemonList
-        pokemonSearch={pokemonSearch}
-        pokemonList={pokemonList}
-        setCurrentPage={setCurrentPage}
-        prevPage={prevPage}
-        nextPage={nextPage}
-        allPokemonList={allPokemonList}
-        setPokemonChoice={setPokemonChoice}
-      />
-      {pokemonChoice && (
+    <Box flex={6} p={2}>
+      {pokemonChoice ? (
         <PokemonDetails
           pokemonChoice={pokemonChoice}
           setFavoritePokemon={setFavoritePokemon}
+          setPokemonChoice={setPokemonChoice}
+        />
+      ) : (
+        <PokemonList
+          pokemonSearch={pokemonSearch}
+          pokemonList={pokemonList}
+          setCurrentPage={setCurrentPage}
+          prevPage={prevPage}
+          nextPage={nextPage}
+          allPokemonList={allPokemonList}
+          setPokemonChoice={setPokemonChoice}
         />
       )}
-      {selectedPage && true}
-    </>
+    </Box>
   );
 };
 
