@@ -7,14 +7,15 @@ import Feed from "./components/Feed";
 import { useState } from "react";
 
 function App() {
+  const [selectedPage, setSelectedPage] = useState();
   const [pokemonSearch, setPokemonSearch] = useState();
 
   return (
     <Container>
-      <Navbar />
+      <Navbar setSelectedPage={setSelectedPage} />
       <Search setPokemonSearch={setPokemonSearch} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Feed pokemonSearch={pokemonSearch}></Feed>
+        <Feed selectedPage={selectedPage} pokemonSearch={pokemonSearch}></Feed>
         <Rightbar />
       </Stack>
     </Container>

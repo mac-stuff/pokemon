@@ -26,7 +26,12 @@ const CustomToolbar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
-const CustomNavbar = () => {
+const CustomNavbar = ({ setSelectedPage }) => {
+  const clickHandle = (event) => {
+    event.preventDefault();
+    setSelectedPage(event.target.value);
+    console.log(event.target.value);
+  };
   return (
     <AppBar position="static">
       <CustomToolbar>
@@ -38,7 +43,12 @@ const CustomNavbar = () => {
         ></CatchingPokemon>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
           {buttons.map((button) => (
-            <Button variant="contained" key={button}>
+            <Button
+              variant="contained"
+              key={button}
+              onClick={clickHandle}
+              value={button}
+            >
               {button}
             </Button>
           ))}

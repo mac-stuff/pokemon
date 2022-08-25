@@ -9,6 +9,11 @@ const CustomCard = styled(Card)({
   backgroundColor: "lightgrey",
   textAlign: "center",
   padding: "10px",
+  "&:hover": {
+    width: "260px",
+    height: "360px",
+    boxShadow: "15px 15px 15px -10px tomato",
+  },
 });
 
 const PokemonCard = ({ pokemon, setPokemonChoice }) => {
@@ -16,7 +21,6 @@ const PokemonCard = ({ pokemon, setPokemonChoice }) => {
     <CustomCard>
       <CardActionArea
         onClick={() => {
-          console.log("CLICK");
           setPokemonChoice(pokemon);
         }}
       >

@@ -2,7 +2,7 @@ import PokemonList from "./PokemonList";
 import React, { useEffect, useState } from "react";
 import PokemonDetails from "./PokemonDetails";
 
-const PokemonPage = ({ pokemonSearch }) => {
+const PokemonPage = ({ selectedPage, pokemonSearch }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [currentPage, setCurrentPage] = useState(
     `https://pokeapi.co/api/v2/pokemon?limit=15&offset=15`
@@ -66,6 +66,7 @@ const PokemonPage = ({ pokemonSearch }) => {
           setFavoritePokemon={setFavoritePokemon}
         />
       )}
+      {selectedPage && true}
     </>
   );
 };
