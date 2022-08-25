@@ -11,10 +11,15 @@ const CustomCard = styled(Card)({
   padding: "10px",
 });
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, setPokemonChoice }) => {
   return (
     <CustomCard>
-      <CardActionArea>
+      <CardActionArea
+        onClick={() => {
+          console.log("CLICK");
+          setPokemonChoice(pokemon);
+        }}
+      >
         <img
           style={{ width: 250, height: 158 }}
           src={pokemon.sprites.other.dream_world.front_default}

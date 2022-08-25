@@ -1,9 +1,8 @@
-import { Grid } from "@mui/material";
+import PokemonList from "./PokemonList";
 import React, { useEffect, useState } from "react";
-import Pagination from "./Pagination";
-import PokemonCard from "./PokemonCard";
+import PokemonDetails from "./PokemonDetails";
 
-const PokemonList = ({ userInput }) => {
+const PokemonPage = ({ pokemonSearch }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [currentPage, setCurrentPage] = useState(
     `https://pokeapi.co/api/v2/pokemon?limit=15&offset=15`
@@ -11,15 +10,8 @@ const PokemonList = ({ userInput }) => {
   const [prevPage, setPrevPage] = useState();
   const [nextPage, setNextPage] = useState();
   const [allPokemonList, setAllPokemonList] = useState([]);
-
-  useEffect(() => {
-    (async function () {
-      const data = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=1154`
-      ).then((res) => res.json());
-      getAllPokemons(data.results);
-    })();
-  }, []);
+  const [pokemonChoice, setPokemonChoice] = useState();
+  const [favoritePokemon, setFavoritePokemon] = useState();
 
   useEffect(() => {
     (async function () {
@@ -28,9 +20,17 @@ const PokemonList = ({ userInput }) => {
       getPokemons(data.results);
       setPrevPage(data.previous);
       setNextPage(data.next);
-      console.log(data);
     })();
   }, [currentPage]);
+
+  useEffect(() => {
+    (async function () {
+      const data = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=151`
+      ).then((res) => res.json());
+      getAllPokemons(data.results);
+    })();
+  }, []);
 
   const getPokemons = async (results) => {
     results.forEach(async (pokemon) => {
@@ -49,29 +49,25 @@ const PokemonList = ({ userInput }) => {
       setAllPokemonList((allPokemonList) => [...allPokemonList, data]);
     });
   };
-
   return (
-    <Grid container spacing={2}>
-      {userInput
-        ? allPokemonList
-            .filter((pokemon) => pokemon.name.startsWith(userInput))
-            .map((pokemon) => (
-              <Grid item key={pokemon.id}>
-                <PokemonCard pokemon={pokemon}> </PokemonCard>
-              </Grid>
-            ))
-        : pokemonList.map((pokemon) => (
-            <Grid item key={pokemon.id}>
-              <PokemonCard pokemon={pokemon}> </PokemonCard>
-            </Grid>
-          ))}
-      <Pagination
+    <>
+      <PokemonList
+        pokemonSearch={pokemonSearch}
+        pokemonList={pokemonList}
         setCurrentPage={setCurrentPage}
         prevPage={prevPage}
         nextPage={nextPage}
+        allPokemonList={allPokemonList}
+        setPokemonChoice={setPokemonChoice}
       />
-    </Grid>
+      {pokemonChoice && (
+        <PokemonDetails
+          pokemonChoice={pokemonChoice}
+          setFavoritePokemon={setFavoritePokemon}
+        />
+      )}
+    </>
   );
 };
 
-export default PokemonList;
+export default PokemonPage;

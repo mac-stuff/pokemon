@@ -7,15 +7,15 @@ import Feed from "./components/Feed";
 import { useState } from "react";
 
 function App() {
-  const [userInput, setUserInput] = useState();
+  const [pokemonSearch, setPokemonSearch] = useState();
 
   return (
     <Container>
       <Navbar />
-      <Search setUserInput={setUserInput} />
+      <Search setPokemonSearch={setPokemonSearch} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Feed userInput={userInput}></Feed>
-        <Rightbar></Rightbar>
+        <Feed pokemonSearch={pokemonSearch}></Feed>
+        <Rightbar />
       </Stack>
     </Container>
   );

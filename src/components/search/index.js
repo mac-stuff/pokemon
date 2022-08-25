@@ -1,8 +1,8 @@
 import React from "react";
 import CustomSearch from "./CustomSearch";
 
-const Search = ({ setUserInput }) => {
-  return <CustomSearch setUserInput={setUserInput} />;
+const Search = ({ setPokemonSearch }) => {
+  return <CustomSearch setPokemonSearch={setPokemonSearch} />;
 };
 
 export default Search;

@@ -15,13 +15,13 @@ const CustomInputBase = styled(InputBase)({
   backgroundColor: "#a1dae8",
 });
 
-const CustomSearch = ({ setUserInput }) => {
+const CustomSearch = ({ setPokemonSearch }) => {
   return (
     <AppBar position="sticky">
       <CustomToolbar>
         <CustomInputBase
           placeholder="Search"
-          onChange={(event) => setUserInput(event.target.value)}
+          onChange={(event) => setPokemonSearch(event.target.value)}
         />
       </CustomToolbar>
     </AppBar>
