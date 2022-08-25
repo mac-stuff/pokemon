@@ -1,13 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
+import Navbar from "./components/navbar/index";
+import Search from "./components/search/index";
+import { Container } from "@mui/system";
+import { Stack } from "@mui/material";
+import Rightbar from "./components/Rightbar";
+import Feed from "./components/Feed";
+import { useState } from "react";
 
 function App() {
+  const [selectedPage, setSelectedPage] = useState();
+  const [pokemonSearch, setPokemonSearch] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <Container>
+      <Navbar setSelectedPage={setSelectedPage} />
+      <Search setPokemonSearch={setPokemonSearch} />
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Feed selectedPage={selectedPage} 
+        setSelectedPage={setSelectedPage} pokemonSearch={pokemonSearch}></Feed>
+        <Rightbar />
+      </Stack>
+    </Container>
   );
 }
 
