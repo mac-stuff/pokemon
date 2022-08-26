@@ -12,7 +12,7 @@ const PokemonPage = ({ pokemonSearch }) => {
   const [nextPage, setNextPage] = useState();
   const [allPokemonList, setAllPokemonList] = useState([]);
   const [pokemonChoice, setPokemonChoice] = useState();
-  const [favoritePokemon, setFavoritePokemon] = useState();
+  const [favoritePokemon, setFavoritePokemon] = useState([]);
 
   useEffect(() => {
     (async function () {
@@ -55,6 +55,7 @@ const PokemonPage = ({ pokemonSearch }) => {
       {pokemonChoice ? (
         <PokemonDetails
           pokemonChoice={pokemonChoice}
+          favoritePokemon={favoritePokemon}
           setFavoritePokemon={setFavoritePokemon}
           setPokemonChoice={setPokemonChoice}
         />
@@ -62,6 +63,17 @@ const PokemonPage = ({ pokemonSearch }) => {
         <PokemonList
           pokemonSearch={pokemonSearch}
           pokemonList={pokemonList}
+          setCurrentPage={setCurrentPage}
+          prevPage={prevPage}
+          nextPage={nextPage}
+          allPokemonList={allPokemonList}
+          setPokemonChoice={setPokemonChoice}
+        />
+      )}
+      {favoritePokemon && (
+        <PokemonList
+          pokemonSearch={pokemonSearch}
+          pokemonList={favoritePokemon}
           setCurrentPage={setCurrentPage}
           prevPage={prevPage}
           nextPage={nextPage}

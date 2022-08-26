@@ -5,16 +5,17 @@ import React, { useState } from "react";
 const PokemonDetails = ({
   pokemonChoice,
   setPokemonChoice,
+  favoritePokemon,
   setFavoritePokemon,
 }) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(
+    favoritePokemon.includes(pokemonChoice) ? true : false
+  );
 
   const handleClickButton = () => {
     setPokemonChoice(null);
   };
-  const handleClick = () => {
-    setIsActive((current) => !current);
-  };
+
   return (
     <Grid container spacing={2}>
       <Grid item>
@@ -77,13 +78,19 @@ const PokemonDetails = ({
         <IconButton
           aria-label="add to favorites"
           onClick={() => {
-            setFavoritePokemon(pokemonChoice);
-            setIsActive((current) => !current);
+            setFavoritePokemon(
+              favoritePokemon.includes(pokemonChoice)
+                ? favoritePokemon.filter(
+                    (pokemon) => pokemon.name !== pokemonChoice.name
+                  )
+                : (favoritePokemon) => [...favoritePokemon, pokemonChoice]
+            );
+            favoritePokemon.includes(pokemonChoice)
+              ? setIsActive(false)
+              : setIsActive(true);
           }}
         >
-          <FavoriteIcon
-            sx={{ color: isActive ? "tomato" : "" }}
-          />
+          <FavoriteIcon sx={{ color: isActive ? "tomato" : "grey" }} />
         </IconButton>
       </Grid>
     </Grid>
