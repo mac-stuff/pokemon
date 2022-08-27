@@ -3,8 +3,8 @@ import Pagination from "./Pagination";
 import PokemonCard from "./PokemonCard";
 
 const PokemonList = ({
-  pokemonSearch,
-  pokemonList,
+  searchedPokemon,
+  pokemonList, 
   setCurrentPage,
   prevPage,
   nextPage,
@@ -13,9 +13,9 @@ const PokemonList = ({
 }) => {
   return (
     <Grid container spacing={2}>
-      {pokemonSearch
+      {searchedPokemon
         ? allPokemonList
-            .filter((pokemon) => pokemon.name.startsWith(pokemonSearch))
+            .filter((pokemon) => pokemon.name.startsWith(searchedPokemon))
             .map((pokemon) => (
               <Grid item key={pokemon.id}>
                 <PokemonCard

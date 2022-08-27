@@ -1,5 +1,7 @@
-import CustomNavbar from "./CustomNavbar";
+import Navigation from "./Navigation";
 
-const Navbar = ({setSelectedPage}) => <CustomNavbar setSelectedPage={setSelectedPage} />;
+const Navbar = ({ setSelectedPage }) => (
+  <Navigation setSelectedPage={setSelectedPage} />
+);
 
 export default Navbar;

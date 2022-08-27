@@ -26,7 +26,7 @@ const CustomToolbar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
-const CustomNavbar = ({ setSelectedPage }) => {
+const Navigation = ({ setSelectedPage }) => {
   const clickHandle = (event) => {
     event.preventDefault();
     setSelectedPage(event.target.value);
@@ -78,4 +78,4 @@ const CustomNavbar = ({ setSelectedPage }) => {
   );
 };
 
-export default CustomNavbar;
+export default Navigation;

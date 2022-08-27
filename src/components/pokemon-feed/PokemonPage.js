@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import PokemonDetails from "./PokemonDetails";
 import { Box } from "@mui/system";
 
-const PokemonPage = ({ pokemonSearch }) => {
+const PokemonPage = ({ searchedPokemon }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [currentPage, setCurrentPage] = useState(
     `https://pokeapi.co/api/v2/pokemon?limit=15&offset=15`
@@ -61,7 +61,7 @@ const PokemonPage = ({ pokemonSearch }) => {
         />
       ) : (
         <PokemonList
-          pokemonSearch={pokemonSearch}
+          searchedPokemon={searchedPokemon}
           pokemonList={pokemonList}
           setCurrentPage={setCurrentPage}
           prevPage={prevPage}
@@ -72,7 +72,7 @@ const PokemonPage = ({ pokemonSearch }) => {
       )}
       {favoritePokemon && (
         <PokemonList
-          pokemonSearch={pokemonSearch}
+          searchedPokemon={searchedPokemon}
           pokemonList={favoritePokemon}
           setCurrentPage={setCurrentPage}
           prevPage={prevPage}
