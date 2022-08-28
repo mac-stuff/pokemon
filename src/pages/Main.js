@@ -1,5 +1,5 @@
 import PokemonList from "../components/main/PokemonList";
-import PokemonDetail from "./PokemonDetail";
+import PokemonDetail from "./Detail";
 import { Box } from "@mui/system";
 
 const Main = ({
