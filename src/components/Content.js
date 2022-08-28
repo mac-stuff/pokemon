@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Favorites from "../pages/Favorites";
-import StagePage from "../pages/StagePage";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
-import PokemonDetail from "../pages/PokemonDetail";
+import Stage from "../pages/Stage";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Detail from "../pages/Detail";
 import Main from "../pages/Main";
-import NotFound from "../pages/NotFound";
 
 const Content = ({ searchedPokemon }) => {
   const [currentPage, setCurrentPage] = useState(
@@ -81,7 +80,7 @@ const Content = ({ searchedPokemon }) => {
       <Route
         path="/:id"
         element={
-          <PokemonDetail
+          <Detail
             selectedPokemon={selectedPokemon}
             setSelectedPokemon={setSelectedPokemon}
             favoritesPokemon={favoritesPokemon}
@@ -104,9 +103,9 @@ const Content = ({ searchedPokemon }) => {
           />
         }
       />
-      <Route path="/Arena" element={<StagePage />} />
-      <Route path="/Logowanie" element={<LoginPage />} />
-      <Route path="/Rejestracja" element={<RegisterPage />} />
+      <Route path="/Arena" element={<Stage />} />
+      <Route path="/Logowanie" element={<Login />} />
+      <Route path="/Rejestracja" element={<Register />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

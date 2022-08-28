@@ -1,7 +1,7 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PokemonDetail = ({
   selectedPokemon,
@@ -9,7 +9,6 @@ const PokemonDetail = ({
   favoritesPokemon,
   setFavoritesPokemon,
 }) => {
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(
