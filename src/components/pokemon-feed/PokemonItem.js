@@ -1,6 +1,7 @@
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CustomCard = styled(Card)({
@@ -16,14 +17,15 @@ const CustomCard = styled(Card)({
   },
 });
 
-const PokemonCard = ({ pokemon, setPokemonChoice }) => {
+const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
   return (
     <CustomCard>
       <CardActionArea
         onClick={() => {
-          setPokemonChoice(pokemon);
+          setSelectedPokemon(pokemon);
         }}
       >
+        <Link to={`/pokemon/${pokemon.id}`}>SELECT</Link>
         <img
           style={{ width: 250, height: 158 }}
           src={pokemon.sprites.other.dream_world.front_default}
@@ -60,7 +62,6 @@ const PokemonCard = ({ pokemon, setPokemonChoice }) => {
             </Typography>
             <Typography variant="body1" gutterBottom color="textSecondary">
               {pokemon.abilities[0] && pokemon.abilities[0].ability.name}
-              {/* {pokemon.abilities[1] && pokemon.abilities[1].ability.name} */}
             </Typography>
           </Stack>
           <Stack direction="row" spacing={5}>
@@ -77,4 +78,4 @@ const PokemonCard = ({ pokemon, setPokemonChoice }) => {
   );
 };
 
-export default PokemonCard;
+export default PokemonItem;

@@ -1,34 +1,34 @@
 import { Grid } from "@mui/material";
 import Pagination from "./Pagination";
-import PokemonCard from "./PokemonCard";
+import PokemonItem from "./PokemonItem";
 
 const PokemonList = ({
   searchedPokemon,
-  pokemonList, 
+  currentPagePokemon,
   setCurrentPage,
   prevPage,
   nextPage,
-  allPokemonList,
-  setPokemonChoice,
+  allPokemon,
+  setSelectedPokemon,
 }) => {
   return (
     <Grid container spacing={2}>
       {searchedPokemon
-        ? allPokemonList
+        ? allPokemon
             .filter((pokemon) => pokemon.name.startsWith(searchedPokemon))
             .map((pokemon) => (
               <Grid item key={pokemon.id}>
-                <PokemonCard
+                <PokemonItem
                   pokemon={pokemon}
-                  setPokemonChoice={setPokemonChoice}
+                  setSelectedPokemon={setSelectedPokemon}
                 />
               </Grid>
             ))
-        : pokemonList.map((pokemon) => (
+        : currentPagePokemon.map((pokemon) => (
             <Grid item key={pokemon.id}>
-              <PokemonCard
+              <PokemonItem
                 pokemon={pokemon}
-                setPokemonChoice={setPokemonChoice}
+                setSelectedPokemon={setSelectedPokemon}
               />
             </Grid>
           ))}
