@@ -11,8 +11,9 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const buttons = [
+const titles = [
   "Ulubione",
   "Arena",
   "Logowanie",
@@ -26,12 +27,7 @@ const CustomToolbar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
-const CustomNavbar = ({ setSelectedPage }) => {
-  const clickHandle = (event) => {
-    event.preventDefault();
-    setSelectedPage(event.target.value);
-    console.log(event.target.value);
-  };
+const Navigation = () => {
   return (
     <AppBar position="static">
       <CustomToolbar>
@@ -42,14 +38,15 @@ const CustomNavbar = ({ setSelectedPage }) => {
           sx={{ display: { xs: "block", sm: "none" } }}
         ></CatchingPokemon>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
-          {buttons.map((button) => (
+          {titles.map((title) => (
             <Button
+              component={Link}
+              to={`/${title}`}
               variant="contained"
-              key={button}
-              onClick={clickHandle}
-              value={button}
+              color="primary"
+              key={title}
             >
-              {button}
+              {title}
             </Button>
           ))}
         </Stack>
@@ -64,9 +61,16 @@ const CustomNavbar = ({ setSelectedPage }) => {
                 MENU
               </Button>
               <Menu {...bindMenu(popupState)}>
-                {buttons.map((button) => (
-                  <MenuItem key={button} onClick={popupState.close}>
-                    {button}
+                {titles.map((title) => (
+                  <MenuItem key={title} onClick={popupState.close}>
+                    <Button
+                      component={Link}
+                      to={`/${title}`}
+                      variant="contained"
+                      color="primary"
+                    >
+                      {title}
+                    </Button>
                   </MenuItem>
                 ))}
               </Menu>
@@ -78,4 +82,4 @@ const CustomNavbar = ({ setSelectedPage }) => {
   );
 };
 
-export default CustomNavbar;
+export default Navigation;

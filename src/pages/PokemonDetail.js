@@ -1,19 +1,24 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const PokemonDetails = ({
-  pokemonChoice,
-  setPokemonChoice,
-  favoritePokemon,
-  setFavoritePokemon,
+const PokemonDetail = ({
+  selectedPokemon,
+  setSelectedPokemon,
+  favoritesPokemon,
+  setFavoritesPokemon,
 }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [isActive, setIsActive] = useState(
-    favoritePokemon.includes(pokemonChoice) ? true : false
+    favoritesPokemon.includes(selectedPokemon) ? true : false
   );
 
   const handleClickButton = () => {
-    setPokemonChoice(null);
+    setSelectedPokemon(null);
+    navigate("/");
   };
 
   return (
@@ -22,13 +27,13 @@ const PokemonDetails = ({
         <Stack direction="row" spacing={10}>
           <img
             style={{ width: 450, height: 358 }}
-            src={pokemonChoice.sprites.other.dream_world.front_default}
-            alt={pokemonChoice.name}
+            src={selectedPokemon.sprites.other.dream_world.front_default}
+            alt={selectedPokemon.name}
           />
           <Stack spacing={5}>
             <Typography variant="h3" gutterBottom color="textSecondary">
-              {pokemonChoice.name[0].toUpperCase() +
-                pokemonChoice.name.substring(1)}
+              {selectedPokemon.name[0].toUpperCase() +
+                selectedPokemon.name.substring(1)}
             </Typography>
             <Stack direction="row" spacing={5}>
               <Typography
@@ -37,10 +42,10 @@ const PokemonDetails = ({
                 gutterBottom
                 color="textSecondary"
               >
-                {pokemonChoice.height}
+                {selectedPokemon.height}
               </Typography>
               <Typography variant="body1" gutterBottom color="textSecondary">
-                {pokemonChoice.base_experience}
+                {selectedPokemon.base_experience}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
@@ -53,11 +58,11 @@ const PokemonDetails = ({
             </Stack>
             <Stack direction="row" spacing={5}>
               <Typography variant="body1" gutterBottom color="textSecondary">
-                {pokemonChoice.weight}
+                {selectedPokemon.weight}
               </Typography>
               <Typography variant="body1" gutterBottom color="textSecondary">
-                {pokemonChoice.abilities[0] &&
-                  pokemonChoice.abilities[0].ability.name}
+                {selectedPokemon.abilities[0] &&
+                  selectedPokemon.abilities[0].ability.name}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
@@ -68,33 +73,33 @@ const PokemonDetails = ({
                 Ability
               </Typography>
             </Stack>
-            <Stack direction="row" spacing={5}>
-              <Button variant="contained" onClick={handleClickButton}>
-                Strona Główna
-              </Button>
-            </Stack>
           </Stack>
         </Stack>
         <IconButton
           aria-label="add to favorites"
           onClick={() => {
-            setFavoritePokemon(
-              favoritePokemon.includes(pokemonChoice)
-                ? favoritePokemon.filter(
-                    (pokemon) => pokemon.name !== pokemonChoice.name
+            setFavoritesPokemon(
+              favoritesPokemon.includes(selectedPokemon)
+                ? favoritesPokemon.filter(
+                    (pokemon) => pokemon.name !== selectedPokemon.name
                   )
-                : (favoritePokemon) => [...favoritePokemon, pokemonChoice]
+                : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
             );
-            favoritePokemon.includes(pokemonChoice)
+            favoritesPokemon.includes(selectedPokemon)
               ? setIsActive(false)
               : setIsActive(true);
           }}
         >
           <FavoriteIcon sx={{ color: isActive ? "tomato" : "grey" }} />
         </IconButton>
+        <Stack direction="row" spacing={5}>
+          <Button variant="contained" onClick={handleClickButton}>
+            Strona Główna
+          </Button>
+        </Stack>
       </Grid>
     </Grid>
   );
 };
 
-export default PokemonDetails;
+export default PokemonDetail;

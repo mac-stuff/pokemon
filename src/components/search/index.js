@@ -1,8 +1,8 @@
 import React from "react";
-import CustomSearch from "./CustomSearch";
+import SearchEngine from "./SearchEngine";
 
-const Search = ({ setPokemonSearch }) => {
-  return <CustomSearch setPokemonSearch={setPokemonSearch} />;
+const Search = ({ setSearchedPokemon }) => {
+  return <SearchEngine setSearchedPokemon={setSearchedPokemon} />;
 };
 
 export default Search;
