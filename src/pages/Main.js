@@ -1,8 +1,8 @@
-import PokemonList from "./PokemonList";
+import PokemonList from "../components/main/PokemonList";
 import PokemonDetail from "./PokemonDetail";
 import { Box } from "@mui/system";
 
-const MainPage = ({
+const Main = ({
   setCurrentPage,
   prevPage,
   nextPage,
@@ -34,19 +34,8 @@ const MainPage = ({
           setSelectedPokemon={setSelectedPokemon}
         />
       )}
-      {favoritesPokemon && (
-        <PokemonList
-          searchedPokemon={searchedPokemon}
-          currentPagePokemon={favoritesPokemon}
-          setCurrentPage={setCurrentPage}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          allPokemon={allPokemon}
-          setSelectedPokemon={setSelectedPokemon}
-        />
-      )}
     </Box>
   );
 };
 
-export default MainPage;
+export default Main;

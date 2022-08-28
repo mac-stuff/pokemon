@@ -1,23 +1,25 @@
 import { Container, Stack } from "@mui/system";
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar/index";
 import Search from "./search";
-import Feed from "./Feed";
+import Content from "./Content";
 import Rightbar from "./Rightbar";
-import { useState } from "react";
 
 const Layout = () => {
-  const [selectedPage, setSelectedPage] = useState();
   const [searchedPokemon, setSearchedPokemon] = useState();
 
   return (
-    <Container>
-      <Navbar setSelectedPage={setSelectedPage} />
-      <Search setSearchedPokemon={setSearchedPokemon} />
-      <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Feed selectedPage={selectedPage} searchedPokemon={searchedPokemon} />
-        <Rightbar />
-      </Stack>
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <Navbar />
+        <Search setSearchedPokemon={setSearchedPokemon} />
+        <Stack direction="row" spacing={2} justifyContent="space-between">
+          <Content searchedPokemon={searchedPokemon} />
+          <Rightbar />
+        </Stack>
+      </Container>
+    </BrowserRouter>
   );
 };
 

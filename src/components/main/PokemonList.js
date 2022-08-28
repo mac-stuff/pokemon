@@ -1,6 +1,12 @@
 import { Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Pagination from "./Pagination";
 import PokemonItem from "./PokemonItem";
+
+const CustomLink = styled(Link)({
+  textDecoration: "none",
+});
 
 const PokemonList = ({
   searchedPokemon,
@@ -18,18 +24,22 @@ const PokemonList = ({
             .filter((pokemon) => pokemon.name.startsWith(searchedPokemon))
             .map((pokemon) => (
               <Grid item key={pokemon.id}>
-                <PokemonItem
-                  pokemon={pokemon}
-                  setSelectedPokemon={setSelectedPokemon}
-                />
+                <CustomLink to={`/${pokemon.id}`}>
+                  <PokemonItem
+                    pokemon={pokemon}
+                    setSelectedPokemon={setSelectedPokemon}
+                  />
+                </CustomLink>
               </Grid>
             ))
         : currentPagePokemon.map((pokemon) => (
             <Grid item key={pokemon.id}>
-              <PokemonItem
-                pokemon={pokemon}
-                setSelectedPokemon={setSelectedPokemon}
-              />
+              <CustomLink to={`/${pokemon.id}`}>
+                <PokemonItem
+                  pokemon={pokemon}
+                  setSelectedPokemon={setSelectedPokemon}
+                />
+              </CustomLink>
             </Grid>
           ))}
       <Grid item>

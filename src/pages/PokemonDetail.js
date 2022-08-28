@@ -1,6 +1,7 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PokemonDetail = ({
   selectedPokemon,
@@ -8,12 +9,16 @@ const PokemonDetail = ({
   favoritesPokemon,
   setFavoritesPokemon,
 }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [isActive, setIsActive] = useState(
     favoritesPokemon.includes(selectedPokemon) ? true : false
   );
 
   const handleClickButton = () => {
     setSelectedPokemon(null);
+    navigate("/");
   };
 
   return (
@@ -68,11 +73,6 @@ const PokemonDetail = ({
                 Ability
               </Typography>
             </Stack>
-            <Stack direction="row" spacing={5}>
-              <Button variant="contained" onClick={handleClickButton}>
-                Strona Główna
-              </Button>
-            </Stack>
           </Stack>
         </Stack>
         <IconButton
@@ -92,6 +92,11 @@ const PokemonDetail = ({
         >
           <FavoriteIcon sx={{ color: isActive ? "tomato" : "grey" }} />
         </IconButton>
+        <Stack direction="row" spacing={5}>
+          <Button variant="contained" onClick={handleClickButton}>
+            Strona Główna
+          </Button>
+        </Stack>
       </Grid>
     </Grid>
   );
