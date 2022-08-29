@@ -4,7 +4,6 @@ import PokemonList from "../components/main/PokemonList";
 const Favorites = ({
   favoritesPokemon,
   searchedPokemon,
-  currentPagePokemon,
   setCurrentPage,
   prevPage,
   nextPage,

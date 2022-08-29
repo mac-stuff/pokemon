@@ -5,7 +5,6 @@ import PokemonList from "../components/main/PokemonList";
 const StagePage = ({
   fightingPokemon,
   searchedPokemon,
-  currentPagePokemon,
   setCurrentPage,
   prevPage,
   nextPage,

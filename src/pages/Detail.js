@@ -32,6 +32,34 @@ const PokemonDetail = ({
     navigate("/");
   };
 
+  const handleFightClick = () => {
+    fightingPokemon.length < 2 &&
+    setFightingPokemon(
+     fightingPokemon.includes(selectedPokemon)
+        ? fightingPokemon.filter(
+            (pokemon) => pokemon.name !== selectedPokemon.name
+          )
+        : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
+    );
+    fightingPokemon.includes(selectedPokemon)
+      ? setVerifiedUserIconIsActive(!true)
+      : setVerifiedUserIconIsActive(!false);
+  }
+
+  const handleLikeClick = () => {
+      setFavoritesPokemon(
+        favoritesPokemon.includes(selectedPokemon)
+          ? favoritesPokemon.filter(
+              (pokemon) => pokemon.name !== selectedPokemon.name
+            )
+          : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
+      );
+      favoritesPokemon.includes(selectedPokemon)
+        ? setFavoriteIconIsActive(!true)
+        : setFavoriteIconIsActive(!false);
+    }
+  
+  
   return (
     <Grid container spacing={2}>
       <Grid item>
@@ -87,18 +115,7 @@ const PokemonDetail = ({
           </Stack>
         </Stack>
         <IconButton
-          onClick={() => {
-            setFavoritesPokemon(
-              favoritesPokemon.includes(selectedPokemon)
-                ? favoritesPokemon.filter(
-                    (pokemon) => pokemon.name !== selectedPokemon.name
-                  )
-                : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
-            );
-            favoritesPokemon.includes(selectedPokemon)
-              ? setFavoriteIconIsActive(!true)
-              : setFavoriteIconIsActive(!false);
-          }}
+          onClick={handleLikeClick}
         >
           {favoriteIconIsActive ? (
             <CustomFavoriteIcon success />
@@ -107,19 +124,7 @@ const PokemonDetail = ({
           )}
         </IconButton>
         <IconButton
-          onClick={() => {
-            setFightingPokemon(
-              fightingPokemon.length < 2 &&
-                fightingPokemon.includes(selectedPokemon)
-                ? fightingPokemon.filter(
-                    (pokemon) => pokemon.name !== selectedPokemon.name
-                  )
-                : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
-            );
-            fightingPokemon.includes(selectedPokemon)
-              ? setVerifiedUserIconIsActive(!true)
-              : setVerifiedUserIconIsActive(!false);
-          }}
+          onClick={handleFightClick}
         >
           {verifiedUserIconIsActive ? (
             <CustomVerifiedUserIcon success />
