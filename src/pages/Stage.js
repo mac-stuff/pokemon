@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import FightingPokemonList from "../components/main/FightingPokemonList";
+import FightingPokemonList from "../components/content/FightingPokemonList";
 
 const StagePage = ({
   fightingPokemon,

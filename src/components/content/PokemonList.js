@@ -9,12 +9,12 @@ const CustomLink = styled(Link)({
 });
 
 const PokemonList = ({
-  searchedPokemon,
-  currentPagePokemon,
   setCurrentPage,
   prevPage,
   nextPage,
+  currentPagePokemon,
   allPokemon,
+  searchedPokemon,
   setSelectedPokemon,
 }) => {
   return (

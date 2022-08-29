@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import PokemonList from "../components/main/PokemonList";
+import PokemonList from "../components/content/PokemonList";
 
 const Favorites = ({
   favoritesPokemon,

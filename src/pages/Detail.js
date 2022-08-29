@@ -1,15 +1,15 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 
-const CustomFavoriteIcon = styled(FavoriteIcon)(({ disabled }) => ({
-  color: disabled ? "grey" : "tomato",
+const CustomFavoriteIcon = styled(FavoriteIcon)(({ color }) => ({
+  color: color === "primary" ? "tomato" : "grey",
 }));
-const CustomVerifiedUserIcon = styled(VerifiedUserIcon)(({ disabled }) => ({
-  color: disabled ? "grey" : "tomato",
+const CustomVerifiedUserIcon = styled(VerifiedUserIcon)(({ color }) => ({
+  color: color === "primary" ? "tomato" : "grey",
 }));
 
 const PokemonDetail = ({
@@ -21,55 +21,51 @@ const PokemonDetail = ({
   setFightingPokemon,
 }) => {
   const navigate = useNavigate();
+  const [likeState, setLikeState] = useState("success");
+  const [fightState, setFightState] = useState("success");
 
-  const [favoriteIconIsActive, setFavoriteIconIsActive] = useState(false);
+  const handleClickLikeIcon = () => {
+    setFavoritesPokemon(
+      favoritesPokemon.includes(selectedPokemon)
+        ? favoritesPokemon.filter(
+            (pokemon) => pokemon.name !== selectedPokemon.name
+          )
+        : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
+    );
+    favoritesPokemon.includes(selectedPokemon)
+      ? setLikeState("success")
+      : setLikeState("primary");
+  };
 
-  const [verifiedUserIconIsActive, setVerifiedUserIconIsActive] =
-    useState(false);
+  const handleClickFightIcon = () => {
+    fightingPokemon.length < 2 &&
+      setFightingPokemon(
+        fightingPokemon.includes(selectedPokemon)
+          ? fightingPokemon.filter(
+              (pokemon) => pokemon.name !== selectedPokemon.name
+            )
+          : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
+      );
+    fightingPokemon.includes(selectedPokemon)
+      ? setFightState("success")
+      : setFightState("primary");
+  };
 
   const handleClickButton = () => {
     setSelectedPokemon(null);
     navigate("/");
   };
 
-  const handleFightClick = () => {
-    fightingPokemon.length < 2 &&
-    setFightingPokemon(
-     fightingPokemon.includes(selectedPokemon)
-        ? fightingPokemon.filter(
-            (pokemon) => pokemon.name !== selectedPokemon.name
-          )
-        : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
-    );
-    fightingPokemon.includes(selectedPokemon)
-      ? setVerifiedUserIconIsActive(!true)
-      : setVerifiedUserIconIsActive(!false);
-  }
-
-  const handleLikeClick = () => {
-      setFavoritesPokemon(
-        favoritesPokemon.includes(selectedPokemon)
-          ? favoritesPokemon.filter(
-              (pokemon) => pokemon.name !== selectedPokemon.name
-            )
-          : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
-      );
-      favoritesPokemon.includes(selectedPokemon)
-        ? setFavoriteIconIsActive(!true)
-        : setFavoriteIconIsActive(!false);
-    }
-  
-  
   return (
-    <Grid container spacing={2}>
-      <Grid item>
-        <Stack direction="row" spacing={10}>
+    <Grid container spacing={2} justifyContent="center" alignItems="center">
+      <Grid item xs="auto">
+        <Stack direction="row" spacing={10} mt={10} mb={10}>
           <img
             style={{ width: 450, height: 358 }}
             src={selectedPokemon.sprites.other.dream_world.front_default}
             alt={selectedPokemon.name}
           />
-          <Stack spacing={5}>
+          <Stack spacing={5} mt={5} mb={5}>
             <Typography variant="h3" gutterBottom color="textSecondary">
               {selectedPokemon.name[0].toUpperCase() +
                 selectedPokemon.name.substring(1)}
@@ -114,25 +110,13 @@ const PokemonDetail = ({
             </Stack>
           </Stack>
         </Stack>
-        <IconButton
-          onClick={handleLikeClick}
-        >
-          {favoriteIconIsActive ? (
-            <CustomFavoriteIcon success />
-          ) : (
-            <CustomFavoriteIcon disabled />
-          )}
+        <IconButton onClick={handleClickLikeIcon}>
+          <CustomFavoriteIcon color={likeState} />
         </IconButton>
-        <IconButton
-          onClick={handleFightClick}
-        >
-          {verifiedUserIconIsActive ? (
-            <CustomVerifiedUserIcon success />
-          ) : (
-            <CustomVerifiedUserIcon disabled />
-          )}
+        <IconButton onClick={handleClickFightIcon}>
+          <CustomVerifiedUserIcon color={fightState} />
         </IconButton>
-        <Stack direction="row" spacing={5}>
+        <Stack direction="row" spacing={5} mt={5} mb={5}>
           <Button variant="contained" onClick={handleClickButton}>
             Strona Główna
           </Button>

@@ -1,4 +1,4 @@
-import PokemonList from "../components/main/PokemonList";
+import PokemonList from "../components/content/PokemonList";
 import { Box } from "@mui/system";
 
 const Main = ({
@@ -13,13 +13,13 @@ const Main = ({
   return (
     <Box flex={6} p={2}>
       <PokemonList
-        searchedPokemon={searchedPokemon}
-        currentPagePokemon={currentPagePokemon}
-        setCurrentPage={setCurrentPage}
-        prevPage={prevPage}
-        nextPage={nextPage}
-        allPokemon={allPokemon}
-        setSelectedPokemon={setSelectedPokemon}
+       setCurrentPage={setCurrentPage}
+       prevPage={prevPage}
+       nextPage={nextPage}
+       currentPagePokemon={currentPagePokemon}
+       allPokemon={allPokemon}
+       searchedPokemon={searchedPokemon}
+       setSelectedPokemon={setSelectedPokemon}
       />
     </Box>
   );
