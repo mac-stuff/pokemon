@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import Favorites from "../pages/Favorites";
-import Stage from "../pages/Stage";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Detail from "../pages/Detail";
-import Main from "../pages/Main";
+import Routing from "./Routing";
 
 const Content = ({ searchedPokemon }) => {
   const [currentPage, setCurrentPage] = useState(
@@ -17,6 +11,7 @@ const Content = ({ searchedPokemon }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [favoritesPokemon, setFavoritesPokemon] = useState([]);
+  const [fightingPokemon, setFightingPokemon] = useState([]);
 
   useEffect(() => {
     (async function () {
@@ -59,55 +54,20 @@ const Content = ({ searchedPokemon }) => {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Main
-            setCurrentPage={setCurrentPage}
-            prevPage={prevPage}
-            nextPage={nextPage}
-            currentPagePokemon={currentPagePokemon}
-            allPokemon={allPokemon}
-            searchedPokemon={searchedPokemon}
-            selectedPokemon={selectedPokemon}
-            setSelectedPokemon={setSelectedPokemon}
-            favoritesPokemon={favoritesPokemon}
-            setFavoritesPokemon={setFavoritesPokemon}
-          />
-        }
-      />
-      <Route
-        path="/:id"
-        element={
-          <Detail
-            selectedPokemon={selectedPokemon}
-            setSelectedPokemon={setSelectedPokemon}
-            favoritesPokemon={favoritesPokemon}
-            setFavoritesPokemon={setFavoritesPokemon}
-          />
-        }
-      />
-      <Route
-        path="/Ulubione"
-        element={
-          <Favorites
-            favoritesPokemon={favoritesPokemon}
-            searchedPokemon={searchedPokemon}
-            currentPagePokemon={currentPagePokemon}
-            setCurrentPage={setCurrentPage}
-            prevPage={prevPage}
-            nextPage={nextPage}
-            allPokemon={allPokemon}
-            setSelectedPokemon={setSelectedPokemon}
-          />
-        }
-      />
-      <Route path="/Arena" element={<Stage />} />
-      <Route path="/Logowanie" element={<Login />} />
-      <Route path="/Rejestracja" element={<Register />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <Routing
+      setCurrentPage={setCurrentPage}
+      prevPage={prevPage}
+      nextPage={nextPage}
+      currentPagePokemon={currentPagePokemon}
+      allPokemon={allPokemon}
+      searchedPokemon={searchedPokemon}
+      selectedPokemon={selectedPokemon}
+      setSelectedPokemon={setSelectedPokemon}
+      favoritesPokemon={favoritesPokemon}
+      setFavoritesPokemon={setFavoritesPokemon}
+      fightingPokemon={fightingPokemon}
+      setFightingPokemon={setFightingPokemon}
+    />
   );
 };
 

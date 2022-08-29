@@ -1,19 +1,31 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const CustomFavoriteIcon = styled(FavoriteIcon)(({ disabled }) => ({
+  color: disabled ? "grey" : "tomato",
+}));
+const CustomVerifiedUserIcon = styled(VerifiedUserIcon)(({ disabled }) => ({
+  color: disabled ? "grey" : "tomato",
+}));
 
 const PokemonDetail = ({
   selectedPokemon,
   setSelectedPokemon,
   favoritesPokemon,
   setFavoritesPokemon,
+  fightingPokemon,
+  setFightingPokemon,
 }) => {
   const navigate = useNavigate();
 
-  const [isActive, setIsActive] = useState(
-    favoritesPokemon.includes(selectedPokemon) ? true : false
-  );
+  const [favoriteIconIsActive, setFavoriteIconIsActive] = useState(false);
+
+  const [verifiedUserIconIsActive, setVerifiedUserIconIsActive] =
+    useState(false);
 
   const handleClickButton = () => {
     setSelectedPokemon(null);
@@ -75,7 +87,6 @@ const PokemonDetail = ({
           </Stack>
         </Stack>
         <IconButton
-          aria-label="add to favorites"
           onClick={() => {
             setFavoritesPokemon(
               favoritesPokemon.includes(selectedPokemon)
@@ -85,11 +96,36 @@ const PokemonDetail = ({
                 : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
             );
             favoritesPokemon.includes(selectedPokemon)
-              ? setIsActive(false)
-              : setIsActive(true);
+              ? setFavoriteIconIsActive(!true)
+              : setFavoriteIconIsActive(!false);
           }}
         >
-          <FavoriteIcon sx={{ color: isActive ? "tomato" : "grey" }} />
+          {favoriteIconIsActive ? (
+            <CustomFavoriteIcon success />
+          ) : (
+            <CustomFavoriteIcon disabled />
+          )}
+        </IconButton>
+        <IconButton
+          onClick={() => {
+            setFightingPokemon(
+              fightingPokemon.length < 2 &&
+                fightingPokemon.includes(selectedPokemon)
+                ? fightingPokemon.filter(
+                    (pokemon) => pokemon.name !== selectedPokemon.name
+                  )
+                : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
+            );
+            fightingPokemon.includes(selectedPokemon)
+              ? setVerifiedUserIconIsActive(!true)
+              : setVerifiedUserIconIsActive(!false);
+          }}
+        >
+          {verifiedUserIconIsActive ? (
+            <CustomVerifiedUserIcon success />
+          ) : (
+            <CustomVerifiedUserIcon disabled />
+          )}
         </IconButton>
         <Stack direction="row" spacing={5}>
           <Button variant="contained" onClick={handleClickButton}>
