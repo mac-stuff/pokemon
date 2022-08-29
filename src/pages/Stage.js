@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import PokemonList from "../components/main/PokemonList";
+import FightingPokemonList from "../components/main/FightingPokemonList";
 
 const StagePage = ({
   fightingPokemon,
@@ -14,13 +14,8 @@ const StagePage = ({
   return (
     <Box flex={6} p={2}>
       {fightingPokemon ? (
-        <PokemonList
-          searchedPokemon={searchedPokemon}
-          currentPagePokemon={fightingPokemon}
-          setCurrentPage={setCurrentPage}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          allPokemon={allPokemon}
+        <FightingPokemonList
+          fightingPokemon={fightingPokemon}
           setSelectedPokemon={setSelectedPokemon}
         />
       ) : (
