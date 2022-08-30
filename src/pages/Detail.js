@@ -22,7 +22,6 @@ const PokemonDetail = ({
         : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
     );
     selectedPokemon.isLiked = selectedPokemon.isLiked ? false : true;
-    console.log(selectedPokemon);
   };
 
   const handleClickFightIcon = () => {
