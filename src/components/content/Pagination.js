@@ -1,20 +1,27 @@
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import React from "react";
 
-const Pagination = ({ setCurrentPage, prevPage, nextPage }) => {
-  const handleButtonPrevPage = () => {
-    setCurrentPage(prevPage);
-  };
+const Pagination = ({ pokemonPerPage, totalPokemon, setCurrentPage }) => {
+  const pageNumber = [];
 
-  const handleButtonNextPage = () => {
-    setCurrentPage(nextPage);
-  };
+  for (let i = 1; i < Math.ceil(totalPokemon / pokemonPerPage); i++) {
+    pageNumber.push(i);
+  }
 
   return (
-    <Stack direction="row" spacing={1} justifyContent="space-between">
-      {prevPage && <Button variant="contained" onClick={handleButtonPrevPage}>prev</Button>}
-      {nextPage && <Button variant="contained" onClick={handleButtonNextPage}>next</Button>}
-    </Stack>
+    <nav>
+      {pageNumber.map((number) => {
+        return (
+          <Button
+            key={number}
+            variant="contained"
+            onClick={() => setCurrentPage(number)}
+          >
+            {number}
+          </Button>
+        );
+      })}
+    </nav>
   );
 };
 

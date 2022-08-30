@@ -9,13 +9,13 @@ const CustomLink = styled(Link)({
 });
 
 const PokemonList = ({
-  setCurrentPage,
-  prevPage,
-  nextPage,
   currentPagePokemon,
   allPokemon,
   searchedPokemon,
   setSelectedPokemon,
+  pokemonPerPage,
+  totalPokemon,
+  setCurrentPage,
 }) => {
   return (
     <Grid container spacing={2}>
@@ -44,9 +44,9 @@ const PokemonList = ({
           ))}
       <Grid item>
         <Pagination
-          setCurrentPage={setCurrentPage}
-          prevPage={prevPage}
-          nextPage={nextPage}
+        pokemonPerPage={pokemonPerPage}
+        totalPokemon={totalPokemon}
+        setCurrentPage={setCurrentPage}
         />
       </Grid>
     </Grid>
