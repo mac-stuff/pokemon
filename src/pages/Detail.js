@@ -2,15 +2,6 @@ import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { useState } from "react";
-
-const CustomFavoriteIcon = styled(FavoriteIcon)(({ color }) => ({
-  color: color === "primary" ? "tomato" : "grey",
-}));
-const CustomVerifiedUserIcon = styled(VerifiedUserIcon)(({ color }) => ({
-  color: color === "primary" ? "tomato" : "grey",
-}));
 
 const PokemonDetail = ({
   selectedPokemon,
@@ -21,8 +12,6 @@ const PokemonDetail = ({
   setFightingPokemon,
 }) => {
   const navigate = useNavigate();
-  const [likeState, setLikeState] = useState("success");
-  const [fightState, setFightState] = useState("success");
 
   const handleClickLikeIcon = () => {
     setFavoritesPokemon(
@@ -32,9 +21,7 @@ const PokemonDetail = ({
           )
         : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
     );
-    favoritesPokemon.includes(selectedPokemon)
-      ? setLikeState("success")
-      : setLikeState("primary");
+    selectedPokemon.isLiked = selectedPokemon.isLiked ? false : true;
   };
 
   const handleClickFightIcon = () => {
@@ -46,9 +33,7 @@ const PokemonDetail = ({
             )
           : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
       );
-    fightingPokemon.includes(selectedPokemon)
-      ? setFightState("success")
-      : setFightState("primary");
+    selectedPokemon.isFighting = selectedPokemon.isFighting ? false : true;
   };
 
   const handleClickButton = () => {
@@ -111,10 +96,12 @@ const PokemonDetail = ({
           </Stack>
         </Stack>
         <IconButton onClick={handleClickLikeIcon}>
-          <CustomFavoriteIcon color={likeState} />
+          <FavoriteIcon color={selectedPokemon.isLiked ? "error" : "primary"} />
         </IconButton>
         <IconButton onClick={handleClickFightIcon}>
-          <CustomVerifiedUserIcon color={fightState} />
+          <VerifiedUserIcon
+            color={selectedPokemon.isFighting ? "success" : "primary"}
+          />
         </IconButton>
         <Stack direction="row" spacing={5} mt={5} mb={5}>
           <Button variant="contained" onClick={handleClickButton}>

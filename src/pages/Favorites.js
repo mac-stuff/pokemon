@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { Fragment } from "react";
 import PokemonList from "../components/content/PokemonList";
 
 const Favorites = ({
@@ -12,7 +13,7 @@ const Favorites = ({
 }) => {
   return (
     <Box flex={6} p={2}>
-      {favoritesPokemon ? (
+      {favoritesPokemon.length > 0 ? (
         <PokemonList
           searchedPokemon={searchedPokemon}
           currentPagePokemon={favoritesPokemon}
@@ -23,7 +24,9 @@ const Favorites = ({
           setSelectedPokemon={setSelectedPokemon}
         />
       ) : (
-        <h1>No Favorites Pokemon Yet!</h1>
+        <Fragment>
+          <h2>No Favorites Pokemon Yet!</h2>
+        </Fragment>
       )}
     </Box>
   );
