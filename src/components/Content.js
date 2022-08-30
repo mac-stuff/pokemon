@@ -27,11 +27,11 @@ const Content = ({ searchedPokemon }) => {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon?limit=151`
       ).then((res) => res.json());
-      getAllPokemons(data.results);
+      getAllPokemon(data.results);
     })();
   }, []);
 
-  const getAllPokemons = async (results) => {
+  const getAllPokemon = async (results) => {
     results.forEach(async (pokemon) => {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
@@ -40,14 +40,7 @@ const Content = ({ searchedPokemon }) => {
     });
   };
 
-  const addPropertiesToPokemon = () => {
-    allPokemon.forEach(
-      // eslint-disable-next-line
-      (pokemon) => ((pokemon.isLiked = false), (pokemon.isFighting = false))
-    );
-  };
-
-  addPropertiesToPokemon();
+  // addPropertiesToPokemon();
   return (
     <Routes>
       <Route

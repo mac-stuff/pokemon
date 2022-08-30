@@ -31,7 +31,11 @@ const Navigation = () => {
   return (
     <AppBar position="static">
       <CustomToolbar>
-        <Typography sx={{ display: { xs: "none", sm: "block" } }}>
+        <Typography
+          component={Link}
+          to={`/`}
+          sx={{ display: { xs: "none", sm: "block" } }}
+        >
           Pokedex
         </Typography>
         <CatchingPokemon
