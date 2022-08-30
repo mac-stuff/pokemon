@@ -1,39 +1,26 @@
-import PokemonList from "../components/main/PokemonList";
-import PokemonDetail from "./Detail";
+import PokemonList from "../components/content/PokemonList";
 import { Box } from "@mui/system";
 
 const Main = ({
-  setCurrentPage,
-  prevPage,
-  nextPage,
   currentPagePokemon,
   allPokemon,
   searchedPokemon,
-  selectedPokemon,
   setSelectedPokemon,
-  favoritesPokemon,
-  setFavoritesPokemon,
+  pokemonPerPage,
+  totalPokemon,
+  setCurrentPage,
 }) => {
   return (
     <Box flex={6} p={2}>
-      {selectedPokemon ? (
-        <PokemonDetail
-          selectedPokemon={selectedPokemon}
-          favoritesPokemon={favoritesPokemon}
-          setFavoritesPokemon={setFavoritesPokemon}
-          setSelectedPokemon={setSelectedPokemon}
-        />
-      ) : (
-        <PokemonList
-          searchedPokemon={searchedPokemon}
-          currentPagePokemon={currentPagePokemon}
-          setCurrentPage={setCurrentPage}
-          prevPage={prevPage}
-          nextPage={nextPage}
-          allPokemon={allPokemon}
-          setSelectedPokemon={setSelectedPokemon}
-        />
-      )}
+      <PokemonList
+        currentPagePokemon={currentPagePokemon}
+        allPokemon={allPokemon}
+        searchedPokemon={searchedPokemon}
+        setSelectedPokemon={setSelectedPokemon}
+        pokemonPerPage={pokemonPerPage}
+        totalPokemon={totalPokemon}
+        setCurrentPage={setCurrentPage}
+      />
     </Box>
   );
 };
