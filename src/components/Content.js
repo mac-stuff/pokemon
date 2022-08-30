@@ -39,6 +39,15 @@ const Content = ({ searchedPokemon }) => {
       setAllPokemon((allPokemon) => [...allPokemon, data]);
     });
   };
+
+  const addPropertiesToPokemon = () => {
+    allPokemon.forEach(
+      // eslint-disable-next-line
+      (pokemon) => ((pokemon.isLiked = false), (pokemon.isFighting = false))
+    );
+  };
+
+  addPropertiesToPokemon();
   return (
     <Routes>
       <Route

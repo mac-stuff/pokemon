@@ -33,8 +33,9 @@ const PokemonDetail = ({
         : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
     );
     favoritesPokemon.includes(selectedPokemon)
-      ? setLikeState("success")
-      : setLikeState("primary");
+      ? (selectedPokemon.isLiked = true)
+      : (selectedPokemon.isLiked = false);
+    selectedPokemon.isLiked ? setLikeState("success") : setLikeState("primary");
   };
 
   const handleClickFightIcon = () => {
@@ -47,6 +48,9 @@ const PokemonDetail = ({
           : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
       );
     fightingPokemon.includes(selectedPokemon)
+      ? (selectedPokemon.isFighting = true)
+      : (selectedPokemon.isFighting = false);
+    selectedPokemon.isFighting
       ? setFightState("success")
       : setFightState("primary");
   };
