@@ -3,7 +3,6 @@ import { Fragment, useState } from "react";
 import Placeholder from "../components/content/Placeholder";
 import PokemonList from "../components/content/PokemonList";
 import DeleteIcon from "@mui/icons-material/Delete";
-import NewsOfVictory from "../components/content/NewsOfVictory";
 
 const Stage = ({
   fightingPokemon,
@@ -13,27 +12,24 @@ const Stage = ({
   nextPage,
   allPokemon,
   setSelectedPokemon,
-  setLoserPokemon,
   setFightingPokemon,
 }) => {
   const [message, setMessage] = useState(
     <Typography>Press button to fight!</Typography>
   );
+  const [firstPokemonWon, setFirstPokemonWon] = useState(false);
   const [isAfterFight, setIsAfterFight] = useState(false);
 
   const handleClickFight = () => {
-    const firstPokemonWon = false;
-
     Math.round(fightingPokemon[0].base_experience * fightingPokemon[0].weight) >
     Math.round(fightingPokemon[1].base_experience * fightingPokemon[1].weight)
-      ? (firstPokemonWon = true)
+      ? setFirstPokemonWon(true)
       : Math.round(
           fightingPokemon[0].base_experience * fightingPokemon[0].weight
         ) ===
           Math.round(
             fightingPokemon[1].base_experience * fightingPokemon[1].weight
           ) && setMessage(<Typography>Draw!</Typography>);
-
     firstPokemonWon
       ? setMessage(
           <Typography>Pokemon - {fightingPokemon[0].name} Won!</Typography>
@@ -41,9 +37,10 @@ const Stage = ({
       : setMessage(
           <Typography>Pokemon - {fightingPokemon[1].name} Won!</Typography>
         );
-
     setIsAfterFight(true);
-    setLoserPokemon(firstPokemonWon ? fightingPokemon[1] : fightingPokemon[0]);
+    firstPokemonWon
+      ? (fightingPokemon[1].isLoser = true)
+      : (fightingPokemon[0].isLoser = true);
   };
 
   const handleClickDeleteIcon = () => {

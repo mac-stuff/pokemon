@@ -1,6 +1,5 @@
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
 import styled from "styled-components";
 
 const CustomCard = styled(Card)({
@@ -23,7 +22,10 @@ const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
 
   return (
     <CustomCard>
-      <CardActionArea onClick={clickHandle}>
+      <CardActionArea
+        onClick={clickHandle}
+        sx={{ opacity: pokemon.isLoser ? 0.2 : 1 }}
+      >
         <img
           style={{ width: 250, height: 158 }}
           src={pokemon.sprites.other.dream_world.front_default}
