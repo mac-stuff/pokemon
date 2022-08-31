@@ -1,17 +1,25 @@
 import { Button, Grid } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PokemonItem from "./PokemonItem";
+import Placeholder from "./Placeholder";
+import { useState } from "react";
 
 const CustomLink = styled(Link)({
   textDecoration: "none",
 });
 
 const FightingPokemonList = ({ fightingPokemon, setSelectedPokemon }) => {
-  const navigate = useNavigate();
+  const [result, setResult] = useState();
 
   const handleClickButton = () => {
-    navigate("/");
+    const firstPokemonPower =
+      fightingPokemon[0].base_experience * fightingPokemon[0].weight;
+    const secondPokemonPower =
+      fightingPokemon[1].base_experience * fightingPokemon[1].weight;
+    {
+      firstPokemonPower > secondPokemonPower ? setResult(1) : setResult(2);
+    }
   };
 
   return (
@@ -27,9 +35,18 @@ const FightingPokemonList = ({ fightingPokemon, setSelectedPokemon }) => {
         </Grid>
       ))}
       <Grid item>
-        <Button variant="contained" onClick={handleClickButton}>
-          WALCZ
-        </Button>
+        {fightingPokemon.length < 2 ? (
+          <Placeholder />
+        ) : (
+          <Button variant="contained" onClick={handleClickButton}>
+            WALCZ
+          </Button>
+        )}
+        {result === 1 ? (
+          <div>first pokmon win</div>
+        ) : (
+          <div>second pokmon win</div>
+        )}
       </Grid>
     </Grid>
   );

@@ -25,14 +25,13 @@ const PokemonDetail = ({
   };
 
   const handleClickFightIcon = () => {
-    fightingPokemon.length < 2 &&
-      setFightingPokemon(
-        fightingPokemon.includes(selectedPokemon)
-          ? fightingPokemon.filter(
-              (pokemon) => pokemon.name !== selectedPokemon.name
-            )
-          : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
-      );
+    setFightingPokemon(
+      fightingPokemon.includes(selectedPokemon)
+        ? fightingPokemon.filter(
+            (pokemon) => pokemon.name !== selectedPokemon.name
+          )
+        : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
+    );
     selectedPokemon.isFighting = selectedPokemon.isFighting ? false : true;
   };
 
@@ -96,13 +95,27 @@ const PokemonDetail = ({
           </Stack>
         </Stack>
         <IconButton onClick={handleClickLikeIcon}>
-          <FavoriteIcon color={selectedPokemon.isLiked ? "error" : "primary"} />
-        </IconButton>
-        <IconButton onClick={handleClickFightIcon}>
-          <VerifiedUserIcon
-            color={selectedPokemon.isFighting ? "success" : "primary"}
+          <FavoriteIcon
+            color={selectedPokemon.isLiked ? "success" : "primary"}
           />
         </IconButton>
+        {fightingPokemon.includes(selectedPokemon) ? (
+          <IconButton onClick={handleClickFightIcon}>
+            <VerifiedUserIcon
+              color={selectedPokemon.isFighting ? "success" : "primary"}
+            />
+          </IconButton>
+        ) : fightingPokemon.length < 2 ? (
+          <IconButton onClick={handleClickFightIcon}>
+            <VerifiedUserIcon
+              color={selectedPokemon.isFighting ? "success" : "primary"}
+            />
+          </IconButton>
+        ) : (
+          <IconButton>
+            <VerifiedUserIcon color="inherit" />
+          </IconButton>
+        )}
         <Stack direction="row" spacing={5} mt={5} mb={5}>
           <Button variant="contained" onClick={handleClickButton}>
             Strona Główna

@@ -44,9 +44,9 @@ const PokemonList = ({
           ))}
       <Grid item>
         <Pagination
-        pokemonPerPage={pokemonPerPage}
-        totalPokemon={totalPokemon}
-        setCurrentPage={setCurrentPage}
+          pokemonPerPage={pokemonPerPage}
+          totalPokemon={totalPokemon}
+          setCurrentPage={setCurrentPage}
         />
       </Grid>
     </Grid>

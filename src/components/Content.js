@@ -12,6 +12,7 @@ const Content = ({ searchedPokemon }) => {
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [favoritesPokemon, setFavoritesPokemon] = useState([]);
   const [fightingPokemon, setFightingPokemon] = useState([]);
+  const [loserPokemon, setLoserPokemon] = useState();
 
   const [currentPage, setCurrentPage] = useState(3);
   const pokemonPerPage = 15;
@@ -40,7 +41,6 @@ const Content = ({ searchedPokemon }) => {
     });
   };
 
-  // addPropertiesToPokemon();
   return (
     <Routes>
       <Route
@@ -89,6 +89,8 @@ const Content = ({ searchedPokemon }) => {
             searchedPokemon={searchedPokemon}
             allPokemon={allPokemon}
             setSelectedPokemon={setSelectedPokemon}
+            setLoserPokemon={setLoserPokemon}
+            setFightingPokemon={setFightingPokemon}
           />
         }
       />

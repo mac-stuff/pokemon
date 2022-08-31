@@ -17,13 +17,13 @@ const CustomCard = styled(Card)({
 });
 
 const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
+  const clickHandle = () => {
+    setSelectedPokemon(pokemon);
+  };
+
   return (
     <CustomCard>
-      <CardActionArea
-        onClick={() => {
-          setSelectedPokemon(pokemon);
-        }}
-      >
+      <CardActionArea onClick={clickHandle}>
         <img
           style={{ width: 250, height: 158 }}
           src={pokemon.sprites.other.dream_world.front_default}
