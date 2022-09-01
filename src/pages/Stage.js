@@ -32,10 +32,14 @@ const Stage = ({
           ) && setMessage(<Typography>Draw!</Typography>);
     firstPokemonWon
       ? setMessage(
-          <Typography>Pokemon - {fightingPokemon[0].name} Won!</Typography>
+          <Typography>
+            Pokemon - {fightingPokemon[0].name.toUpperCase()} Won!
+          </Typography>
         )
       : setMessage(
-          <Typography>Pokemon - {fightingPokemon[1].name} Won!</Typography>
+          <Typography>
+            Pokemon - {fightingPokemon[1].name.toUpperCase()} Won!
+          </Typography>
         );
     setIsAfterFight(true);
     firstPokemonWon
@@ -44,8 +48,22 @@ const Stage = ({
   };
 
   const handleClickDeleteIcon = () => {
+    fightingPokemon[0].isLoser
+      ? (fightingPokemon[1].base_experience =
+          fightingPokemon[1].base_experience + 10)
+      : (fightingPokemon[0].base_experience =
+          fightingPokemon[0].base_experience + 10);
+    !fightingPokemon[0].isLoser
+      ? (fightingPokemon[0].fights_won = fightingPokemon[0].fights_won + 1)
+      : (fightingPokemon[0].fights_lost = fightingPokemon[0].fights_lost + 1);
+    !fightingPokemon[1].isLoser
+      ? (fightingPokemon[1].fights_won = fightingPokemon[1].fights_won + 1)
+      : (fightingPokemon[1].fights_lost = fightingPokemon[1].fights_lost + 1);
     fightingPokemon[0].isFighting = false;
     fightingPokemon[1].isFighting = false;
+    fightingPokemon[0].isLoser = false;
+    fightingPokemon[1].isLoser = false;
+
     setFightingPokemon([]);
   };
 
@@ -67,9 +85,9 @@ const Stage = ({
           </Button>
           {message}
           {isAfterFight && (
-            <IconButton onClick={handleClickDeleteIcon}>
-              <DeleteIcon color="error" />
-            </IconButton>
+            <Button variant="contained" onClick={handleClickDeleteIcon}>
+              Opuść arenę <DeleteIcon color="error" />
+            </Button>
           )}
         </Fragment>
       ) : (
