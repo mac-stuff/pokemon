@@ -21,7 +21,6 @@ const Content = ({ searchedPokemon }) => {
     indexOfFirstPokemon,
     indexOfLastPokemon
   );
-
   useEffect(() => {
     (async function () {
       const data = await fetch(
@@ -40,7 +39,6 @@ const Content = ({ searchedPokemon }) => {
     });
   };
 
-  // addPropertiesToPokemon();
   return (
     <Routes>
       <Route
@@ -89,6 +87,7 @@ const Content = ({ searchedPokemon }) => {
             searchedPokemon={searchedPokemon}
             allPokemon={allPokemon}
             setSelectedPokemon={setSelectedPokemon}
+            setFightingPokemon={setFightingPokemon}
           />
         }
       />

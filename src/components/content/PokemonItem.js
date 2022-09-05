@@ -1,6 +1,5 @@
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
 import styled from "styled-components";
 
 const CustomCard = styled(Card)({
@@ -17,12 +16,15 @@ const CustomCard = styled(Card)({
 });
 
 const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
+  const clickHandle = () => {
+    setSelectedPokemon(pokemon);
+  };
+
   return (
     <CustomCard>
       <CardActionArea
-        onClick={() => {
-          setSelectedPokemon(pokemon);
-        }}
+        onClick={clickHandle}
+        sx={{ opacity: pokemon.isLoser ? 0.2 : 1 }}
       >
         <img
           style={{ width: 250, height: 158 }}
