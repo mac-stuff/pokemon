@@ -1,4 +1,4 @@
-import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { Fragment, useState } from "react";
 import Placeholder from "../components/content/Placeholder";
 import PokemonList from "../components/content/PokemonList";
