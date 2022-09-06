@@ -2,7 +2,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import basicSchema from "../schemas";
 
-const RegisterPage = () => {
+const Register = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -12,6 +12,13 @@ const RegisterPage = () => {
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
+      fetch("http://localhost:8000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      }).then(() => {
+        console.log("added");
+      });
     },
     validationSchema: basicSchema,
   });
@@ -77,7 +84,12 @@ const RegisterPage = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Button variant="contained" color="primary" type="submit">
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={!formik.isValid}
+          >
             SUBMIT
           </Button>
         </Grid>
@@ -86,4 +98,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default Register;

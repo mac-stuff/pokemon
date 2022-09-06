@@ -6,6 +6,7 @@ import Favorites from "../pages/Favorites";
 import Stage from "../pages/Stage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AddPokemon from "../pages/AddPokemon";
 
 const Content = ({ searchedPokemon }) => {
   const [allPokemon, setAllPokemon] = useState([]);
@@ -93,6 +94,7 @@ const Content = ({ searchedPokemon }) => {
       />
       <Route path="/Logowanie" element={<Login />} />
       <Route path="/Rejestracja" element={<Register />} />
+      <Route path="/Edycja" element={<AddPokemon />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
