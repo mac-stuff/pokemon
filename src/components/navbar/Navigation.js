@@ -13,21 +13,16 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const titles = [
-  "Ulubione",
-  "Arena",
-  "Logowanie",
-  "Rejestracja",
-  "Edycja",
-  "Wyloguj",
-];
+const titles1 = ["Ulubione", "Arena", "Edycja", "Wyloguj", "Rejestracja"];
+
+const titles2 = ["Ulubione", "Arena", "Logowanie", "Rejestracja"];
 
 const CustomToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
 
-const Navigation = () => {
+const Navigation = ({ isLogged }) => {
   return (
     <AppBar position="static">
       <CustomToolbar>
@@ -42,17 +37,29 @@ const Navigation = () => {
           sx={{ display: { xs: "block", sm: "none" } }}
         ></CatchingPokemon>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
-          {titles.map((title) => (
-            <Button
-              component={Link}
-              to={`/${title}`}
-              variant="contained"
-              color="primary"
-              key={title}
-            >
-              {title}
-            </Button>
-          ))}
+          {isLogged
+            ? titles1.map((title) => (
+                <Button
+                  component={Link}
+                  to={`/${title}`}
+                  variant="contained"
+                  color="primary"
+                  key={title}
+                >
+                  {title}
+                </Button>
+              ))
+            : titles2.map((title) => (
+                <Button
+                  component={Link}
+                  to={`/${title}`}
+                  variant="contained"
+                  color="primary"
+                  key={title}
+                >
+                  {title}
+                </Button>
+              ))}
         </Stack>
         <PopupState variant="popover">
           {(popupState) => (
@@ -65,18 +72,31 @@ const Navigation = () => {
                 MENU
               </Button>
               <Menu {...bindMenu(popupState)}>
-                {titles.map((title) => (
-                  <MenuItem key={title} onClick={popupState.close}>
-                    <Button
-                      component={Link}
-                      to={`/${title}`}
-                      variant="contained"
-                      color="primary"
-                    >
-                      {title}
-                    </Button>
-                  </MenuItem>
-                ))}
+                {isLogged
+                  ? titles1.map((title) => (
+                      <MenuItem key={title} onClick={popupState.close}>
+                        <Button
+                          component={Link}
+                          to={`/${title}`}
+                          variant="contained"
+                          color="primary"
+                        >
+                          {title}
+                        </Button>
+                      </MenuItem>
+                    ))
+                  : titles2.map((title) => (
+                      <MenuItem key={title} onClick={popupState.close}>
+                        <Button
+                          component={Link}
+                          to={`/${title}`}
+                          variant="contained"
+                          color="primary"
+                        >
+                          {title}
+                        </Button>
+                      </MenuItem>
+                    ))}
               </Menu>
             </Fragment>
           )}

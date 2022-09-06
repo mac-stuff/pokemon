@@ -1,3 +1,18 @@
 {
-  "pokemon": []
+  "users": [
+    {
+      "id": "1",
+      "name": "Marika",
+      "email": "example@gmail.com",
+      "password": "Qwerty123",
+      "confirmPassword": "Qwerty123"
+    },
+    {
+      "name": "Marika Soleri",
+      "email": "mrk.soleri@gmail.com",
+      "password": "MarikaSol123",
+      "confirmPassword": "MarikaSol123",
+      "id": "AtLlYUd"
+    }
+  ]
 }
