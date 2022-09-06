@@ -2,8 +2,11 @@ import { Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import * as EmailValidator from "email-validator";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const loginSchema = yup.object().shape({
     email: yup.string().required("required email"),
     password: yup.string().required("required password"),
@@ -46,6 +49,7 @@ const Login = () => {
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
       handleOnSubmit(values);
+      navigate("/Edycja");
     },
     validate: validateSchema,
     validationSchema: loginSchema,
