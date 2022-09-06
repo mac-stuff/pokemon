@@ -9,34 +9,45 @@ const Login = () => {
     password: yup.string().required("required password"),
   });
 
+  const validateSchema = (values) => {
+    let errors = {};
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (!EmailValidator.validate(values.email)) {
+      errors.email = "Invalid email address.";
+    }
+    const passwordRegex = /(?=.*[0-9])/;
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (values.password.length < 8) {
+      errors.password = "Password must be 8 characters long.";
+    } else if (!passwordRegex.test(values.password)) {
+      errors.password = "Invalid password. Must contain one number.";
+    }
+    return errors;
+  };
+
+  const handleOnSubmit = async (values) => {
+    try {
+      const response = await fetch("http://localhost:8000/users/").then((res) =>
+        res.json()
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error.stack);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    onSubmit: (values, { setSubmitting }) => {
-      setTimeout(() => {
-        setSubmitting(false);
-      }, 500);
+    onSubmit: (values) => {
       console.log(JSON.stringify(values));
+      handleOnSubmit(values);
     },
-    validate: (values) => {
-      let errors = {};
-      if (!values.email) {
-        errors.email = "Required";
-      } else if (!EmailValidator.validate(values.email)) {
-        errors.email = "Invalid email address.";
-      }
-      const passwordRegex = /(?=.*[0-9])/;
-      if (!values.password) {
-        errors.password = "Required";
-      } else if (values.password.length < 8) {
-        errors.password = "Password must be 8 characters long.";
-      } else if (!passwordRegex.test(values.password)) {
-        errors.password = "Invalid password. Must contain one number.";
-      }
-      return errors;
-    },
+    validate: validateSchema,
     validationSchema: loginSchema,
     validateOnBlur: true,
   });
