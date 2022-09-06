@@ -1,6 +1,6 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import basicSchema from "../schemas";
+import registerSchema from "../schemas/registerSchema";
 
 const Register = () => {
   const formik = useFormik({
@@ -20,7 +20,7 @@ const Register = () => {
         console.log("added");
       });
     },
-    validationSchema: basicSchema,
+    validationSchema: registerSchema,
   });
 
   return (
