@@ -1,7 +1,5 @@
 import Navigation from "./Navigation";
 
-const Navbar = ({ setSelectedPage }) => (
-  <Navigation setSelectedPage={setSelectedPage} />
-);
+const Navbar = ({ isLogged }) => <Navigation isLogged={isLogged} />;
 
 export default Navbar;

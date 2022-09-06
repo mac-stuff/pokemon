@@ -8,14 +8,15 @@ import Rightbar from "./Rightbar";
 
 const Layout = () => {
   const [searchedPokemon, setSearchedPokemon] = useState();
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
     <BrowserRouter>
       <Container>
-        <Navbar />
+        <Navbar isLogged={isLogged} />
         <Search setSearchedPokemon={setSearchedPokemon} />
         <Stack direction="row" spacing={2} justifyContent="space-between">
-          <Content searchedPokemon={searchedPokemon} />
+          <Content searchedPokemon={searchedPokemon} setIsLogged={setIsLogged}/>
           <Rightbar />
         </Stack>
       </Container>

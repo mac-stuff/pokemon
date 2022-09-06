@@ -4,7 +4,7 @@ import * as yup from "yup";
 import * as EmailValidator from "email-validator";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setIsLogged }) => {
   const navigate = useNavigate();
 
   const loginSchema = yup.object().shape({
@@ -49,6 +49,7 @@ const Login = () => {
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
       handleOnSubmit(values);
+      setIsLogged(true);
       navigate("/Edycja");
     },
     validate: validateSchema,

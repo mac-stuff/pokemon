@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AddPokemon from "../pages/AddPokemon";
 
-const Content = ({ searchedPokemon }) => {
+const Content = ({ searchedPokemon, setIsLogged }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [favoritesPokemon, setFavoritesPokemon] = useState([]);
@@ -22,6 +22,7 @@ const Content = ({ searchedPokemon }) => {
     indexOfFirstPokemon,
     indexOfLastPokemon
   );
+
   useEffect(() => {
     (async function () {
       const data = await fetch(
@@ -92,7 +93,7 @@ const Content = ({ searchedPokemon }) => {
           />
         }
       />
-      <Route path="/Logowanie" element={<Login />} />
+      <Route path="/Logowanie" element={<Login setIsLogged={setIsLogged} />} />
       <Route path="/Rejestracja" element={<Register />} />
       <Route path="/Edycja" element={<AddPokemon />} />
       <Route path="*" element={<Navigate to="/" />} />
