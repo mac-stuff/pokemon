@@ -3,11 +3,12 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import loginSchema from "../schemas/loginSchema";
 
-const Login = ({ setIsLogged }) => {
+const Login = ({ setIsLogged, setLoggetinUser }) => {
   const navigate = useNavigate();
 
-  const successfulLogin = () => {
+  const successfulLogin = (values) => {
     console.log("hell yeah!");
+    setLoggetinUser(values);
     setIsLogged(true);
     navigate("/Edycja");
   };
@@ -20,15 +21,15 @@ const Login = ({ setIsLogged }) => {
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
       try {
-        const response = fetch(
-          `http://localhost:8000/users?email=${values.email}`
-        ).then((res) => res.json());
-        {
-          response.length === 1 && response[0].password === values.password
-            ? successfulLogin()
-            : console.log("hell no!");
-        }
+        fetch(`http://localhost:8000/users?email=${values.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            data.length === 1 && data[0].password === values.password
+              ? successfulLogin(values)
+              : console.log("hell no!");
+          });
       } catch (error) {
+        console.log("hell no!");
         console.log(error.stack);
       }
     },

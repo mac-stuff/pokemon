@@ -6,13 +6,19 @@ import Favorites from "../pages/Favorites";
 import Stage from "../pages/Stage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import AddPokemon from "../pages/AddPokemon";
+import Add from "../pages/Add";
 
-const Content = ({ searchedPokemon, setIsLogged }) => {
+const Content = ({
+  searchedPokemon,
+  isLogged,
+  setIsLogged,
+  setLoggetinUser,
+}) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [favoritesPokemon, setFavoritesPokemon] = useState([]);
   const [fightingPokemon, setFightingPokemon] = useState([]);
+  const [customizablePokemon, setCustomizablePokemon] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(3);
   const pokemonPerPage = 15;
@@ -67,6 +73,9 @@ const Content = ({ searchedPokemon, setIsLogged }) => {
             setFavoritesPokemon={setFavoritesPokemon}
             fightingPokemon={fightingPokemon}
             setFightingPokemon={setFightingPokemon}
+            customizablePokemon={customizablePokemon}
+            setCustomizablePokemon={setCustomizablePokemon}
+            isLogged={isLogged}
           />
         }
       />
@@ -93,9 +102,20 @@ const Content = ({ searchedPokemon, setIsLogged }) => {
           />
         }
       />
-      <Route path="/Logowanie" element={<Login setIsLogged={setIsLogged} />} />
+      <Route
+        path="/Logowanie"
+        element={
+          <Login setIsLogged={setIsLogged} setLoggetinUser={setLoggetinUser} />
+        }
+      />
       <Route path="/Rejestracja" element={<Register />} />
-      <Route path="/Edycja" element={<AddPokemon />} />
+      <Route
+        path="/Edycja"
+        element={
+          <Add isLogged={isLogged} customizablePokemon={customizablePokemon} />
+        }
+      />
+      <Route path="/Wyloguj" element={<Register />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
