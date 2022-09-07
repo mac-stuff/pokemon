@@ -9,14 +9,14 @@ import Rightbar from "./Rightbar";
 const Layout = () => {
   const [searchedPokemon, setSearchedPokemon] = useState();
   const [isLogged, setIsLogged] = useState(false);
-  const [loggedinUser, setLoggetinUser] = useState(() => {
+  const [loggedUser, setLoggetUser] = useState(() => {
     const localData = localStorage.getItem("user");
     return localData ? JSON.parse(localData) : {};
   });
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(loggedinUser));
-  }, [loggedinUser]);
+    localStorage.setItem("user", JSON.stringify(loggedUser));
+  }, [loggedUser]);
 
   return (
     <BrowserRouter>
@@ -24,7 +24,7 @@ const Layout = () => {
         <Navbar
           isLogged={isLogged}
           setIsLogged={setIsLogged}
-          setLoggetinUser={setLoggetinUser}
+          setLoggetUser={setLoggetUser}
         />
         <Search setSearchedPokemon={setSearchedPokemon} />
         <Stack direction="row" spacing={2} justifyContent="space-between">
@@ -32,7 +32,7 @@ const Layout = () => {
             searchedPokemon={searchedPokemon}
             isLogged={isLogged}
             setIsLogged={setIsLogged}
-            setLoggetinUser={setLoggetinUser}
+            setLoggetUser={setLoggetUser}
           />
           <Rightbar />
         </Stack>

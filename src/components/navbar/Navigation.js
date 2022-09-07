@@ -13,21 +13,20 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
-const titles1 = ["Ulubione", "Arena", "Edycja", "Wyloguj", "Rejestracja"];
-
-const titles2 = ["Ulubione", "Arena", "Logowanie", "Rejestracja"];
-
 const CustomToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
 
-const Navigation = ({ isLogged, setIsLogged, setLoggetinUser }) => {
+const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
+  const titles1 = ["Ulubione", "Arena", "Edycja", "Wyloguj", "Rejestracja"];
+  const titles2 = ["Ulubione", "Arena", "Logowanie", "Rejestracja"];
+
   const navigate = useNavigate();
 
   const handleLoguotButton = () => {
     setIsLogged(false);
-    setLoggetinUser({});
+    setLoggetUser({});
     navigate("/");
   };
 
@@ -94,18 +93,31 @@ const Navigation = ({ isLogged, setIsLogged, setLoggetinUser }) => {
               </Button>
               <Menu {...bindMenu(popupState)}>
                 {isLogged
-                  ? titles1.map((title) => (
-                      <MenuItem key={title} onClick={popupState.close}>
+                  ? titles1.map((title) =>
+                      title === "Wyloguj" ? (
                         <Button
                           component={Link}
-                          to={`/${title}`}
+                          to={"/"}
                           variant="contained"
                           color="primary"
+                          key={title}
+                          onClick={handleLoguotButton}
                         >
                           {title}
                         </Button>
-                      </MenuItem>
-                    ))
+                      ) : (
+                        <MenuItem key={title} onClick={popupState.close}>
+                          <Button
+                            component={Link}
+                            to={`/${title}`}
+                            variant="contained"
+                            color="primary"
+                          >
+                            {title}
+                          </Button>
+                        </MenuItem>
+                      )
+                    )
                   : titles2.map((title) => (
                       <MenuItem key={title} onClick={popupState.close}>
                         <Button

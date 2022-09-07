@@ -7,14 +7,8 @@ import Stage from "../pages/Stage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Add from "../pages/Add";
-import { Logout } from "@mui/icons-material";
 
-const Content = ({
-  searchedPokemon,
-  isLogged,
-  setIsLogged,
-  setLoggetinUser,
-}) => {
+const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [favoritesPokemon, setFavoritesPokemon] = useState([]);
@@ -106,21 +100,13 @@ const Content = ({
       <Route
         path="/Logowanie"
         element={
-          <Login setIsLogged={setIsLogged} setLoggetinUser={setLoggetinUser} />
+          <Login setIsLogged={setIsLogged} setLoggetUser={setLoggetUser} />
         }
       />
       <Route path="/Rejestracja" element={<Register />} />
       <Route
         path="/Edycja"
-        element={
-          <Add isLogged={isLogged} customizablePokemon={customizablePokemon} />
-        }
-      />
-      <Route
-        path="/Wyloguj"
-        element={
-          <Logout setIsLogged={setIsLogged} setLoggetinUser={setLoggetinUser} />
-        }
+        element={<Add customizablePokemon={customizablePokemon} />}
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
