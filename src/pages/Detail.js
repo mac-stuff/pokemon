@@ -1,6 +1,7 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
 
 const PokemonDetail = ({
@@ -10,6 +11,9 @@ const PokemonDetail = ({
   setFavoritesPokemon,
   fightingPokemon,
   setFightingPokemon,
+  customizablePokemon,
+  setCustomizablePokemon,
+  isLogged,
 }) => {
   const navigate = useNavigate();
 
@@ -33,6 +37,15 @@ const PokemonDetail = ({
         : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
     );
     selectedPokemon.isFighting = selectedPokemon.isFighting ? false : true;
+  };
+
+  const handleClickBuildIcon = () => {
+    setCustomizablePokemon(
+      customizablePokemon.includes(selectedPokemon) ? [] : selectedPokemon
+    );
+    selectedPokemon.isCustomizable = selectedPokemon.isCustomizable
+      ? false
+      : true;
   };
 
   const handleClickButton = () => {
@@ -99,21 +112,28 @@ const PokemonDetail = ({
             color={selectedPokemon.isLiked ? "success" : "primary"}
           />
         </IconButton>
+        {isLogged && (
+          <IconButton onClick={handleClickBuildIcon}>
+            <BuildCircleIcon
+              color={selectedPokemon.isCustomizable ? "success" : "primary"}
+            />
+          </IconButton>
+        )}
         {fightingPokemon.includes(selectedPokemon) ? (
           <IconButton onClick={handleClickFightIcon}>
-            <VerifiedUserIcon
+            <LocalFireDepartmentIcon
               color={selectedPokemon.isFighting ? "success" : "primary"}
             />
           </IconButton>
         ) : fightingPokemon.length < 2 ? (
           <IconButton onClick={handleClickFightIcon}>
-            <VerifiedUserIcon
+            <LocalFireDepartmentIcon
               color={selectedPokemon.isFighting ? "success" : "primary"}
             />
           </IconButton>
         ) : (
           <IconButton>
-            <VerifiedUserIcon color="inherit" />
+            <LocalFireDepartmentIcon color="inherit" />
           </IconButton>
         )}
         <Stack direction="row" spacing={5} mt={5} mb={5}>

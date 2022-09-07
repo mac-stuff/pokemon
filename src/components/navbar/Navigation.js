@@ -11,18 +11,25 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-
-const titles1 = ["Ulubione", "Arena", "Edycja", "Wyloguj", "Rejestracja"];
-
-const titles2 = ["Ulubione", "Arena", "Logowanie", "Rejestracja"];
+import { Link, useNavigate } from "react-router-dom";
 
 const CustomToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
 
-const Navigation = ({ isLogged }) => {
+const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
+  const titles1 = ["Ulubione", "Arena", "Edycja", "Wyloguj", "Rejestracja"];
+  const titles2 = ["Ulubione", "Arena", "Logowanie", "Rejestracja"];
+
+  const navigate = useNavigate();
+
+  const handleLoguotButton = () => {
+    setIsLogged(false);
+    setLoggetUser({});
+    navigate("/");
+  };
+
   return (
     <AppBar position="static">
       <CustomToolbar>
@@ -38,17 +45,30 @@ const Navigation = ({ isLogged }) => {
         ></CatchingPokemon>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
           {isLogged
-            ? titles1.map((title) => (
-                <Button
-                  component={Link}
-                  to={`/${title}`}
-                  variant="contained"
-                  color="primary"
-                  key={title}
-                >
-                  {title}
-                </Button>
-              ))
+            ? titles1.map((title) =>
+                title === "Wyloguj" ? (
+                  <Button
+                    component={Link}
+                    to={"/"}
+                    variant="contained"
+                    color="primary"
+                    key={title}
+                    onClick={handleLoguotButton}
+                  >
+                    {title}
+                  </Button>
+                ) : (
+                  <Button
+                    component={Link}
+                    to={`/${title}`}
+                    variant="contained"
+                    color="primary"
+                    key={title}
+                  >
+                    {title}
+                  </Button>
+                )
+              )
             : titles2.map((title) => (
                 <Button
                   component={Link}
@@ -73,18 +93,31 @@ const Navigation = ({ isLogged }) => {
               </Button>
               <Menu {...bindMenu(popupState)}>
                 {isLogged
-                  ? titles1.map((title) => (
-                      <MenuItem key={title} onClick={popupState.close}>
+                  ? titles1.map((title) =>
+                      title === "Wyloguj" ? (
                         <Button
                           component={Link}
-                          to={`/${title}`}
+                          to={"/"}
                           variant="contained"
                           color="primary"
+                          key={title}
+                          onClick={handleLoguotButton}
                         >
                           {title}
                         </Button>
-                      </MenuItem>
-                    ))
+                      ) : (
+                        <MenuItem key={title} onClick={popupState.close}>
+                          <Button
+                            component={Link}
+                            to={`/${title}`}
+                            variant="contained"
+                            color="primary"
+                          >
+                            {title}
+                          </Button>
+                        </MenuItem>
+                      )
+                    )
                   : titles2.map((title) => (
                       <MenuItem key={title} onClick={popupState.close}>
                         <Button

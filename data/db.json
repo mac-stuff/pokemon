@@ -13,6 +13,13 @@
       "password": "MarikaSol123",
       "confirmPassword": "MarikaSol123",
       "id": "AtLlYUd"
+    },
+    {
+      "name": "Marika",
+      "email": "ms.czerwonka@gmail.com",
+      "password": "Qwerty123",
+      "confirmPassword": "Qwerty123",
+      "id": "2OHY1zE"
     }
   ]
 }
