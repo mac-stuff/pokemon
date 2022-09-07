@@ -21,7 +21,11 @@ const Layout = () => {
   return (
     <BrowserRouter>
       <Container>
-        <Navbar isLogged={isLogged} />
+        <Navbar
+          isLogged={isLogged}
+          setIsLogged={setIsLogged}
+          setLoggetinUser={setLoggetinUser}
+        />
         <Search setSearchedPokemon={setSearchedPokemon} />
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <Content

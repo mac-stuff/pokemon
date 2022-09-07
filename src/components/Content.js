@@ -7,6 +7,7 @@ import Stage from "../pages/Stage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Add from "../pages/Add";
+import { Logout } from "@mui/icons-material";
 
 const Content = ({
   searchedPokemon,
@@ -115,7 +116,12 @@ const Content = ({
           <Add isLogged={isLogged} customizablePokemon={customizablePokemon} />
         }
       />
-      <Route path="/Wyloguj" element={<Register />} />
+      <Route
+        path="/Wyloguj"
+        element={
+          <Logout setIsLogged={setIsLogged} setLoggetinUser={setLoggetinUser} />
+        }
+      />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
