@@ -11,7 +11,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CustomToolbar = styled(Toolbar)({
   display: "flex",
@@ -19,15 +19,14 @@ const CustomToolbar = styled(Toolbar)({
 });
 
 const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
-  const titles1 = ["Ulubione", "Arena", "Edycja", "Wyloguj", "Rejestracja"];
-  const titles2 = ["Ulubione", "Arena", "Logowanie", "Rejestracja"];
-
-  const navigate = useNavigate();
+  const loginButtons = ["Favorite", "Arena", "Edit", "LogOut"];
+  const logoutButtons = ["Favorite", "Arena", "LogIn", "Register"];
 
   const handleLoguotButton = () => {
+    localStorage.removeItem("isLogged");
+    localStorage.removeItem("user");
     setIsLogged(false);
     setLoggetUser({});
-    navigate("/");
   };
 
   return (
@@ -45,8 +44,8 @@ const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
         ></CatchingPokemon>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
           {isLogged
-            ? titles1.map((title) =>
-                title === "Wyloguj" ? (
+            ? loginButtons.map((title) =>
+                title === "LogOut" ? (
                   <Button
                     component={Link}
                     to={"/"}
@@ -69,7 +68,7 @@ const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
                   </Button>
                 )
               )
-            : titles2.map((title) => (
+            : logoutButtons.map((title) => (
                 <Button
                   component={Link}
                   to={`/${title}`}
@@ -93,8 +92,8 @@ const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
               </Button>
               <Menu {...bindMenu(popupState)}>
                 {isLogged
-                  ? titles1.map((title) =>
-                      title === "Wyloguj" ? (
+                  ? loginButtons.map((title) =>
+                      title === "LogOut" ? (
                         <Button
                           component={Link}
                           to={"/"}
@@ -118,7 +117,7 @@ const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
                         </MenuItem>
                       )
                     )
-                  : titles2.map((title) => (
+                  : logoutButtons.map((title) => (
                       <MenuItem key={title} onClick={popupState.close}>
                         <Button
                           component={Link}

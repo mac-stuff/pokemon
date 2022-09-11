@@ -10,7 +10,7 @@ const Login = ({ setIsLogged, setLoggetUser }) => {
     console.log("hell yeah!");
     setLoggetUser(values);
     setIsLogged(true);
-    navigate("/Edycja");
+    navigate("/Edit");
   };
 
   const formik = useFormik({
