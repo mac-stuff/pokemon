@@ -12,14 +12,6 @@ const Layout = () => {
     const localData = localStorage.getItem("isLogged");
     return localData ? JSON.parse(localData) : false;
   });
-  const [loggedUser, setLoggetUser] = useState(() => {
-    const localData = localStorage.getItem("user");
-    return localData ? JSON.parse(localData) : {};
-  });
-
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(loggedUser));
-  }, [loggedUser]);
 
   useEffect(() => {
     localStorage.setItem("isLogged", JSON.stringify(isLogged));
@@ -31,7 +23,6 @@ const Layout = () => {
         <Navbar
           isLogged={isLogged}
           setIsLogged={setIsLogged}
-          setLoggetUser={setLoggetUser}
         />
         <Search setSearchedPokemon={setSearchedPokemon} />
         <Stack direction="row" spacing={2} justifyContent="space-between">
@@ -39,7 +30,6 @@ const Layout = () => {
             searchedPokemon={searchedPokemon}
             isLogged={isLogged}
             setIsLogged={setIsLogged}
-            setLoggetUser={setLoggetUser}
           />
           <Rightbar />
         </Stack>

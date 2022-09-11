@@ -8,12 +8,21 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Edit from "../pages/Edit";
 
-const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
+const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
-  const [favoritesPokemon, setFavoritesPokemon] = useState([]);
-  const [fightingPokemon, setFightingPokemon] = useState([]);
-  const [customizablePokemon, setCustomizablePokemon] = useState([]);
+  const [favoritesPokemon, setFavoritesPokemon] = useState(() => {
+    const localData = localStorage.getItem("favoritesPokemon");
+    return localData ? JSON.parse(localData) : [];
+  });
+  const [fightingPokemon, setFightingPokemon] = useState(() => {
+    const localData = localStorage.getItem("fightingPokemon");
+    return localData ? JSON.parse(localData) : [];
+  });
+  const [customizablePokemon, setCustomizablePokemon] = useState(() => {
+    const localData = localStorage.getItem("customizablePokemon");
+    return localData ? JSON.parse(localData) : [];
+  });
 
   const [currentPage, setCurrentPage] = useState(3);
   const pokemonPerPage = 15;
@@ -23,6 +32,21 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
     indexOfFirstPokemon,
     indexOfLastPokemon
   );
+
+  useEffect(() => {
+    localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
+  }, [favoritesPokemon]);
+
+  useEffect(() => {
+    localStorage.setItem("fightingPokemon", JSON.stringify(fightingPokemon));
+  }, [fightingPokemon]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "customizablePokemon",
+      JSON.stringify(customizablePokemon)
+    );
+  }, [customizablePokemon]);
 
   useEffect(() => {
     (async function () {
@@ -97,12 +121,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
           />
         }
       />
-      <Route
-        path="/LogIn"
-        element={
-          <Login setIsLogged={setIsLogged} setLoggetUser={setLoggetUser} />
-        }
-      />
+      <Route path="/LogIn" element={<Login setIsLogged={setIsLogged} />} />
       <Route path="/Register" element={<Register />} />
       <Route
         path="/Edit"
