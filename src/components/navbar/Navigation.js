@@ -18,15 +18,13 @@ const CustomToolbar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
-const Navigation = ({ isLogged, setIsLogged, setLoggetUser }) => {
+const Navigation = ({ isLogged, setIsLogged }) => {
   const loginButtons = ["Favorite", "Arena", "Edit", "LogOut"];
   const logoutButtons = ["Favorite", "Arena", "LogIn", "Register"];
 
   const handleLoguotButton = () => {
     localStorage.removeItem("isLogged");
-    localStorage.removeItem("user");
     setIsLogged(false);
-    setLoggetUser({});
   };
 
   return (
