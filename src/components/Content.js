@@ -3,10 +3,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Main from "../pages/Main";
 import Detail from "../pages/Detail";
 import Favorites from "../pages/Favorites";
-import Stage from "../pages/Stage";
+import Arena from "../pages/Arena";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Add from "../pages/Add";
+import Edit from "../pages/Edit";
 
 const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
   const [allPokemon, setAllPokemon] = useState([]);
@@ -75,7 +75,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
         }
       />
       <Route
-        path="/Ulubione"
+        path="/Favorite"
         element={
           <Favorites
             favoritesPokemon={favoritesPokemon}
@@ -88,7 +88,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
       <Route
         path="/Arena"
         element={
-          <Stage
+          <Arena
             fightingPokemon={fightingPokemon}
             searchedPokemon={searchedPokemon}
             allPokemon={allPokemon}
@@ -98,15 +98,15 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoggetUser }) => {
         }
       />
       <Route
-        path="/Logowanie"
+        path="/LogIn"
         element={
           <Login setIsLogged={setIsLogged} setLoggetUser={setLoggetUser} />
         }
       />
-      <Route path="/Rejestracja" element={<Register />} />
+      <Route path="/Register" element={<Register />} />
       <Route
-        path="/Edycja"
-        element={<Add customizablePokemon={customizablePokemon} />}
+        path="/Edit"
+        element={<Edit customizablePokemon={customizablePokemon} />}
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

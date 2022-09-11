@@ -41,7 +41,11 @@ const PokemonDetail = ({
 
   const handleClickBuildIcon = () => {
     setCustomizablePokemon(
-      customizablePokemon.includes(selectedPokemon) ? [] : selectedPokemon
+      customizablePokemon.includes(selectedPokemon)
+        ? customizablePokemon.filter(
+            (pokemon) => pokemon.name !== selectedPokemon.name
+          )
+        : (customizablePokemon) => [...customizablePokemon, selectedPokemon]
     );
     selectedPokemon.isCustomizable = selectedPokemon.isCustomizable
       ? false

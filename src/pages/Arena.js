@@ -4,7 +4,7 @@ import Placeholder from "../components/content/Placeholder";
 import PokemonList from "../components/content/PokemonList";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Stage = ({
+const Arena = ({
   fightingPokemon,
   searchedPokemon,
   setCurrentPage,
@@ -129,4 +129,4 @@ const Stage = ({
   );
 };
 
-export default Stage;
+export default Arena;

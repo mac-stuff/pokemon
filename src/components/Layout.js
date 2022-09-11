@@ -8,7 +8,10 @@ import Rightbar from "./Rightbar";
 
 const Layout = () => {
   const [searchedPokemon, setSearchedPokemon] = useState();
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(() => {
+    const localData = localStorage.getItem("isLogged");
+    return localData ? JSON.parse(localData) : false;
+  });
   const [loggedUser, setLoggetUser] = useState(() => {
     const localData = localStorage.getItem("user");
     return localData ? JSON.parse(localData) : {};
@@ -17,6 +20,10 @@ const Layout = () => {
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(loggedUser));
   }, [loggedUser]);
+
+  useEffect(() => {
+    localStorage.setItem("isLogged", JSON.stringify(isLogged));
+  }, [isLogged]);
 
   return (
     <BrowserRouter>

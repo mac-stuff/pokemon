@@ -21,7 +21,7 @@ const Placeholder = () => {
     >
       <AspectRatio>
         <Typography level="h2" component="div">
-          add Pokemon
+          EditPokemon
         </Typography>
       </AspectRatio>
     </Sheet>
