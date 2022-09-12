@@ -69,7 +69,7 @@ const Arena = ({
 
   return (
     <Box flex={6} p={2}>
-      {fightingPokemon.length === 2 ? (
+      {fightingPokemon.length === 2 && (
         <Fragment>
           <PokemonList
             searchedPokemon={searchedPokemon}
@@ -89,10 +89,6 @@ const Arena = ({
               Opuść arenę <DeleteIcon color="error" />
             </Button>
           )}
-        </Fragment>
-      ) : (
-        <Fragment>
-          <h2>No Fighting Pokemon Yet!</h2>
         </Fragment>
       )}
 
