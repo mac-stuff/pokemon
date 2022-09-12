@@ -15,10 +15,6 @@ const CustomCard = styled(Card)({
   },
 });
 
-const CustomStack = styled(Stack)({
-  backgroundColor: "red",
-});
-
 const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
   const clickHandle = () => {
     setSelectedPokemon(pokemon);

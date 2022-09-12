@@ -44,9 +44,16 @@ const Navigation = ({ isLogged, setIsLogged }) => {
         >
           Pokedex
         </CustomTypography>
-        <CatchingPokemon
+        <Button
+          component={Link}
+          to={"/"}
+          variant="contained"
           sx={{ display: { xs: "block", sm: "none" } }}
-        ></CatchingPokemon>
+        >
+          <CatchingPokemon
+            sx={{ display: { xs: "block", sm: "none" } }}
+          ></CatchingPokemon>
+        </Button>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
           {isLogged
             ? loginButtons.map((title) =>
