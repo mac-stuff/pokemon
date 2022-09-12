@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Main from "../pages/Main";
 import Detail from "../pages/Detail";
 import Favorites from "../pages/Favorites";
@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Edit from "../pages/Edit";
 
-const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
+const Content = ({ searchedPokemon, isLogged, setIsLogged, setLoction }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState();
   const [favoritesPokemon, setFavoritesPokemon] = useState(() => {
@@ -32,6 +32,8 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
     indexOfFirstPokemon,
     indexOfLastPokemon
   );
+  const location = useLocation();
+  setLoction(location);
 
   useEffect(() => {
     localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
