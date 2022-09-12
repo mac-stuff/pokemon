@@ -33,7 +33,7 @@ const Navigation = ({ isLogged, setIsLogged }) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <CustomToolbar>
         <CustomTypography
           color="secondary"
