@@ -18,6 +18,11 @@ const CustomToolbar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
+const CustomTypography = styled(Typography)({
+  textDecoration: "none",
+  color: "secondary",
+});
+
 const Navigation = ({ isLogged, setIsLogged }) => {
   const loginButtons = ["Favorite", "Arena", "Edit", "LogOut"];
   const logoutButtons = ["Favorite", "Arena", "LogIn", "Register"];
@@ -30,13 +35,15 @@ const Navigation = ({ isLogged, setIsLogged }) => {
   return (
     <AppBar position="static">
       <CustomToolbar>
-        <Typography
+        <CustomTypography
+          color="secondary"
+          variant="h6"
           component={Link}
           to={`/`}
           sx={{ display: { xs: "none", sm: "block" } }}
         >
           Pokedex
-        </Typography>
+        </CustomTypography>
         <CatchingPokemon
           sx={{ display: { xs: "block", sm: "none" } }}
         ></CatchingPokemon>

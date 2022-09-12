@@ -21,5 +21,15 @@
       "confirmPassword": "Qwerty123",
       "id": "2OHY1zE"
     }
+  ],
+  "pokemons": [
+    {
+      "name": "ALL30",
+      "height": "123",
+      "baseExperience": "2",
+      "weight": "23",
+      "ability": "17",
+      "id": 1
+    }
   ]
 }

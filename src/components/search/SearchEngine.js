@@ -9,10 +9,10 @@ const CustomToolbar = styled(Toolbar)({
 
 const CustomInputBase = styled(InputBase)({
   padding: "5px",
-  border: "1px solid #C7C7CD",
+  border: "1px solid #3b3a30",
   borderRadius: "5px",
   width: "50%",
-  backgroundColor: "#a1dae8",
+  backgroundColor: "#b2c2bf",
 });
 
 const SearchEngine = ({ setSearchedPokemon }) => {
