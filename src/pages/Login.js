@@ -48,8 +48,6 @@ const Login = ({ setIsLogged }) => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.email && formik.errors.email}
           />
-        </Grid>
-        <Grid item xs={12}>
           <TextField
             id="password"
             name="password"
@@ -63,7 +61,6 @@ const Login = ({ setIsLogged }) => {
             helperText={formik.touched.password && formik.errors.password}
           />
         </Grid>
-
         <Grid item xs={12}>
           <Button
             variant="contained"

@@ -38,8 +38,6 @@ const Register = () => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.name && formik.errors.name}
           />
-        </Grid>
-        <Grid item xs={12}>
           <TextField
             id="email"
             name="email"
@@ -64,8 +62,6 @@ const Register = () => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.password && formik.errors.password}
           />
-        </Grid>
-        <Grid item xs={12}>
           <TextField
             id="confirmPassword"
             name="confirmPassword"
