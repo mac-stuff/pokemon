@@ -72,78 +72,83 @@ const PokemonDetail = ({
                 selectedPokemon.name.substring(1)}
             </Typography>
             <Stack direction="row" spacing={5}>
+              <Typography variant="h6" gutterBottom color="textPrimary">
+                Height
+              </Typography>
               <Typography
                 align="justify"
-                variant="body1"
+                variant="h6"
                 gutterBottom
                 color="textSecondary"
               >
                 {selectedPokemon.height}
               </Typography>
-              <Typography variant="body1" gutterBottom color="textSecondary">
+              <Typography variant="h6" gutterBottom color="textPrimary">
+                Base experience
+              </Typography>
+              <Typography variant="h6" gutterBottom color="textSecondary">
                 {selectedPokemon.base_experience}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
-              <Typography variant="body1" gutterBottom color="textPrimary">
-                Height
+              <Typography variant="h6" gutterBottom color="textPrimary">
+                Weight
               </Typography>
-              <Typography variant="body1" gutterBottom color="textPrimary">
-                Base experience
-              </Typography>
-            </Stack>
-            <Stack direction="row" spacing={5}>
-              <Typography variant="body1" gutterBottom color="textSecondary">
+              <Typography variant="h6" gutterBottom color="textSecondary">
                 {selectedPokemon.weight}
               </Typography>
-              <Typography variant="body1" gutterBottom color="textSecondary">
+              <Typography variant="h6" gutterBottom color="textPrimary">
+                Ability
+              </Typography>
+              <Typography variant="h6" gutterBottom color="textSecondary">
                 {selectedPokemon.abilities[0] &&
                   selectedPokemon.abilities[0].ability.name}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
-              <Typography variant="body1" gutterBottom color="textPrimary">
-                Weight
-              </Typography>
-              <Typography variant="body1" gutterBottom color="textPrimary">
-                Ability
-              </Typography>
+              <IconButton onClick={handleClickLikeIcon}>
+                <FavoriteIcon
+                  color={selectedPokemon.isLiked ? "success" : "primary"}
+                />
+              </IconButton>
+              {fightingPokemon.includes(selectedPokemon) ? (
+                <IconButton onClick={handleClickFightIcon}>
+                  <LocalFireDepartmentIcon
+                    color={selectedPokemon.isFighting ? "success" : "primary"}
+                  />
+                </IconButton>
+              ) : fightingPokemon.length < 2 ? (
+                <IconButton onClick={handleClickFightIcon}>
+                  <LocalFireDepartmentIcon
+                    color={selectedPokemon.isFighting ? "success" : "primary"}
+                  />
+                </IconButton>
+              ) : (
+                <IconButton>
+                  <LocalFireDepartmentIcon color="inherit" />
+                </IconButton>
+              )}
+              {isLogged &&
+                (customizablePokemon.length < 1 ? (
+                  <IconButton onClick={handleClickBuildIcon}>
+                    <BuildCircleIcon
+                      color={
+                        selectedPokemon.isCustomizable ? "success" : "primary"
+                      }
+                    />
+                  </IconButton>
+                ) : (
+                  <IconButton>
+                    <BuildCircleIcon color="inherit" />
+                  </IconButton>
+                ))}
+            </Stack>
+            <Stack direction="row" spacing={5}>
+              <Button variant="contained" onClick={handleClickButton}>
+                Strona Główna
+              </Button>
             </Stack>
           </Stack>
-        </Stack>
-        <IconButton onClick={handleClickLikeIcon}>
-          <FavoriteIcon
-            color={selectedPokemon.isLiked ? "success" : "primary"}
-          />
-        </IconButton>
-        {isLogged && (
-          <IconButton onClick={handleClickBuildIcon}>
-            <BuildCircleIcon
-              color={selectedPokemon.isCustomizable ? "success" : "primary"}
-            />
-          </IconButton>
-        )}
-        {fightingPokemon.includes(selectedPokemon) ? (
-          <IconButton onClick={handleClickFightIcon}>
-            <LocalFireDepartmentIcon
-              color={selectedPokemon.isFighting ? "success" : "primary"}
-            />
-          </IconButton>
-        ) : fightingPokemon.length < 2 ? (
-          <IconButton onClick={handleClickFightIcon}>
-            <LocalFireDepartmentIcon
-              color={selectedPokemon.isFighting ? "success" : "primary"}
-            />
-          </IconButton>
-        ) : (
-          <IconButton>
-            <LocalFireDepartmentIcon color="inherit" />
-          </IconButton>
-        )}
-        <Stack direction="row" spacing={5} mt={5} mb={5}>
-          <Button variant="contained" onClick={handleClickButton}>
-            Strona Główna
-          </Button>
         </Stack>
       </Grid>
     </Grid>
