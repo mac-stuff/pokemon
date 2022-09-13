@@ -1,8 +1,10 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import { useState } from "react";
 import registerSchema from "../schemas/registerSchema";
 
 const Register = () => {
+  const [message, setMessage] = useState("");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -10,14 +12,15 @@ const Register = () => {
       password: "",
       confirmPassword: "",
     },
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       console.log(JSON.stringify(values));
       fetch("http://localhost:8000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        console.log("added");
+        setMessage("You are successfully register now! Please log-in.");
+        resetForm({ values: "" });
       });
     },
     validationSchema: registerSchema,
@@ -88,6 +91,9 @@ const Register = () => {
           >
             SUBMIT
           </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{message}</Typography>
         </Grid>
       </Grid>
     </form>

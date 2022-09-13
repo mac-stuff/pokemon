@@ -1,11 +1,11 @@
-import React from "react";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../schemas/addSchema";
-import { Box } from "@mui/system";
 
 const Edit = ({ customizablePokemon }) => {
   const pokemon = customizablePokemon[0];
+  const [message, setMessage] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -15,14 +15,15 @@ const Edit = ({ customizablePokemon }) => {
       weight: "",
       ability: "",
     },
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       console.log(JSON.stringify(values));
       fetch("http://localhost:8000/pokemons", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        console.log("added");
+        setMessage("You successfully added new pokemon!");
+        resetForm({ values: "" });
       });
     },
     validationSchema: addSchema,
@@ -30,20 +31,19 @@ const Edit = ({ customizablePokemon }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Box flex={6} p={2}>
-        {pokemon ? (
-          <Grid container spacing={2}>
-            <Grid item>
-              <Grid item xs={6}>
-                <img
-                  style={{ width: 450, height: 358 }}
-                  src={pokemon.sprites.other.dream_world.front_default}
-                  alt={pokemon.name}
-                />
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Grid item xs={8}>
+      {pokemon ? (
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs="auto">
+            <Stack direction="row" spacing={5} mt={10} mb={10}>
+              <img
+                style={{ width: 450, height: 358 }}
+                src={pokemon.sprites.other.dream_world.front_default}
+                alt={pokemon.name}
+              />
+              <Stack>
+                <Typography variant="body1" gutterBottom color="textPrimary">
+                  change name
+                </Typography>
                 <TextField
                   id="name"
                   name="name"
@@ -55,8 +55,9 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.name && formik.errors.name}
                 />
-              </Grid>
-              <Grid item xs={8}>
+                <Typography variant="body1" gutterBottom color="textPrimary">
+                  change height
+                </Typography>
                 <TextField
                   id="height"
                   name="height"
@@ -68,8 +69,9 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.height && formik.errors.height}
                 />
-              </Grid>
-              <Grid item xs={8}>
+                <Typography variant="body1" gutterBottom color="textPrimary">
+                  change base experience
+                </Typography>
                 <TextField
                   id="baseExperience"
                   name="baseExperience"
@@ -87,8 +89,11 @@ const Edit = ({ customizablePokemon }) => {
                     formik.errors.baseExperience
                   }
                 />
-              </Grid>
-              <Grid item xs={8}>
+              </Stack>
+              <Stack>
+                <Typography variant="body1" gutterBottom color="textPrimary">
+                  change weigth
+                </Typography>
                 <TextField
                   id="weight"
                   name="weight"
@@ -100,8 +105,9 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.weight && formik.errors.weight}
                 />
-              </Grid>
-              <Grid item xs={8}>
+                <Typography variant="body1" gutterBottom color="textPrimary">
+                  change ability
+                </Typography>
                 <TextField
                   id="ability"
                   name="ability"
@@ -115,8 +121,6 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.ability && formik.errors.ability}
                 />
-              </Grid>
-              <Grid item xs={8}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -125,15 +129,16 @@ const Edit = ({ customizablePokemon }) => {
                 >
                   SUBMIT
                 </Button>
-              </Grid>
-            </Grid>
+                <Typography>{message}</Typography>
+              </Stack>
+            </Stack>
           </Grid>
-        ) : (
-          <Typography>
-            <h3>No added Pokemon Yet!</h3>
-          </Typography>
-        )}
-      </Box>
+        </Grid>
+      ) : (
+        <Typography>
+          <h3>No added Pokemon Yet!</h3>
+        </Typography>
+      )}
     </form>
   );
 };

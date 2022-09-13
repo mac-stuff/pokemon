@@ -15,11 +15,11 @@
       "id": "AtLlYUd"
     },
     {
-      "name": "Marika",
-      "email": "ms.czerwonka@gmail.com",
-      "password": "Qwerty123",
-      "confirmPassword": "Qwerty123",
-      "id": "2OHY1zE"
+      "name": "Marika ",
+      "email": "mrk.soleri@gmail.pl",
+      "password": "MarikaSol12323",
+      "confirmPassword": "MarikaSol12323",
+      "id": "pEc--JI"
     }
   ],
   "pokemons": [
@@ -30,6 +30,14 @@
       "weight": "23",
       "ability": "17",
       "id": 1
+    },
+    {
+      "name": "Bingo",
+      "height": "23",
+      "baseExperience": "678",
+      "weight": "1234",
+      "ability": "0",
+      "id": 2
     }
   ]
 }
