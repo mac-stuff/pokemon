@@ -15,6 +15,13 @@ const PokemonDetail = ({
   setCustomizablePokemon,
   isLogged,
 }) => {
+  console.log("favoritesPokemon.includes(selectedPokemon):");
+  console.log(favoritesPokemon.includes(selectedPokemon));
+  console.log("selectedPokemon:");
+  console.log(selectedPokemon);
+  console.log("favoritesPokemon:");
+  console.log(favoritesPokemon);
+
   const navigate = useNavigate();
 
   const handleClickLikeIcon = () => {

@@ -2,42 +2,14 @@
   "users": [
     {
       "name": "Marika",
-      "email": "example@gmail.com",
-      "password": "Qwerty123",
-      "confirmPassword": "Qwerty123",
-      "id": "GhKuLoK"
-    },
-    {
-      "name": "Marika Soleri",
       "email": "mrk.soleri@gmail.com",
       "password": "MarikaSol123",
       "confirmPassword": "MarikaSol123",
       "id": "AtLlYUd"
-    },
-    {
-      "name": "Marika ",
-      "email": "mrk.soleri@gmail.pl",
-      "password": "MarikaSol12323",
-      "confirmPassword": "MarikaSol12323",
-      "id": "pEc--JI"
     }
   ],
-  "pokemons": [
-    {
-      "name": "ALL30",
-      "height": "123",
-      "baseExperience": "2",
-      "weight": "23",
-      "ability": "17",
-      "id": 1
-    },
-    {
-      "name": "Bingo",
-      "height": "23",
-      "baseExperience": "678",
-      "weight": "1234",
-      "ability": "0",
-      "id": 2
-    }
-  ]
+  "pokemons": [],
+  "favoritesPokemon": [],
+  "fightingPokemon": [],
+  "customizablePokemon": []
 }

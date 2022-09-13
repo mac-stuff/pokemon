@@ -10,7 +10,10 @@ import Edit from "../pages/Edit";
 
 const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
   const [allPokemon, setAllPokemon] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState();
+  const [selectedPokemon, setSelectedPokemon] = useState(() => {
+    const localData = localStorage.getItem("selectedPokemon");
+    return localData ? JSON.parse(localData) : {};
+  });
   const [favoritesPokemon, setFavoritesPokemon] = useState(() => {
     const localData = localStorage.getItem("favoritesPokemon");
     return localData ? JSON.parse(localData) : [];
@@ -34,21 +37,6 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
   );
 
   useEffect(() => {
-    localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
-  }, [favoritesPokemon]);
-
-  useEffect(() => {
-    localStorage.setItem("fightingPokemon", JSON.stringify(fightingPokemon));
-  }, [fightingPokemon]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      "customizablePokemon",
-      JSON.stringify(customizablePokemon)
-    );
-  }, [customizablePokemon]);
-
-  useEffect(() => {
     (async function () {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon?limit=151`
@@ -65,6 +53,34 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       setAllPokemon((allPokemon) => [...allPokemon, data]);
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
+  }, [selectedPokemon]);
+
+  useEffect(() => {
+    localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
+  }, [favoritesPokemon]);
+
+  useEffect(() => {
+    localStorage.setItem("fightingPokemon", JSON.stringify(fightingPokemon));
+  }, [fightingPokemon]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "customizablePokemon",
+      JSON.stringify(customizablePokemon)
+    );
+    // customizablePokemon.forEach((pokemon) => {
+    //   fetch("http://localhost:8000/customizablePokemon", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(pokemon),
+    //   }).then(() => {
+    //     console.log("You upgraded successfully customizable pokemon.");
+    //   });
+    // });
+  }, [customizablePokemon]);
 
   return (
     <Routes>
