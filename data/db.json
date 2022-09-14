@@ -9,7 +9,28 @@
     }
   ],
   "pokemons": [],
-  "favoritesPokemon": [],
+  "favorite": [
+    {
+      "id": 31,
+      "name": "Nidoqueen",
+      "height": 13,
+      "weight": 600,
+      "base_experience": 253,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "isLiked": true
+    },
+    {
+      "id": 36,
+      "name": "Clefable",
+      "height": 13,
+      "weight": 400,
+      "base_experience": 242,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/36.svg",
+      "isLiked": true
+    }
+  ],
   "fightingPokemon": [],
   "customizablePokemon": []
 }

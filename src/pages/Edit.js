@@ -37,7 +37,7 @@ const Edit = ({ customizablePokemon }) => {
             <Stack direction="row" spacing={5} mt={10} mb={10}>
               <img
                 style={{ width: 450, height: 358 }}
-                src={pokemon.sprites.other.dream_world.front_default}
+                src={pokemon.sprites}
                 alt={pokemon.name}
               />
               <Stack>

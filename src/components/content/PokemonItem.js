@@ -28,12 +28,12 @@ const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
       >
         <img
           style={{ width: 250, height: 158 }}
-          src={pokemon.sprites.other.dream_world.front_default}
+          src={pokemon.sprites}
           alt={pokemon.name}
         />
         <CardContent>
           <Typography variant="h5" gutterBottom color="textSecondary">
-            {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+            {pokemon.name}
           </Typography>
           <Stack
             direction="row"
@@ -75,7 +75,7 @@ const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
             </Stack>
             <Stack>
               <Typography variant="body2" gutterBottom color="textSecondary">
-                {pokemon.abilities[0] && pokemon.abilities[0].ability.name}
+                {pokemon.abilities}
               </Typography>
               <Typography variant="body2" gutterBottom color="textPrimary">
                 Ability

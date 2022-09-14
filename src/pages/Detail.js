@@ -15,13 +15,6 @@ const PokemonDetail = ({
   setCustomizablePokemon,
   isLogged,
 }) => {
-  console.log("favoritesPokemon.includes(selectedPokemon):");
-  console.log(favoritesPokemon.includes(selectedPokemon));
-  console.log("selectedPokemon:");
-  console.log(selectedPokemon);
-  console.log("favoritesPokemon:");
-  console.log(favoritesPokemon);
-
   const navigate = useNavigate();
 
   const handleClickLikeIcon = () => {
@@ -70,13 +63,12 @@ const PokemonDetail = ({
         <Stack direction="row" spacing={10} mt={10} mb={10}>
           <img
             style={{ width: 450, height: 358 }}
-            src={selectedPokemon.sprites.other.dream_world.front_default}
+            src={selectedPokemon.sprites}
             alt={selectedPokemon.name}
           />
           <Stack spacing={5} mt={5} mb={5}>
             <Typography variant="h3" gutterBottom color="textSecondary">
-              {selectedPokemon.name[0].toUpperCase() +
-                selectedPokemon.name.substring(1)}
+              {selectedPokemon.name}
             </Typography>
             <Stack direction="row" spacing={5}>
               <Typography variant="h6" gutterBottom color="textPrimary">
@@ -108,8 +100,7 @@ const PokemonDetail = ({
                 Ability
               </Typography>
               <Typography variant="h6" gutterBottom color="textSecondary">
-                {selectedPokemon.abilities[0] &&
-                  selectedPokemon.abilities[0].ability.name}
+                {selectedPokemon.abilities}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={5}>

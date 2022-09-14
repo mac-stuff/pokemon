@@ -41,16 +41,41 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon?limit=151`
       ).then((res) => res.json());
-      getAllPokemon(data.results);
+      simplifyAndSetPokemons(data.results);
     })();
   }, []);
 
-  const getAllPokemon = async (results) => {
+  const simplifyAndSetPokemons = async (results) => {
     results.forEach(async (pokemon) => {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
       ).then((res) => res.json());
-      setAllPokemon((allPokemon) => [...allPokemon, data]);
+      const simplifiedPokemon = (({
+        id,
+        name,
+        height,
+        weight,
+        base_experience,
+        abilities,
+        sprites,
+      }) => ({
+        id,
+        name,
+        height,
+        weight,
+        base_experience,
+        abilities,
+        sprites,
+      }))(data);
+      const upperName =
+        simplifiedPokemon.name[0].toUpperCase() +
+        simplifiedPokemon.name.substring(1);
+      simplifiedPokemon.name = upperName;
+      const image = simplifiedPokemon.sprites.other.dream_world.front_default;
+      simplifiedPokemon.sprites = image;
+      const firstAbility = simplifiedPokemon.abilities[0].ability.name;
+      simplifiedPokemon.abilities = firstAbility;
+      setAllPokemon((allPokemon) => [...allPokemon, simplifiedPokemon]);
     });
   };
 
@@ -60,6 +85,16 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
 
   useEffect(() => {
     localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
+
+    favoritesPokemon.forEach((pokemon) => {
+      fetch("http://localhost:8000/favorite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pokemon),
+      }).then(() => {
+        console.log("You are successfully added favorite.");
+      });
+    });
   }, [favoritesPokemon]);
 
   useEffect(() => {
@@ -71,15 +106,6 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       "customizablePokemon",
       JSON.stringify(customizablePokemon)
     );
-    // customizablePokemon.forEach((pokemon) => {
-    //   fetch("http://localhost:8000/customizablePokemon", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(pokemon),
-    //   }).then(() => {
-    //     console.log("You upgraded successfully customizable pokemon.");
-    //   });
-    // });
   }, [customizablePokemon]);
 
   return (
