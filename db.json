@@ -1,0 +1,110 @@
+{
+  "users": [
+    {
+      "name": "Marika",
+      "email": "mrk.soleri@gmail.com",
+      "password": "MarikaSol123",
+      "confirmPassword": "MarikaSol123",
+      "id": "AtLlYUd"
+    }
+  ],
+  "favorites": [
+    {
+      "id": 32,
+      "name": "Nidoran-m",
+      "height": 5,
+      "weight": 90,
+      "base_experience": 55,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/32.svg",
+      "isLiked": true
+    },
+    {
+      "id": 31,
+      "name": "Nidoqueen",
+      "height": 13,
+      "weight": 600,
+      "base_experience": 253,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "isLiked": true
+    },
+    {
+      "id": 39,
+      "name": "Jigglypuff",
+      "height": 5,
+      "weight": 55,
+      "base_experience": 95,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/39.svg",
+      "isLiked": true
+    },
+    {
+      "id": 25,
+      "name": "Pikachu",
+      "height": 4,
+      "weight": 60,
+      "base_experience": 112,
+      "abilities": "static",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg",
+      "isFighting": true,
+      "isLiked": true
+    }
+  ],
+  "arena": [
+    {
+      "id": 42,
+      "name": "Golbat",
+      "height": 16,
+      "weight": 550,
+      "base_experience": 159,
+      "abilities": "inner-focus",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/42.svg",
+      "isFighting": true
+    },
+    {
+      "id": 41,
+      "name": "Zubat",
+      "height": 8,
+      "weight": 75,
+      "base_experience": 49,
+      "abilities": "inner-focus",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/41.svg",
+      "isFighting": true
+    },
+    {
+      "id": 35,
+      "name": "Clefairy",
+      "height": 6,
+      "weight": 75,
+      "base_experience": 113,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg",
+      "isLiked": false,
+      "isFighting": true
+    },
+    {
+      "id": 25,
+      "name": "Pikachu",
+      "height": 4,
+      "weight": 60,
+      "base_experience": 112,
+      "abilities": "static",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg",
+      "isFighting": true
+    }
+  ],
+  "edit": [
+    {
+      "id": 31,
+      "name": "Nidoqueen",
+      "height": 13,
+      "weight": 600,
+      "base_experience": 253,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "isCustomizable": true
+    }
+  ],
+  "createdPokemons": []
+}

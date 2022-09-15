@@ -3,6 +3,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const PokemonDetail = ({
   selectedPokemon,
@@ -16,40 +17,97 @@ const PokemonDetail = ({
   isLogged,
 }) => {
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
-  const handleClickLikeIcon = () => {
-    setFavoritesPokemon(
-      favoritesPokemon.includes(selectedPokemon)
-        ? favoritesPokemon.filter(
-            (pokemon) => pokemon.name !== selectedPokemon.name
-          )
-        : (favoritesPokemon) => [...favoritesPokemon, selectedPokemon]
-    );
-    selectedPokemon.isLiked = selectedPokemon.isLiked ? false : true;
+  const addToDB = async (dbName, pokemon) => {
+    await fetch(`http://localhost:8000/${dbName}/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pokemon),
+    }).then(() => {
+      setMessage(
+        `You are successfully added Pokemon to ${dbName.toUpperCase()}.`
+      );
+    });
   };
 
-  const handleClickFightIcon = () => {
-    setFightingPokemon(
-      fightingPokemon.includes(selectedPokemon)
-        ? fightingPokemon.filter(
-            (pokemon) => pokemon.name !== selectedPokemon.name
-          )
-        : (fightingPokemon) => [...fightingPokemon, selectedPokemon]
-    );
-    selectedPokemon.isFighting = selectedPokemon.isFighting ? false : true;
+  const removeFromDB = async (dbName, pokemon) => {
+    await fetch(`http://localhost:8000/${dbName}/${pokemon.id}/`, {
+      method: "DELETE",
+    }).then(() => {
+      setMessage(
+        `You are successfully deleted Pokemon from ${dbName.toUpperCase()}.`
+      );
+    });
   };
 
-  const handleClickBuildIcon = () => {
-    setCustomizablePokemon(
-      customizablePokemon.includes(selectedPokemon)
-        ? customizablePokemon.filter(
-            (pokemon) => pokemon.name !== selectedPokemon.name
-          )
-        : (customizablePokemon) => [...customizablePokemon, selectedPokemon]
-    );
-    selectedPokemon.isCustomizable = selectedPokemon.isCustomizable
-      ? false
-      : true;
+  const handleClickLikeIcon = async () => {
+    await fetch(`http://localhost:8000/favorites?id=${selectedPokemon.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.length > 0
+          ? (selectedPokemon.isLiked = false)
+          : (selectedPokemon.isLiked = true);
+        data.length > 0
+          ? removeFromDB("favorites", selectedPokemon)
+          : addToDB("favorites", selectedPokemon);
+        data.length > 0
+          ? setFavoritesPokemon(
+              favoritesPokemon.filter(
+                (pokemon) => pokemon.name !== selectedPokemon.name
+              )
+            )
+          : setFavoritesPokemon((favoritesPokemon) => [
+              ...favoritesPokemon,
+              selectedPokemon,
+            ]);
+      });
+  };
+
+  const handleClickFightIcon = async () => {
+    await fetch(`http://localhost:8000/arena?id=${selectedPokemon.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.length > 0
+          ? (selectedPokemon.isFighting = false)
+          : (selectedPokemon.isFighting = true);
+        data.length > 0
+          ? removeFromDB("arena", selectedPokemon)
+          : addToDB("arena", selectedPokemon);
+        data.length > 0
+          ? setFightingPokemon(
+              fightingPokemon.filter(
+                (pokemon) => pokemon.name !== selectedPokemon.name
+              )
+            )
+          : setFightingPokemon((fightingPokemon) => [
+              ...fightingPokemon,
+              selectedPokemon,
+            ]);
+      });
+  };
+
+  const handleClickBuildIcon = async () => {
+    await fetch(`http://localhost:8000/edit?id=${selectedPokemon.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.length > 0
+          ? (selectedPokemon.isCustomizable = false)
+          : (selectedPokemon.isCustomizable = true);
+        data.length > 0
+          ? removeFromDB("edit", selectedPokemon)
+          : addToDB("edit", selectedPokemon);
+        data.length > 0
+          ? setCustomizablePokemon(
+              customizablePokemon.filter(
+                (pokemon) => pokemon.name !== selectedPokemon.name
+              )
+            )
+          : setCustomizablePokemon((customizablePokemon) => [
+              ...customizablePokemon,
+              selectedPokemon,
+            ]);
+      });
   };
 
   const handleClickButton = () => {
@@ -106,32 +164,30 @@ const PokemonDetail = ({
             <Stack direction="row" spacing={5}>
               <IconButton onClick={handleClickLikeIcon}>
                 <FavoriteIcon
-                  color={selectedPokemon.isLiked ? "success" : "primary"}
+                  color={selectedPokemon.isLiked ? "error" : "primary"}
                 />
               </IconButton>
               {fightingPokemon.includes(selectedPokemon) ? (
                 <IconButton onClick={handleClickFightIcon}>
                   <LocalFireDepartmentIcon
-                    color={selectedPokemon.isFighting ? "success" : "primary"}
-                  />
-                </IconButton>
-              ) : fightingPokemon.length < 2 ? (
-                <IconButton onClick={handleClickFightIcon}>
-                  <LocalFireDepartmentIcon
-                    color={selectedPokemon.isFighting ? "success" : "primary"}
+                    color={selectedPokemon.isFighting ? "error" : "primary"}
                   />
                 </IconButton>
               ) : (
-                <IconButton>
-                  <LocalFireDepartmentIcon color="inherit" />
-                </IconButton>
+                fightingPokemon.length < 2 && (
+                  <IconButton onClick={handleClickFightIcon}>
+                    <LocalFireDepartmentIcon
+                      color={selectedPokemon.isFighting ? "error" : "primary"}
+                    />
+                  </IconButton>
+                )
               )}
               {isLogged &&
                 (customizablePokemon.length < 1 ? (
                   <IconButton onClick={handleClickBuildIcon}>
                     <BuildCircleIcon
                       color={
-                        selectedPokemon.isCustomizable ? "success" : "primary"
+                        selectedPokemon.isCustomizable ? "error" : "primary"
                       }
                     />
                   </IconButton>
@@ -140,6 +196,9 @@ const PokemonDetail = ({
                     <BuildCircleIcon color="inherit" />
                   </IconButton>
                 ))}
+            </Stack>
+            <Stack direction="row" spacing={5}>
+              <Typography>{message}</Typography>
             </Stack>
             <Stack direction="row" spacing={5}>
               <Button variant="contained" onClick={handleClickButton}>

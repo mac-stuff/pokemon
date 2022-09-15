@@ -79,22 +79,23 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
     });
   };
 
+  // useEffect(async () => {
+  //   const result = await fetch(
+  //     `http://localhost:8000/favorites/${selectedPokemon.id}/`,
+  //     {
+  //       method: "GET",
+  //     }
+  //   ).then((res) => res.json());
+  //   console.log("result ", result);
+  //   result > 0 ? setLikeState(true) : setLikeState(false);
+  // }, [selectedPokemon]);
+
   useEffect(() => {
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
   }, [selectedPokemon]);
 
   useEffect(() => {
     localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
-
-    favoritesPokemon.forEach((pokemon) => {
-      fetch("http://localhost:8000/favorite", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pokemon),
-      }).then(() => {
-        console.log("You are successfully added favorite.");
-      });
-    });
   }, [favoritesPokemon]);
 
   useEffect(() => {
@@ -141,7 +142,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
         }
       />
       <Route
-        path="/Favorite"
+        path="/Favorites"
         element={
           <Favorites
             favoritesPokemon={favoritesPokemon}

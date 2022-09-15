@@ -16,7 +16,7 @@ const CustomCard = styled(Card)({
 });
 
 const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
-  const clickHandle = () => {
+  const clickHandle = async () => {
     setSelectedPokemon(pokemon);
   };
 

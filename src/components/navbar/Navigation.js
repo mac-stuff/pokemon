@@ -24,8 +24,8 @@ const CustomTypography = styled(Typography)({
 });
 
 const Navigation = ({ isLogged, setIsLogged }) => {
-  const loginButtons = ["Favorite", "Arena", "Edit", "LogOut"];
-  const logoutButtons = ["Favorite", "Arena", "LogIn", "Register"];
+  const loginButtons = ["Favorites", "Arena", "Edit", "LogOut"];
+  const logoutButtons = ["Favorites", "Arena", "LogIn", "Register"];
 
   const handleLoguotButton = () => {
     localStorage.removeItem("isLogged");
