@@ -10,6 +10,27 @@
   ],
   "favorites": [
     {
+      "id": 34,
+      "name": "Nidoking",
+      "height": 14,
+      "weight": 620,
+      "base_experience": 253,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/34.svg",
+      "isCustomizable": true,
+      "isLiked": true
+    },
+    {
+      "id": 35,
+      "name": "Clefairy",
+      "height": 6,
+      "weight": 75,
+      "base_experience": 113,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg",
+      "isLiked": true
+    },
+    {
       "id": 32,
       "name": "Nidoran-m",
       "height": 5,
@@ -17,37 +38,6 @@
       "base_experience": 55,
       "abilities": "poison-point",
       "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/32.svg",
-      "isLiked": true
-    },
-    {
-      "id": 31,
-      "name": "Nidoqueen",
-      "height": 13,
-      "weight": 600,
-      "base_experience": 253,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
-      "isLiked": true
-    },
-    {
-      "id": 39,
-      "name": "Jigglypuff",
-      "height": 5,
-      "weight": 55,
-      "base_experience": 95,
-      "abilities": "cute-charm",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/39.svg",
-      "isLiked": true
-    },
-    {
-      "id": 25,
-      "name": "Pikachu",
-      "height": 4,
-      "weight": 60,
-      "base_experience": 112,
-      "abilities": "static",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg",
-      "isFighting": true,
       "isLiked": true
     }
   ],
@@ -60,6 +50,26 @@
       "base_experience": 159,
       "abilities": "inner-focus",
       "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/42.svg",
+      "isFighting": true
+    },
+    {
+      "id": 29,
+      "name": "Nidoran-f",
+      "height": 4,
+      "weight": 70,
+      "base_experience": 55,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/29.svg",
+      "isFighting": true
+    },
+    {
+      "id": 36,
+      "name": "Clefable",
+      "height": 13,
+      "weight": 400,
+      "base_experience": 242,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/36.svg",
       "isFighting": true
     },
     {
@@ -80,31 +90,137 @@
       "base_experience": 113,
       "abilities": "cute-charm",
       "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg",
-      "isLiked": false,
-      "isFighting": true
-    },
-    {
-      "id": 25,
-      "name": "Pikachu",
-      "height": 4,
-      "weight": 60,
-      "base_experience": 112,
-      "abilities": "static",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg",
       "isFighting": true
     }
   ],
   "edit": [
     {
-      "id": 31,
-      "name": "Nidoqueen",
-      "height": 13,
-      "weight": 600,
+      "id": 30,
+      "name": "Nidorina",
+      "height": 8,
+      "weight": 200,
+      "base_experience": 128,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/30.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 42,
+      "name": "Golbat",
+      "height": 16,
+      "weight": 550,
+      "base_experience": 159,
+      "abilities": "inner-focus",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/42.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 15,
+      "name": "Beedrill",
+      "height": 10,
+      "weight": 295,
+      "base_experience": 178,
+      "abilities": "swarm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/15.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 28,
+      "name": "Sandslash",
+      "height": 10,
+      "weight": 295,
+      "base_experience": 158,
+      "abilities": "sand-veil",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/28.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 41,
+      "name": "Zubat",
+      "height": 8,
+      "weight": 75,
+      "base_experience": 49,
+      "abilities": "inner-focus",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/41.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 40,
+      "name": "Wigglytuff",
+      "height": 10,
+      "weight": 120,
+      "base_experience": 218,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/40.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 34,
+      "name": "Nidoking",
+      "height": 14,
+      "weight": 620,
       "base_experience": 253,
       "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/34.svg",
       "isCustomizable": true
     }
   ],
-  "createdPokemons": []
+  "createdPokemons": [
+    {
+      "name": "APP40",
+      "height": "23",
+      "baseExperience": "was",
+      "weight": "23",
+      "ability": "asd",
+      "id": 1
+    },
+    {
+      "name": "APP40",
+      "height": "123",
+      "baseExperience": "1",
+      "weight": "1234",
+      "ability": "12",
+      "id": 2
+    },
+    {
+      "name": "ALL30",
+      "height": "123",
+      "baseExperience": "678",
+      "weight": "23",
+      "ability": "0",
+      "id": 3
+    },
+    {
+      "name": "l-teanina",
+      "height": "123",
+      "baseExperience": "2",
+      "weight": "23",
+      "ability": "0",
+      "id": 4
+    },
+    {
+      "name": "ALL30",
+      "height": "123",
+      "baseExperience": "2",
+      "weight": "23",
+      "ability": "0",
+      "id": 5
+    },
+    {
+      "name": "ALL30",
+      "height": "23",
+      "baseExperience": "678",
+      "weight": "1234",
+      "ability": "17",
+      "id": 6
+    },
+    {
+      "name": "APP40",
+      "height": "123",
+      "baseExperience": "678",
+      "weight": "23",
+      "ability": "17",
+      "id": 7
+    }
+  ]
 }

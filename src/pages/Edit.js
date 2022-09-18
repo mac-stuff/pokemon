@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../schemas/addSchema";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-const Edit = ({ customizablePokemon }) => {
+const Edit = ({ customizablePokemon, setCustomizablePokemon }) => {
   const pokemon = customizablePokemon[0];
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Add Pokemon!");
 
   const formik = useFormik({
     initialValues: {
@@ -16,13 +17,13 @@ const Edit = ({ customizablePokemon }) => {
       ability: "",
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(JSON.stringify(values));
-      fetch("http://localhost:8000/pokemons", {
+      fetch("http://localhost:8000/createdPokemons", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        setMessage("You successfully added new pokemon!");
+        setMessage("You successfully added new Pokemon to data base!");
+        setCustomizablePokemon([]);
         resetForm({ values: "" });
       });
     },
@@ -41,9 +42,7 @@ const Edit = ({ customizablePokemon }) => {
                 alt={pokemon.name}
               />
               <Stack>
-                <Typography variant="body1" gutterBottom color="textPrimary">
-                  change name
-                </Typography>
+                <Typography variant="body1">change name</Typography>
                 <TextField
                   id="name"
                   name="name"
@@ -55,9 +54,7 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.name && formik.errors.name}
                 />
-                <Typography variant="body1" gutterBottom color="textPrimary">
-                  change height
-                </Typography>
+                <Typography variant="body1">change height</Typography>
                 <TextField
                   id="height"
                   name="height"
@@ -69,9 +66,7 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.height && formik.errors.height}
                 />
-                <Typography variant="body1" gutterBottom color="textPrimary">
-                  change base experience
-                </Typography>
+                <Typography variant="body1">change base experience</Typography>
                 <TextField
                   id="baseExperience"
                   name="baseExperience"
@@ -91,9 +86,7 @@ const Edit = ({ customizablePokemon }) => {
                 />
               </Stack>
               <Stack>
-                <Typography variant="body1" gutterBottom color="textPrimary">
-                  change weigth
-                </Typography>
+                <Typography variant="body1">change weigth</Typography>
                 <TextField
                   id="weight"
                   name="weight"
@@ -105,9 +98,7 @@ const Edit = ({ customizablePokemon }) => {
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.weight && formik.errors.weight}
                 />
-                <Typography variant="body1" gutterBottom color="textPrimary">
-                  change ability
-                </Typography>
+                <Typography variant="body1">change ability</Typography>
                 <TextField
                   id="ability"
                   name="ability"
@@ -129,15 +120,12 @@ const Edit = ({ customizablePokemon }) => {
                 >
                   SUBMIT
                 </Button>
-                <Typography>{message}</Typography>
               </Stack>
             </Stack>
           </Grid>
         </Grid>
       ) : (
-        <Typography>
-          <h3>No added Pokemon Yet!</h3>
-        </Typography>
+        <Typography variant="h6">{message}</Typography>
       )}
     </form>
   );

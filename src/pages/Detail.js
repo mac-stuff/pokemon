@@ -1,5 +1,6 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import CancelIcon from "@mui/icons-material/Cancel";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
@@ -182,20 +183,15 @@ const PokemonDetail = ({
                   </IconButton>
                 )
               )}
-              {isLogged &&
-                (customizablePokemon.length < 1 ? (
-                  <IconButton onClick={handleClickBuildIcon}>
-                    <BuildCircleIcon
-                      color={
-                        selectedPokemon.isCustomizable ? "error" : "primary"
-                      }
-                    />
-                  </IconButton>
-                ) : (
-                  <IconButton>
-                    <BuildCircleIcon color="inherit" />
-                  </IconButton>
-                ))}
+              {isLogged && Object.keys(customizablePokemon).length === 0 ? (
+                <IconButton onClick={handleClickBuildIcon}>
+                  <BuildCircleIcon
+                    color={selectedPokemon.isCustomizable ? "error" : "primary"}
+                  />
+                </IconButton>
+              ) : (
+                <IconButton></IconButton>
+              )}
             </Stack>
             <Stack direction="row" spacing={5}>
               <Typography>{message}</Typography>

@@ -21,7 +21,11 @@ const PokemonList = ({
     <Grid container spacing={2}>
       {searchedPokemon
         ? allPokemon
-            .filter((pokemon) => pokemon.name.startsWith(searchedPokemon))
+            .filter((pokemon) =>
+              pokemon.name.startsWith(
+                searchedPokemon[0].toUpperCase() + searchedPokemon.substring(1)
+              )
+            )
             .map((pokemon) => (
               <Grid item key={pokemon.id}>
                 <CustomLink to={`/${pokemon.id}`}>

@@ -79,17 +79,6 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
     });
   };
 
-  // useEffect(async () => {
-  //   const result = await fetch(
-  //     `http://localhost:8000/favorites/${selectedPokemon.id}/`,
-  //     {
-  //       method: "GET",
-  //     }
-  //   ).then((res) => res.json());
-  //   console.log("result ", result);
-  //   result > 0 ? setLikeState(true) : setLikeState(false);
-  // }, [selectedPokemon]);
-
   useEffect(() => {
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
   }, [selectedPokemon]);
@@ -168,7 +157,12 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       <Route path="/Register" element={<Register />} />
       <Route
         path="/Edit"
-        element={<Edit customizablePokemon={customizablePokemon} />}
+        element={
+          <Edit
+            customizablePokemon={customizablePokemon}
+            setCustomizablePokemon={setCustomizablePokemon}
+          />
+        }
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
