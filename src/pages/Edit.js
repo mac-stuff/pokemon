@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../schemas/addSchema";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 const Edit = ({ customizablePokemon, setCustomizablePokemon }) => {
   const pokemon = customizablePokemon[0];

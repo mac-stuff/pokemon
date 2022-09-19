@@ -1,13 +1,14 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loginSchema from "../schemas/loginSchema";
 
 const Login = ({ setIsLogged }) => {
+  const [message, setMessage] = useState();
   const navigate = useNavigate();
 
   const successfulLogin = () => {
-    console.log("hell yeah!");
     setIsLogged(true);
     navigate("/Edit");
   };
@@ -24,7 +25,9 @@ const Login = ({ setIsLogged }) => {
           .then((data) => {
             data.length === 1 && data[0].password === values.password
               ? successfulLogin()
-              : console.log("hell no!");
+              : setMessage(
+                  "Login or password are incorrect. Please try again."
+                );
           });
       } catch (error) {
         console.log(error.stack);
@@ -70,6 +73,7 @@ const Login = ({ setIsLogged }) => {
           >
             LOGIN
           </Button>
+          <Typography>{message}</Typography>
         </Grid>
       </Grid>
     </form>

@@ -1,6 +1,5 @@
 import { Button, Grid, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import CancelIcon from "@mui/icons-material/Cancel";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
@@ -49,6 +48,10 @@ const PokemonDetail = ({
         data.length > 0
           ? (selectedPokemon.isLiked = false)
           : (selectedPokemon.isLiked = true);
+        localStorage.setItem(
+          "selectedPokemon",
+          JSON.stringify(selectedPokemon)
+        );
         data.length > 0
           ? removeFromDB("favorites", selectedPokemon)
           : addToDB("favorites", selectedPokemon);
@@ -72,6 +75,10 @@ const PokemonDetail = ({
         data.length > 0
           ? (selectedPokemon.isFighting = false)
           : (selectedPokemon.isFighting = true);
+        localStorage.setItem(
+          "selectedPokemon",
+          JSON.stringify(selectedPokemon)
+        );
         data.length > 0
           ? removeFromDB("arena", selectedPokemon)
           : addToDB("arena", selectedPokemon);
@@ -95,6 +102,10 @@ const PokemonDetail = ({
         data.length > 0
           ? (selectedPokemon.isCustomizable = false)
           : (selectedPokemon.isCustomizable = true);
+        localStorage.setItem(
+          "selectedPokemon",
+          JSON.stringify(selectedPokemon)
+        );
         data.length > 0
           ? removeFromDB("edit", selectedPokemon)
           : addToDB("edit", selectedPokemon);
