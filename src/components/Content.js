@@ -22,8 +22,8 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
     const localData = localStorage.getItem("fightingPokemon");
     return localData ? JSON.parse(localData) : [];
   });
-  const [customizablePokemon, setCustomizablePokemon] = useState(() => {
-    const localData = localStorage.getItem("customizablePokemon");
+  const [customPokemon, setCustomPokemon] = useState(() => {
+    const localData = localStorage.getItem("customPokemon");
     return localData ? JSON.parse(localData) : [];
   });
 
@@ -91,11 +91,8 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
   }, [fightingPokemon]);
 
   useEffect(() => {
-    localStorage.setItem(
-      "customizablePokemon",
-      JSON.stringify(customizablePokemon)
-    );
-  }, [customizablePokemon]);
+    localStorage.setItem("customPokemon", JSON.stringify(customPokemon));
+  }, [customPokemon]);
 
   return (
     <Routes>
@@ -123,8 +120,8 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
             setFavoritesPokemon={setFavoritesPokemon}
             fightingPokemon={fightingPokemon}
             setFightingPokemon={setFightingPokemon}
-            customizablePokemon={customizablePokemon}
-            setCustomizablePokemon={setCustomizablePokemon}
+            customPokemon={customPokemon}
+            setCustomPokemon={setCustomPokemon}
             isLogged={isLogged}
           />
         }
@@ -158,8 +155,8 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
         path="/Edit"
         element={
           <Edit
-            customizablePokemon={customizablePokemon}
-            setCustomizablePokemon={setCustomizablePokemon}
+            customPokemon={customPokemon}
+            setCustomPokemon={setCustomPokemon}
           />
         }
       />

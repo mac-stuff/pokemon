@@ -3,8 +3,8 @@ import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../schemas/addSchema";
 
-const Edit = ({ customizablePokemon, setCustomizablePokemon }) => {
-  const pokemon = customizablePokemon[0];
+const Edit = ({ customPokemon, setCustomPokemon }) => {
+  const pokemon = customPokemon[0];
   const [message, setMessage] = useState("Add Pokemon!");
 
   const formik = useFormik({
@@ -22,7 +22,7 @@ const Edit = ({ customizablePokemon, setCustomizablePokemon }) => {
         body: JSON.stringify(values),
       }).then(() => {
         setMessage("You successfully added new Pokemon to data base!");
-        setCustomizablePokemon([]);
+        setCustomPokemon([]);
         resetForm({ values: "" });
       });
     },

@@ -12,8 +12,8 @@ const PokemonDetail = ({
   setFavoritesPokemon,
   fightingPokemon,
   setFightingPokemon,
-  customizablePokemon,
-  setCustomizablePokemon,
+  customPokemon,
+  setCustomPokemon,
   isLogged,
 }) => {
   const navigate = useNavigate();
@@ -110,13 +110,13 @@ const PokemonDetail = ({
           ? removeFromDB("edit", selectedPokemon)
           : addToDB("edit", selectedPokemon);
         data.length > 0
-          ? setCustomizablePokemon(
-              customizablePokemon.filter(
+          ? setCustomPokemon(
+              customPokemon.filter(
                 (pokemon) => pokemon.name !== selectedPokemon.name
               )
             )
-          : setCustomizablePokemon((customizablePokemon) => [
-              ...customizablePokemon,
+          : setCustomPokemon((customPokemon) => [
+              ...customPokemon,
               selectedPokemon,
             ]);
       });
@@ -194,7 +194,7 @@ const PokemonDetail = ({
                   </IconButton>
                 )
               )}
-              {isLogged && Object.keys(customizablePokemon).length === 0 ? (
+              {isLogged && Object.keys(customPokemon).length === 0 ? (
                 <IconButton onClick={handleClickBuildIcon}>
                   <BuildCircleIcon
                     color={selectedPokemon.isCustomizable ? "error" : "primary"}

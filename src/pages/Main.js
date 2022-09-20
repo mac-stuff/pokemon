@@ -18,7 +18,7 @@ const Main = ({
   setCurrentPage,
 }) => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={3}>
       {searchedPokemon
         ? allPokemon
             .filter((pokemon) =>
