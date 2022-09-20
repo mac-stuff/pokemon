@@ -8,7 +8,7 @@ const CustomTypography = styled(Typography)({
   height: "350px",
   backgroundColor: "#eaece5",
   textAlign: "center",
-  padding: "10px",
+  padding: "15px",
   "&:hover": {
     width: "260px",
     height: "360px",
@@ -18,7 +18,7 @@ const CustomTypography = styled(Typography)({
 const Placeholder = () => {
   return (
     <CustomTypography level="h2" component="div">
-      Add Pokemon
+      add Pokemon to start fight
     </CustomTypography>
   );
 };

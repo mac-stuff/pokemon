@@ -2,7 +2,13 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import loginSchema from "../schemas/loginSchema";
+
+const CustomGrid = styled(Grid)({
+  paddingTop: "100px",
+  paddingBottom: "25px",
+});
 
 const Login = ({ setIsLogged }) => {
   const [message, setMessage] = useState();
@@ -38,8 +44,8 @@ const Login = ({ setIsLogged }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
+      <CustomGrid container spacing={2}>
+        <Grid item xs={5}>
           <TextField
             id="email"
             name="email"
@@ -51,6 +57,8 @@ const Login = ({ setIsLogged }) => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.email && formik.errors.email}
           />
+        </Grid>
+        <Grid item xs={5}>
           <TextField
             id="password"
             name="password"
@@ -64,6 +72,8 @@ const Login = ({ setIsLogged }) => {
             helperText={formik.touched.password && formik.errors.password}
           />
         </Grid>
+      </CustomGrid>
+      <Grid container direction="column">
         <Grid item xs={12}>
           <Button
             variant="contained"
@@ -73,6 +83,8 @@ const Login = ({ setIsLogged }) => {
           >
             LOGIN
           </Button>
+        </Grid>
+        <Grid item xs={12} mt={5}>
           <Typography>{message}</Typography>
         </Grid>
       </Grid>

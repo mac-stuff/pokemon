@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../schemas/addSchema";
+import styled from "styled-components";
+
+const CustomBox = styled(Box)({
+  width: "450px",
+  height: "385px",
+});
 
 const Edit = ({ customPokemon, setCustomPokemon }) => {
   const pokemon = customPokemon[0];
-  const [message, setMessage] = useState("Add Pokemon!");
+  const [message, setMessage] = useState("No Pokemon To Edit Yet!");
 
   const formik = useFormik({
     initialValues: {
@@ -34,13 +40,15 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
       {pokemon ? (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item xs="auto">
-            <Stack direction="row" spacing={5} mt={10} mb={10}>
-              <img
-                style={{ width: 450, height: 358 }}
-                src={pokemon.sprites}
-                alt={pokemon.name}
-              />
-              <Stack>
+            <Stack direction="row" spacing={5} mt={5} mb={5}>
+              <Stack spacing={5} mt={5} mb={5}>
+                <CustomBox
+                  component="img"
+                  src={pokemon.sprites}
+                  alt={pokemon.name}
+                />
+              </Stack>
+              <Stack spacing={5} mt={5} mb={5}>
                 <Typography variant="body1">change name</Typography>
                 <TextField
                   id="name"
@@ -84,7 +92,7 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
                   }
                 />
               </Stack>
-              <Stack>
+              <Stack spacing={5} mt={5} mb={5}>
                 <Typography variant="body1">change weigth</Typography>
                 <TextField
                   id="weight"
@@ -119,12 +127,20 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
                 >
                   SUBMIT
                 </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  // disabled={!formik.isValid}
+                >
+                  EDIT
+                </Button>
               </Stack>
             </Stack>
           </Grid>
         </Grid>
       ) : (
-        <Typography variant="h6">{message}</Typography>
+        <Typography>{message}</Typography>
       )}
     </form>
   );

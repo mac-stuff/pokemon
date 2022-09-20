@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Fragment } from "react";
 import Main from "./Main";
 
@@ -24,9 +24,7 @@ const Favorites = ({
           setSelectedPokemon={setSelectedPokemon}
         />
       ) : (
-        <Fragment>
-          <h2>No Favorites Pokemon Yet!</h2>
-        </Fragment>
+        <Typography>No Favorites Pokemon Yet!</Typography>
       )}
     </Box>
   );
