@@ -10,59 +10,25 @@
   ],
   "favorites": [
     {
-      "id": 29,
-      "name": "Nidoran-f",
-      "height": 4,
-      "weight": 70,
-      "base_experience": 55,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/29.svg",
-      "isLiked": true,
-      "isFighting": false,
-      "isCustomizable": false
-    },
-    {
-      "id": 32,
-      "name": "Nidoran-m",
-      "height": 5,
-      "weight": 90,
-      "base_experience": 55,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/32.svg",
-      "isLiked": true,
-      "isFighting": false,
-      "isCustomizable": false
-    },
-    {
-      "id": 30,
-      "name": "Nidorina",
-      "height": 8,
-      "weight": 200,
-      "base_experience": 128,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/30.svg",
-      "isLiked": true
-    },
-    {
-      "id": 31,
-      "name": "Nidoqueen",
-      "height": 13,
-      "weight": 600,
-      "base_experience": 253,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "id": 59,
+      "name": "Arcanine",
+      "height": 19,
+      "weight": 1550,
+      "base_experience": 194,
+      "abilities": "intimidate",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/59.svg",
       "isLiked": true
     }
   ],
   "arena": [
     {
-      "id": 31,
-      "name": "Nidoqueen",
-      "height": 13,
-      "weight": 600,
-      "base_experience": 253,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "id": 59,
+      "name": "Arcanine",
+      "height": 19,
+      "weight": 1550,
+      "base_experience": 194,
+      "abilities": "intimidate",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/59.svg",
       "isLiked": true,
       "isFighting": true
     }

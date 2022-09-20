@@ -1,8 +1,8 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { Fragment, useState } from "react";
 import Placeholder from "../components/content/Placeholder";
-import PokemonList from "../components/content/PokemonList";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Main from "./Main";
 
 const Arena = ({
   fightingPokemon,
@@ -71,7 +71,7 @@ const Arena = ({
     <Box flex={6} p={2}>
       {fightingPokemon.length === 2 && (
         <Fragment>
-          <PokemonList
+          <Main
             searchedPokemon={searchedPokemon}
             currentPagePokemon={fightingPokemon}
             setCurrentPage={setCurrentPage}
@@ -95,7 +95,7 @@ const Arena = ({
       {fightingPokemon.length === 1 && (
         <Grid container spacing={2}>
           <Grid item>
-            <PokemonList
+            <Main
               searchedPokemon={searchedPokemon}
               currentPagePokemon={fightingPokemon}
               setCurrentPage={setCurrentPage}

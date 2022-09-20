@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Fragment } from "react";
-import PokemonList from "../components/content/PokemonList";
+import Main from "./Main";
 
 const Favorites = ({
   favoritesPokemon,
@@ -14,7 +14,7 @@ const Favorites = ({
   return (
     <Box flex={6} p={2}>
       {favoritesPokemon.length > 0 ? (
-        <PokemonList
+        <Main
           searchedPokemon={searchedPokemon}
           currentPagePokemon={favoritesPokemon}
           setCurrentPage={setCurrentPage}

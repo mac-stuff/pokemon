@@ -1,5 +1,12 @@
-import PokemonList from "../components/content/PokemonList";
-import { Box } from "@mui/system";
+import { Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import PokemonItem from "../components/content/PokemonItem";
+import Pagination from "../components/content/Pagination";
+
+const CustomLink = styled(Link)({
+  textDecoration: "none",
+});
 
 const Main = ({
   currentPagePokemon,
@@ -11,17 +18,42 @@ const Main = ({
   setCurrentPage,
 }) => {
   return (
-    <Box flex={6} p={2}>
-      <PokemonList
-        currentPagePokemon={currentPagePokemon}
-        allPokemon={allPokemon}
-        searchedPokemon={searchedPokemon}
-        setSelectedPokemon={setSelectedPokemon}
-        pokemonPerPage={pokemonPerPage}
-        totalPokemon={totalPokemon}
-        setCurrentPage={setCurrentPage}
-      />
-    </Box>
+    <Grid container spacing={2}>
+      {searchedPokemon
+        ? allPokemon
+            .filter((pokemon) =>
+              pokemon.name.startsWith(
+                searchedPokemon[0].toUpperCase() + searchedPokemon.substring(1)
+              )
+            )
+            .map((pokemon) => (
+              <Grid item key={pokemon.id}>
+                <CustomLink to={`/${pokemon.id}`}>
+                  <PokemonItem
+                    pokemon={pokemon}
+                    setSelectedPokemon={setSelectedPokemon}
+                  />
+                </CustomLink>
+              </Grid>
+            ))
+        : currentPagePokemon.map((pokemon) => (
+            <Grid item key={pokemon.id}>
+              <CustomLink to={`/${pokemon.id}`}>
+                <PokemonItem
+                  pokemon={pokemon}
+                  setSelectedPokemon={setSelectedPokemon}
+                />
+              </CustomLink>
+            </Grid>
+          ))}
+      <Grid item>
+        <Pagination
+          pokemonPerPage={pokemonPerPage}
+          totalPokemon={totalPokemon}
+          setCurrentPage={setCurrentPage}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

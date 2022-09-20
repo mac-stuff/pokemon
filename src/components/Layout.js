@@ -4,7 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar/index";
 import Search from "./search";
 import Content from "./Content";
-import Rightbar from "./Rightbar";
+import Footer from "./Footer";
+import styled from "styled-components";
+
+const CustomStack = styled(Stack)({
+  background: "rgba(234, 236, 229, .3)",
+  padding: "25px",
+  minHeight: "1200px",
+  display: "block",
+  alignItems: "center",
+});
 
 const Layout = () => {
   const [searchedPokemon, setSearchedPokemon] = useState();
@@ -22,14 +31,14 @@ const Layout = () => {
       <Container>
         <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
         <Search setSearchedPokemon={setSearchedPokemon} />
-        <Stack direction="row" spacing={2} justifyContent="space-between">
+        <CustomStack>
           <Content
             searchedPokemon={searchedPokemon}
             isLogged={isLogged}
             setIsLogged={setIsLogged}
           />
-          <Rightbar isLogged={isLogged} />
-        </Stack>
+        </CustomStack>
+        <Footer />
       </Container>
     </BrowserRouter>
   );

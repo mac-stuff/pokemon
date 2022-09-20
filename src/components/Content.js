@@ -41,16 +41,16 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon?limit=151`
       ).then((res) => res.json());
-      simplifyAndSetPokemons(data.results);
+      setPokemons(data.results);
     })();
   }, []);
 
-  const simplifyAndSetPokemons = async (results) => {
+  const setPokemons = async (results) => {
     results.forEach(async (pokemon) => {
       const data = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
       ).then((res) => res.json());
-      const simplifiedPokemon = (({
+      const pokemonData = (({
         id,
         name,
         height,
@@ -67,15 +67,14 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
         abilities,
         sprites,
       }))(data);
-      const upperName =
-        simplifiedPokemon.name[0].toUpperCase() +
-        simplifiedPokemon.name.substring(1);
-      simplifiedPokemon.name = upperName;
-      const image = simplifiedPokemon.sprites.other.dream_world.front_default;
-      simplifiedPokemon.sprites = image;
-      const firstAbility = simplifiedPokemon.abilities[0].ability.name;
-      simplifiedPokemon.abilities = firstAbility;
-      setAllPokemon((allPokemon) => [...allPokemon, simplifiedPokemon]);
+      const pokemonName =
+        pokemonData.name[0].toUpperCase() + pokemonData.name.substring(1);
+      pokemonData.name = pokemonName;
+      const pokemonImage = pokemonData.sprites.other.dream_world.front_default;
+      pokemonData.sprites = pokemonImage;
+      const pokemonAbility = pokemonData.abilities[0].ability.name;
+      pokemonData.abilities = pokemonAbility;
+      setAllPokemon((allPokemon) => [...allPokemon, pokemonData]);
     });
   };
 
