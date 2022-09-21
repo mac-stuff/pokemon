@@ -5,6 +5,7 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
+import NotFound from "./NotFound";
 
 const CustomButton = styled(Button)({
   width: "450px",
@@ -128,7 +129,7 @@ const Detail = ({
     });
   };
 
-  return (
+  return (selectedPokemon !== Object.keys(selectedPokemon).length) === 0 ? (
     <Stack direction="row" spacing={5} mt={5} mb={5}>
       <Stack spacing={5} mt={5} mb={5}>
         <CustomBox
@@ -219,6 +220,8 @@ const Detail = ({
         </Stack>
       </Stack>
     </Stack>
+  ) : (
+    <NotFound />
   );
 };
 

@@ -151,15 +151,19 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       />
       <Route path="/Login" element={<Login setIsLogged={setIsLogged} />} />
       <Route path="/Register" element={<Register />} />
-      <Route
-        path="/Edit"
-        element={
-          <Edit
-            customPokemon={customPokemon}
-            setCustomPokemon={setCustomPokemon}
-          />
-        }
-      />
+      {isLogged ? (
+        <Route
+          path="/Edit"
+          element={
+            <Edit
+              customPokemon={customPokemon}
+              setCustomPokemon={setCustomPokemon}
+            />
+          }
+        />
+      ) : (
+        <Route path="/Edit" element={<Login setIsLogged={setIsLogged} />} />
+      )}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
