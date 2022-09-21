@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../../../../schemas/addSchema";
 import styled from "styled-components";
@@ -42,20 +42,20 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       {pokemon ? (
-        <Stack direction="row" spacing={5} mt={5} mb={5}>
-          <Stack spacing={5} mt={5} mb={5}>
+        <Grid container spacing={3} direction="row" alignItems="center" m={5}>
+          <Grid item xs={5} m={2}>
             <CustomBox
               component="img"
               src={pokemon.sprites}
               alt={pokemon.name}
             />
-          </Stack>
-          <Stack spacing={5} mt={5} mb={5}>
-            <Typography variant="body1">change name</Typography>
+          </Grid>
+          <Grid item xs={6}>
             <TextField
+              fullWidth
               id="name"
               name="name"
-              label="name"
+              label="change name"
               margin="normal"
               value={formik.values.name}
               onChange={formik.handleChange}
@@ -63,11 +63,11 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.name && formik.errors.name}
             />
-            <Typography variant="body1">change height</Typography>
             <TextField
+              fullWidth
               id="height"
               name="height"
-              label="height"
+              label="change height"
               margin="normal"
               value={formik.values.height}
               onChange={formik.handleChange}
@@ -75,11 +75,11 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.height && formik.errors.height}
             />
-            <Typography variant="body1">change base experience</Typography>
             <TextField
+              fullWidth
               id="baseExperience"
               name="baseExperience"
-              label="baseExperience"
+              label="change experience"
               margin="normal"
               value={formik.values.baseExperience}
               onChange={formik.handleChange}
@@ -92,13 +92,11 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
                 formik.touched.baseExperience && formik.errors.baseExperience
               }
             />
-          </Stack>
-          <Stack spacing={5} mt={5} mb={5}>
-            <Typography variant="body1">change weigth</Typography>
             <TextField
+              fullWidth
               id="weight"
               name="weight"
-              label="weight"
+              label="change weigth"
               margin="normal"
               value={formik.values.weight}
               onChange={formik.handleChange}
@@ -106,11 +104,11 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.weight && formik.errors.weight}
             />
-            <Typography variant="body1">change ability</Typography>
             <TextField
+              fullWidth
               id="ability"
               name="ability"
-              label="ability"
+              label="change ability"
               margin="normal"
               value={formik.values.ability}
               onChange={formik.handleChange}
@@ -118,14 +116,8 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.ability && formik.errors.ability}
             />
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              disabled={!formik.isValid}
-            >
-              SUBMIT
-            </Button>
+          </Grid>
+          <Grid item xs={6}>
             <Button
               variant="contained"
               color="primary"
@@ -134,8 +126,18 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
             >
               CANCEL
             </Button>
-          </Stack>
-        </Stack>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={!formik.isValid}
+            >
+              SUBMIT
+            </Button>
+          </Grid>
+        </Grid>
       ) : (
         <Typography>{message}</Typography>
       )}

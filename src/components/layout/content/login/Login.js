@@ -45,7 +45,7 @@ const Login = ({ setIsLogged }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <CustomGrid container spacing={2}>
-        <Grid item xs={5}>
+        <Grid item>
           <TextField
             id="email"
             name="email"
@@ -58,7 +58,7 @@ const Login = ({ setIsLogged }) => {
             helperText={formik.touched.email && formik.errors.email}
           />
         </Grid>
-        <Grid item xs={5}>
+        <Grid item>
           <TextField
             id="password"
             name="password"
@@ -71,10 +71,8 @@ const Login = ({ setIsLogged }) => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.password && formik.errors.password}
           />
-        </Grid>
-      </CustomGrid>
-      <Grid container spacing={2} direction="column">
-        <Grid item xs={12}>
+        </Grid> 
+        <Grid item xs={10}>
           <Button
             variant="contained"
             color="primary"
@@ -84,10 +82,10 @@ const Login = ({ setIsLogged }) => {
             LOGIN
           </Button>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={10}>
           <Typography>{message}</Typography>
         </Grid>
-      </Grid>
+      </CustomGrid>
     </form>
   );
 };

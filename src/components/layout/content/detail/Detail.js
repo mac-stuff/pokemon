@@ -97,6 +97,7 @@ const Detail = ({
             ...customPokemon,
             selectedPokemon,
           ]);
+          navigate("/Edit");
         }
       });
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
@@ -129,7 +130,7 @@ const Detail = ({
     });
   };
 
-  return (selectedPokemon !== Object.keys(selectedPokemon).length) === 0 ? (
+  return Object.keys(selectedPokemon).length !== 0 ? (
     <Stack direction="row" spacing={5} mt={5} mb={5}>
       <Stack spacing={5} mt={5} mb={5}>
         <CustomBox

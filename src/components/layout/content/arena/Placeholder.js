@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 const CustomTypography = styled(Typography)({
   borderRadius: "5px",
-  width: "250px",
+  width: "230px",
   height: "350px",
   backgroundColor: "#eaece5",
   textAlign: "center",
   padding: "15px",
   "&:hover": {
-    width: "260px",
+    width: "230px",
     height: "360px",
     boxShadow: "15px 15px 15px -10px #3b3a30",
   },

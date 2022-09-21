@@ -33,14 +33,8 @@ const Register = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <CustomGrid
-        container
-        spacing={2}
-        justifyContent="center"
-        alignItems="center"
-        direction="row"
-      >
-        <Grid item xs={3}>
+      <CustomGrid container spacing={2} alignItems="center">
+        <Grid item>
           <TextField
             id="name"
             name="name"
@@ -52,6 +46,8 @@ const Register = () => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.name && formik.errors.name}
           />
+        </Grid>
+        <Grid item>
           <TextField
             id="password"
             name="password"
@@ -64,7 +60,7 @@ const Register = () => {
             helperText={formik.touched.password && formik.errors.password}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item>
           <TextField
             id="email"
             name="email"
@@ -76,6 +72,8 @@ const Register = () => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.email && formik.errors.email}
           />
+        </Grid>
+        <Grid item>
           <TextField
             id="confirmPassword"
             name="confirmPassword"
@@ -93,7 +91,7 @@ const Register = () => {
             }
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={11}>
           <Button
             variant="contained"
             color="primary"

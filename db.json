@@ -8,8 +8,71 @@
       "id": "AtLlYUd"
     }
   ],
-  "favorites": [],
+  "favorites": [
+    {
+      "id": 37,
+      "name": "Vulpix",
+      "height": 6,
+      "weight": 99,
+      "base_experience": 60,
+      "abilities": "flash-fire",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/37.svg",
+      "isLiked": true
+    },
+    {
+      "id": 28,
+      "name": "Sandslash",
+      "height": 10,
+      "weight": 295,
+      "base_experience": 158,
+      "abilities": "sand-veil",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/28.svg",
+      "isLiked": true
+    }
+  ],
   "arena": [],
-  "edit": [],
+  "edit": [
+    {
+      "id": 35,
+      "name": "Clefairy",
+      "height": 6,
+      "weight": 75,
+      "base_experience": 113,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 29,
+      "name": "Nidoran-f",
+      "height": 4,
+      "weight": 70,
+      "base_experience": 55,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/29.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 30,
+      "name": "Nidorina",
+      "height": 8,
+      "weight": 200,
+      "base_experience": 128,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/30.svg",
+      "isCustomizable": true
+    },
+    {
+      "id": 28,
+      "name": "Sandslash",
+      "height": 10,
+      "weight": 295,
+      "base_experience": 158,
+      "abilities": "sand-veil",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/28.svg",
+      "isLiked": true,
+      "isCustomizable": true
+    }
+  ],
   "createdPokemons": []
 }

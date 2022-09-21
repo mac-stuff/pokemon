@@ -4,15 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar";
 import Searchbar from "./searchbar";
 import Footerbar from "./footerbar";
-import Content from "./content/Content"
+import Content from "./content/Content";
 import styled from "styled-components";
 
 const CustomStack = styled(Stack)({
   background: "rgba(234, 236, 229, .3)",
-  padding: "25px",
-  minHeight: "1200px",
-  display: "block",
+  padding: "30px",
+  minHeight: "1000px",
   alignItems: "center",
+  textAlign: "center",
 });
 
 const Layout = () => {
