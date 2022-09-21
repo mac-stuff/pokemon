@@ -76,7 +76,7 @@ const Detail = ({
   };
 
   const handleClickBackButton = () => {
-    setSelectedPokemon(null);
+    setSelectedPokemon({});
     navigate("/");
   };
 

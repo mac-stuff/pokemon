@@ -10,7 +10,7 @@ const CustomBox = styled(Box)({
   height: "385px",
 });
 
-const Edit = ({ allPokemon }) => {
+const Edit = ({ allPokemon, searchedPokemon }) => {
   const [customPokemon, setCustomPokemon] = useState(() => {
     const localData = localStorage.getItem("customPokemon");
     return localData ? JSON.parse(localData) : {};
@@ -56,7 +56,7 @@ const Edit = ({ allPokemon }) => {
               alt={customPokemon.name}
             />
           </Grid>
-          <Grid item xs={6} >
+          <Grid item xs={6}>
             <TextField
               fullWidth
               id="name"
@@ -145,15 +145,31 @@ const Edit = ({ allPokemon }) => {
           </Grid>
         </Grid>
       ) : (
-        <Grid container spacing={3} direction="row" alignItems="center" m={5}>
-          {allPokemon.map((pokemon) => (
-            <Grid item key={pokemon.name}>
-              <PokemonItemSmall
-                pokemon={pokemon}
-                setCustomPokemon={setCustomPokemon}
-              />
-            </Grid>
-          ))}
+        <Grid container spacing={3} direction="row" alignItems="center" m={1}>
+          {searchedPokemon
+            ? allPokemon
+                .filter((pokemon) =>
+                  pokemon.name.startsWith(
+                    searchedPokemon[0].toUpperCase() +
+                      searchedPokemon.substring(1)
+                  )
+                )
+                .map((pokemon) => (
+                  <Grid item key={pokemon.name}>
+                    <PokemonItemSmall
+                      pokemon={pokemon}
+                      setCustomPokemon={setCustomPokemon}
+                    />
+                  </Grid>
+                ))
+            : allPokemon.map((pokemon) => (
+                <Grid item key={pokemon.name}>
+                  <PokemonItemSmall
+                    pokemon={pokemon}
+                    setCustomPokemon={setCustomPokemon}
+                  />
+                </Grid>
+              ))}
         </Grid>
       )}
     </form>

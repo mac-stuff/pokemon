@@ -143,7 +143,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       <Route path="/Login" element={<Login setIsLogged={setIsLogged} />} />
       <Route path="/Register" element={<Register />} />
       {isLogged ? (
-        <Route path="/Edit" element={<Edit allPokemon={allPokemon} />} />
+        <Route path="/Edit" element={<Edit allPokemon={allPokemon} searchedPokemon={searchedPokemon} />} />
       ) : (
         <Route path="/Edit" element={<Login setIsLogged={setIsLogged} />} />
       )}

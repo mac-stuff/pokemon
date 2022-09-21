@@ -3,21 +3,21 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import styled from "styled-components";
 
 const CustomCard = styled(Card)({
-  width: "150px",
-  height: "150px",
+  width: "120px",
+  height: "120px",
   backgroundColor: "#eaece5 !important",
   textAlign: "center",
   padding: "15px",
   "&:hover": {
-    width: "152px",
-    height: "152px",
+    width: "122px",
+    height: "122px",
     boxShadow: "15px 15px 15px -10px #3b3a30",
   },
 });
 
 const CustomBox = styled(Box)({
-  width: "100px",
-  height: "100px",
+  width: "80px",
+  height: "80px",
 });
 
 const PokemonItemSmall = ({ pokemon, setCustomPokemon }) => {
