@@ -15,7 +15,7 @@ const CustomInputBase = styled(InputBase)({
   backgroundColor: "#b2c2bf",
 });
 
-const SearchEngine = ({ setSearchedPokemon }) => {
+const Search = ({ setSearchedPokemon }) => {
   return (
     <AppBar position="sticky">
       <CustomToolbar>
@@ -28,4 +28,4 @@ const SearchEngine = ({ setSearchedPokemon }) => {
   );
 };
 
-export default SearchEngine;
+export default Search;

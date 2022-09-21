@@ -8,19 +8,48 @@
       "id": "AtLlYUd"
     }
   ],
-  "favorites": [],
-  "arena": [],
-  "edit": [
+  "favorites": [
     {
-      "id": 26,
-      "name": "Raichu",
-      "height": 8,
-      "weight": 300,
-      "base_experience": 243,
-      "abilities": "static",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/26.svg",
-      "isCustomizable": true
+      "id": 33,
+      "name": "Nidorino",
+      "height": 9,
+      "weight": 195,
+      "base_experience": 128,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/33.svg",
+      "isLiked": true
+    },
+    {
+      "id": 35,
+      "name": "Clefairy",
+      "height": 6,
+      "weight": 75,
+      "base_experience": 113,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/35.svg",
+      "isLiked": true
+    },
+    {
+      "id": 24,
+      "name": "Arbok",
+      "height": 35,
+      "weight": 650,
+      "base_experience": 157,
+      "abilities": "intimidate",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/24.svg",
+      "isLiked": true
     }
   ],
-  "createdPokemons": []
+  "arena": [],
+  "edit": [],
+  "createdPokemons": [
+    {
+      "name": "ALL30",
+      "height": "123",
+      "baseExperience": "2",
+      "weight": "23",
+      "ability": "17",
+      "id": 1
+    }
+  ]
 }

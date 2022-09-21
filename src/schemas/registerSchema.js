@@ -22,7 +22,7 @@ const registerSchema = yup.object({
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password"), null], "password must match")
-    .required("required password confirmation"),
+    .required("required password"),
 });
 
 export default registerSchema;

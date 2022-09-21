@@ -1,10 +1,10 @@
 import { Container, Stack } from "@mui/system";
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./navbar/index";
-import Search from "./search";
-import Content from "./Content";
-import Footer from "./Footer";
+import Navbar from "./navbar";
+import Searchbar from "./searchbar";
+import Footerbar from "./footerbar";
+import Content from "./content/Content"
 import styled from "styled-components";
 
 const CustomStack = styled(Stack)({
@@ -30,7 +30,7 @@ const Layout = () => {
     <BrowserRouter>
       <Container>
         <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
-        <Search setSearchedPokemon={setSearchedPokemon} />
+        <Searchbar setSearchedPokemon={setSearchedPokemon} />
         <CustomStack>
           <Content
             searchedPokemon={searchedPokemon}
@@ -38,7 +38,7 @@ const Layout = () => {
             setIsLogged={setIsLogged}
           />
         </CustomStack>
-        <Footer />
+        <Footerbar />
       </Container>
     </BrowserRouter>
   );

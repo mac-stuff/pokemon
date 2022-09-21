@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import loginSchema from "../schemas/loginSchema";
+import loginSchema from "../../../../schemas/loginSchema";
 
 const CustomGrid = styled(Grid)({
   paddingTop: "100px",
@@ -73,7 +73,7 @@ const Login = ({ setIsLogged }) => {
           />
         </Grid>
       </CustomGrid>
-      <Grid container direction="column">
+      <Grid container spacing={2} direction="column">
         <Grid item xs={12}>
           <Button
             variant="contained"
@@ -84,7 +84,7 @@ const Login = ({ setIsLogged }) => {
             LOGIN
           </Button>
         </Grid>
-        <Grid item xs={12} mt={5}>
+        <Grid item xs={12}>
           <Typography>{message}</Typography>
         </Grid>
       </Grid>

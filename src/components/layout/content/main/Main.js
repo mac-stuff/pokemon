@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import PokemonItem from "../components/content/PokemonItem";
-import Pagination from "../components/content/Pagination";
+import PokemonItem from "./PokemonItem";
+import Pagination from "./Pagination";
 
 const CustomLink = styled(Link)({
   textDecoration: "none",

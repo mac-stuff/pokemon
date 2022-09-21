@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import Placeholder from "../components/content/Placeholder";
-import Main from "./Main";
+import Placeholder from "./Placeholder";
+import Main from "../main/Main";
 
 const Arena = ({
   fightingPokemon,

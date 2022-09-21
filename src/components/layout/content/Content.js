@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Main from "../pages/Main";
-import Detail from "../pages/Detail";
-import Favorites from "../pages/Favorites";
-import Arena from "../pages/Arena";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Edit from "../pages/Edit";
+import Main from "./main/Main";
+import Detail from "./detail/Detail";
+import Favorites from "./favorites/Favorites";
+import Arena from "./arena/Arena";
+import Login from "./login/Login";
+import Register from "./register/Register";
+import Edit from "./edit/Edit";
 
 const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
   const [allPokemon, setAllPokemon] = useState([]);
@@ -149,7 +149,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
           />
         }
       />
-      <Route path="/LogIn" element={<Login setIsLogged={setIsLogged} />} />
+      <Route path="/Login" element={<Login setIsLogged={setIsLogged} />} />
       <Route path="/Register" element={<Register />} />
       <Route
         path="/Edit"

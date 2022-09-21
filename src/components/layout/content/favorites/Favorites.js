@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { Fragment } from "react";
-import Main from "./Main";
+import Main from "../main/Main";
 
 const Favorites = ({
   favoritesPokemon,

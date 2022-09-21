@@ -1,7 +1,13 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
-import registerSchema from "../schemas/registerSchema";
+import styled from "styled-components";
+import registerSchema from "../../../../schemas/registerSchema";
+
+const CustomGrid = styled(Grid)({
+  paddingTop: "100px",
+  paddingBottom: "25px",
+});
 
 const Register = () => {
   const [message, setMessage] = useState("");
@@ -18,7 +24,7 @@ const Register = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        setMessage("You are successfully register now! Please log-in.");
+        setMessage("You are successfully register now! Please login.");
         resetForm({ values: "" });
       });
     },
@@ -27,8 +33,14 @@ const Register = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
+      <CustomGrid
+        container
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        direction="row"
+      >
+        <Grid item xs={3}>
           <TextField
             id="name"
             name="name"
@@ -41,19 +53,6 @@ const Register = () => {
             helperText={formik.touched.name && formik.errors.name}
           />
           <TextField
-            id="email"
-            name="email"
-            label="email"
-            margin="normal"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            onBlur={formik.handleBlur}
-            helperText={formik.touched.email && formik.errors.email}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
             id="password"
             name="password"
             label="password"
@@ -63,6 +62,19 @@ const Register = () => {
             error={formik.touched.password && Boolean(formik.errors.password)}
             onBlur={formik.handleBlur}
             helperText={formik.touched.password && formik.errors.password}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <TextField
+            id="email"
+            name="email"
+            label="email"
+            margin="normal"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            onBlur={formik.handleBlur}
+            helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
             id="confirmPassword"
@@ -91,10 +103,10 @@ const Register = () => {
             SUBMIT
           </Button>
         </Grid>
-        <Grid item xs={12}>
+        <Grid>
           <Typography>{message}</Typography>
         </Grid>
-      </Grid>
+      </CustomGrid>
     </form>
   );
 };
