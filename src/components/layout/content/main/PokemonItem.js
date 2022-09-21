@@ -21,7 +21,7 @@ const CustomBox = styled(Box)({
 });
 
 const PokemonItem = ({ pokemon, setSelectedPokemon }) => {
-  const clickHandle = async () => {
+  const clickHandle = () => {
     setSelectedPokemon(pokemon);
   };
 

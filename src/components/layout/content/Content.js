@@ -23,10 +23,6 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
     const localData = localStorage.getItem("fightingPokemon");
     return localData ? JSON.parse(localData) : [];
   });
-  const [customPokemon, setCustomPokemon] = useState(() => {
-    const localData = localStorage.getItem("customPokemon");
-    return localData ? JSON.parse(localData) : [];
-  });
 
   const [currentPage, setCurrentPage] = useState(3);
   const pokemonPerPage = 15;
@@ -91,10 +87,6 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
     localStorage.setItem("fightingPokemon", JSON.stringify(fightingPokemon));
   }, [fightingPokemon]);
 
-  useEffect(() => {
-    localStorage.setItem("customPokemon", JSON.stringify(customPokemon));
-  }, [customPokemon]);
-
   return (
     <Routes>
       <Route
@@ -121,8 +113,6 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
             setFavoritesPokemon={setFavoritesPokemon}
             fightingPokemon={fightingPokemon}
             setFightingPokemon={setFightingPokemon}
-            customPokemon={customPokemon}
-            setCustomPokemon={setCustomPokemon}
             isLogged={isLogged}
           />
         }
@@ -153,15 +143,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
       <Route path="/Login" element={<Login setIsLogged={setIsLogged} />} />
       <Route path="/Register" element={<Register />} />
       {isLogged ? (
-        <Route
-          path="/Edit"
-          element={
-            <Edit
-              customPokemon={customPokemon}
-              setCustomPokemon={setCustomPokemon}
-            />
-          }
-        />
+        <Route path="/Edit" element={<Edit allPokemon={allPokemon} />} />
       ) : (
         <Route path="/Edit" element={<Login setIsLogged={setIsLogged} />} />
       )}

@@ -1,17 +1,24 @@
-import React, { useState } from "react";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../../../../schemas/addSchema";
 import styled from "styled-components";
+import PokemonItemSmall from "./PokemonItemSmall";
 
 const CustomBox = styled(Box)({
   width: "450px",
   height: "385px",
 });
 
-const Edit = ({ customPokemon, setCustomPokemon }) => {
-  const pokemon = customPokemon[0];
-  const [message, setMessage] = useState("No Pokemon To Edit Yet!");
+const Edit = ({ allPokemon }) => {
+  const [customPokemon, setCustomPokemon] = useState(() => {
+    const localData = localStorage.getItem("customPokemon");
+    return localData ? JSON.parse(localData) : {};
+  });
+
+  useEffect(() => {
+    localStorage.setItem("customPokemon", JSON.stringify(customPokemon));
+  }, [customPokemon]);
 
   const formik = useFormik({
     initialValues: {
@@ -27,8 +34,7 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        setMessage("You successfully added new Pokemon to data base!");
-        setCustomPokemon([]);
+        setCustomPokemon({});
         resetForm({ values: "" });
       });
     },
@@ -36,21 +42,21 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
   });
 
   const handleClickClear = () => {
-    setCustomPokemon([]);
+    setCustomPokemon({});
   };
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      {pokemon ? (
+      {Object.keys(customPokemon).length !== 0 ? (
         <Grid container spacing={3} direction="row" alignItems="center" m={5}>
           <Grid item xs={5} m={2}>
             <CustomBox
               component="img"
-              src={pokemon.sprites}
-              alt={pokemon.name}
+              src={customPokemon.sprites}
+              alt={customPokemon.name}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={6} >
             <TextField
               fullWidth
               id="name"
@@ -139,7 +145,16 @@ const Edit = ({ customPokemon, setCustomPokemon }) => {
           </Grid>
         </Grid>
       ) : (
-        <Typography>{message}</Typography>
+        <Grid container spacing={3} direction="row" alignItems="center" m={5}>
+          {allPokemon.map((pokemon) => (
+            <Grid item key={pokemon.name}>
+              <PokemonItemSmall
+                pokemon={pokemon}
+                setCustomPokemon={setCustomPokemon}
+              />
+            </Grid>
+          ))}
+        </Grid>
       )}
     </form>
   );

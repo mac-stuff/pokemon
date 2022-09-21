@@ -1,6 +1,5 @@
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -23,8 +22,6 @@ const Detail = ({
   setFavoritesPokemon,
   fightingPokemon,
   setFightingPokemon,
-  customPokemon,
-  setCustomPokemon,
   isLogged,
 }) => {
   const navigate = useNavigate();
@@ -73,31 +70,6 @@ const Detail = ({
             ...fightingPokemon,
             selectedPokemon,
           ]);
-        }
-      });
-    localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
-  };
-
-  const handleClickCustom = async () => {
-    await fetch(`http://localhost:8000/edit?id=${selectedPokemon.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length > 0) {
-          selectedPokemon.isCustomizable = false;
-          removeFromDB("edit", selectedPokemon);
-          setCustomPokemon(
-            customPokemon.filter(
-              (pokemon) => pokemon.name !== selectedPokemon.name
-            )
-          );
-        } else {
-          selectedPokemon.isCustomizable = true;
-          addToDB("edit", selectedPokemon);
-          setCustomPokemon((customPokemon) => [
-            ...customPokemon,
-            selectedPokemon,
-          ]);
-          navigate("/Edit");
         }
       });
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
@@ -202,13 +174,6 @@ const Detail = ({
                 />
               </IconButton>
             )
-          )}
-          {isLogged && customPokemon.length < 1 && (
-            <IconButton onClick={handleClickCustom}>
-              <BuildCircleIcon
-                color={selectedPokemon.isCustomizable ? "error" : "primary"}
-              />
-            </IconButton>
           )}
         </Stack>
         <Stack direction="row" spacing={5}>
