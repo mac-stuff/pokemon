@@ -15,15 +15,6 @@ const CustomBox = styled(Box)({
   height: "385px",
 });
 
-/* eslint-disable */
-const CustomFavoriteIcon = styled(FavoriteIcon)(({ isLiked }) => ({
-  color: isLiked ? "tomato" : "grey",
-}));
-
-const CustomFightIcon = styled(LocalFireDepartmentIcon)(({ isFighting }) => ({
-  color: isFighting ? "tomato" : "grey",
-}));
-
 const Detail = ({
   selectedPokemon,
   setSelectedPokemon,
@@ -164,16 +155,20 @@ const Detail = ({
         </Stack>
         <Stack direction="row" spacing={5}>
           <IconButton onClick={handleClickLike}>
-            <CustomFavoriteIcon isLiked={selectedPokemon.isLiked} />
+            <FavoriteIcon color={selectedPokemon.isLiked ? "grey" : "tomato"} />
           </IconButton>
           {fightingPokemon.length < 2 ? (
             <IconButton onClick={handleClickFight}>
-              <CustomFightIcon isFighting={selectedPokemon.isFighting} />
+              <LocalFireDepartmentIcon
+                color={selectedPokemon.isFighting ? "grey" : "tomato"}
+              />
             </IconButton>
           ) : (
             fightingPokemon.includes(selectedPokemon) && (
               <IconButton onClick={handleClickFight}>
-                <CustomFightIcon isFighting={selectedPokemon.isFighting} />
+                <LocalFireDepartmentIcon
+                  color={selectedPokemon.isFighting ? "grey" : "tomato"}
+                />
               </IconButton>
             )
           )}
@@ -194,3 +189,12 @@ const Detail = ({
 };
 
 export default Detail;
+
+/* eslint-disable */
+// const CustomFavoriteIcon = styled(FavoriteIcon)(({ isLiked }) => ({
+//   color: isLiked ? "tomato" : "grey",
+// }));
+
+// const CustomFightIcon = styled(LocalFireDepartmentIcon)(({ isFighting }) => ({
+//   color: isFighting ? "tomato" : "grey",
+// }));

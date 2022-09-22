@@ -28,9 +28,11 @@ const CustomIconButton = styled(IconButton)({
   marginTop: "0 !important",
 });
 
-const PokemonCard = ({ pokemon, setFightingPokemon, fightingPokemon }) => {
-  const clickHandle = () => {
-    setFightingPokemon(fightingPokemon.filter(item => item.id !== pokemon.id)); 
+const PokemonCard = ({ pokemon }) => {
+  const clickHandle = async () => {
+    await fetch(`http://localhost:8000/arena/${pokemon.id}/`, {
+      method: "DELETE",
+    });
   };
 
   return (

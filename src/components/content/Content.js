@@ -10,7 +10,10 @@ import Edit from "./edit/Edit";
 import NotFound from "./detail/NotFound";
 
 const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
-  const [allPokemon, setAllPokemon] = useState([]);
+  const [allPokemon, setAllPokemon] = useState(() => {
+    const localData = localStorage.getItem("allPokemon");
+    return localData ? JSON.parse(localData) : [];
+  });
   const [selectedPokemon, setSelectedPokemon] = useState(() => {
     const localData = localStorage.getItem("selectedPokemon");
     return localData ? JSON.parse(localData) : {};
@@ -73,14 +76,28 @@ const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
   };
 
   useEffect(() => {
+    localStorage.setItem("allPokemon", JSON.stringify(allPokemon));
+  }, [allPokemon]);
+
+  useEffect(() => {
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
   }, [selectedPokemon]);
 
   useEffect(() => {
+    (async function () {
+      await fetch(`http://localhost:8000/favorites`)
+        .then((res) => res.json())
+        .then((response) => setFavoritesPokemon(response));
+    })();
     localStorage.setItem("favoritesPokemon", JSON.stringify(favoritesPokemon));
   }, [favoritesPokemon]);
 
   useEffect(() => {
+    (async function () {
+      await fetch(`http://localhost:8000/arena`)
+        .then((res) => res.json())
+        .then((response) => setFightingPokemon(response));
+    })();
     localStorage.setItem("fightingPokemon", JSON.stringify(fightingPokemon));
   }, [fightingPokemon]);
 

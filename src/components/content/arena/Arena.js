@@ -60,18 +60,10 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
       {fightingPokemon.length === 2 && (
         <Grid container spacing={2}>
           <Grid item>
-            <PokemonCard
-              pokemon={fightingPokemon[0]}
-              fightingPokemon={fightingPokemon}
-              setFightingPokemon={setFightingPokemon}
-            ></PokemonCard>
+            <PokemonCard pokemon={fightingPokemon[0]}></PokemonCard>
           </Grid>
           <Grid item>
-            <PokemonCard
-              pokemon={fightingPokemon[1]}
-              fightingPokemon={fightingPokemon}
-              setFightingPokemon={setFightingPokemon}
-            ></PokemonCard>
+            <PokemonCard pokemon={fightingPokemon[1]}></PokemonCard>
           </Grid>
           <Grid item xs={10}>
             {isAfterFight ? (
@@ -93,11 +85,7 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
       {fightingPokemon.length === 1 && (
         <Grid container spacing={2}>
           <Grid item>
-            <PokemonCard
-              pokemon={fightingPokemon[0]}
-              fightingPokemon={fightingPokemon}
-              setFightingPokemon={setFightingPokemon}
-            ></PokemonCard>
+            <PokemonCard pokemon={fightingPokemon[0]}></PokemonCard>
           </Grid>
           <Grid item>
             <Placeholder />
