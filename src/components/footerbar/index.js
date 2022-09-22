@@ -1,8 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
 
-const Footerbar = () => {
-  return <Footer />;
-};
+const Footerbar = () => <Footer />;
 
 export default Footerbar;

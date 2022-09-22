@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import addSchema from "../../../../schemas/addSchema";
+import addSchema from "../../../schemas/addSchema";
 import styled from "styled-components";
 import PokemonItemSmall from "./PokemonItemSmall";
 

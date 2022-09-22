@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar";
 import Searchbar from "./searchbar";
-import Footerbar from "./footerbar";
 import Content from "./content/Content";
+import Footerbar from "./footerbar";
 import styled from "styled-components";
 
 const CustomStack = styled(Stack)({
@@ -17,25 +17,25 @@ const CustomStack = styled(Stack)({
 
 const Layout = () => {
   const [searchedPokemon, setSearchedPokemon] = useState();
-  const [isLogged, setIsLogged] = useState(() => {
-    const localData = localStorage.getItem("isLogged");
+  const [isLoggedIn, setisLoggedIn] = useState(() => {
+    const localData = localStorage.getItem("isLoggedIn");
     return localData ? JSON.parse(localData) : false;
   });
 
   useEffect(() => {
-    localStorage.setItem("isLogged", JSON.stringify(isLogged));
-  }, [isLogged]);
+    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+  }, [isLoggedIn]);
 
   return (
     <BrowserRouter>
       <Container>
-        <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
+        <Navbar isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
         <Searchbar setSearchedPokemon={setSearchedPokemon} />
         <CustomStack>
           <Content
             searchedPokemon={searchedPokemon}
-            isLogged={isLogged}
-            setIsLogged={setIsLogged}
+            isLoggedIn={isLoggedIn}
+            setisLoggedIn={setisLoggedIn}
           />
         </CustomStack>
         <Footerbar />

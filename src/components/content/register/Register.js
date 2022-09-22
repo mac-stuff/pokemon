@@ -2,7 +2,7 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
 import styled from "styled-components";
-import registerSchema from "../../../../schemas/registerSchema";
+import registerSchema from "../../../schemas/registerSchema";
 
 const CustomGrid = styled(Grid)({
   paddingTop: "100px",

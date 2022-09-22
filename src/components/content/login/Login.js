@@ -3,19 +3,19 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import loginSchema from "../../../../schemas/loginSchema";
+import loginSchema from "../../../schemas/loginSchema";
 
 const CustomGrid = styled(Grid)({
   paddingTop: "100px",
   paddingBottom: "25px",
 });
 
-const Login = ({ setIsLogged }) => {
+const Login = ({ setisLoggedIn }) => {
   const [message, setMessage] = useState();
   const navigate = useNavigate();
 
   const successfulLogin = () => {
-    setIsLogged(true);
+    setisLoggedIn(true);
     navigate("/Edit");
   };
 
@@ -71,7 +71,7 @@ const Login = ({ setIsLogged }) => {
             onBlur={formik.handleBlur}
             helperText={formik.touched.password && formik.errors.password}
           />
-        </Grid> 
+        </Grid>
         <Grid item xs={10}>
           <Button
             variant="contained"

@@ -15,6 +15,7 @@ const CustomBox = styled(Box)({
   height: "385px",
 });
 
+/* eslint-disable */
 const CustomFavoriteIcon = styled(FavoriteIcon)(({ isLiked }) => ({
   color: isLiked ? "tomato" : "grey",
 }));
@@ -30,7 +31,6 @@ const Detail = ({
   setFavoritesPokemon,
   fightingPokemon,
   setFightingPokemon,
-  isLogged,
 }) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
@@ -41,19 +41,19 @@ const Detail = ({
       .then((data) => {
         if (data.length > 0) {
           selectedPokemon.isLiked = false;
-          removeFromDB("favorites", selectedPokemon);
           setFavoritesPokemon(
             favoritesPokemon.filter(
               (pokemon) => pokemon.name !== selectedPokemon.name
             )
           );
+          removeFromDB("favorites", selectedPokemon);
         } else {
           selectedPokemon.isLiked = true;
-          addToDB("favorites", selectedPokemon);
           setFavoritesPokemon((favoritesPokemon) => [
             ...favoritesPokemon,
             selectedPokemon,
           ]);
+          addToDB("favorites", selectedPokemon);
         }
       });
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
@@ -65,19 +65,19 @@ const Detail = ({
       .then((data) => {
         if (data.length > 0) {
           selectedPokemon.isFighting = false;
-          removeFromDB("arena", selectedPokemon);
           setFightingPokemon(
             fightingPokemon.filter(
               (pokemon) => pokemon.name !== selectedPokemon.name
             )
           );
+          removeFromDB("arena", selectedPokemon);
         } else {
           selectedPokemon.isFighting = true;
-          addToDB("arena", selectedPokemon);
           setFightingPokemon((fightingPokemon) => [
             ...fightingPokemon,
             selectedPokemon,
           ]);
+          addToDB("arena", selectedPokemon);
         }
       });
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));

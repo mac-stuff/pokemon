@@ -8,7 +8,20 @@
       "id": "AtLlYUd"
     }
   ],
-  "favorites": [],
+  "pokemons" : [],
+  "favorites": [
+    {
+      "id": 26,
+      "name": "Raichu",
+      "height": 8,
+      "weight": 300,
+      "base_experience": 243,
+      "abilities": "static",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/26.svg",
+      "isLiked": true,
+      "isFighting": false
+    }
+  ],
   "arena": [],
   "edit": [],
   "createdPokemons": []

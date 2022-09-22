@@ -23,13 +23,13 @@ const CustomTypography = styled(Typography)({
   color: "secondary",
 });
 
-const Nav = ({ isLogged, setIsLogged }) => {
-  const loginButtons = ["Favorites", "Arena", "Edit", "LogOut"];
+const Nav = ({ isLoggedIn, setisLoggedIn }) => {
+  const loginButtons = ["Favorites", "Arena", "Edit", "Logout"];
   const logoutButtons = ["Favorites", "Arena", "Login", "Register"];
 
   const handleLoguotButton = () => {
-    localStorage.removeItem("isLogged");
-    setIsLogged(false);
+    localStorage.removeItem("isLoggedIn");
+    setisLoggedIn(false);
   };
 
   return (
@@ -55,9 +55,9 @@ const Nav = ({ isLogged, setIsLogged }) => {
           ></CatchingPokemon>
         </Button>
         <Stack direction="row" sx={{ display: { xs: "none", sm: "block" } }}>
-          {isLogged
+          {isLoggedIn
             ? loginButtons.map((title) =>
-                title === "LogOut" ? (
+                title === "Logout" ? (
                   <Button
                     component={Link}
                     to={"/"}
@@ -103,9 +103,9 @@ const Nav = ({ isLogged, setIsLogged }) => {
                 MENU
               </Button>
               <Menu {...bindMenu(popupState)}>
-                {isLogged
+                {isLoggedIn
                   ? loginButtons.map((title) =>
-                      title === "LogOut" ? (
+                      title === "Logout" ? (
                         <Button
                           component={Link}
                           to={"/"}

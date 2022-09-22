@@ -10,14 +10,14 @@ const CustomCard = styled(Card)({
   padding: "15px",
   "&:hover": {
     width: "230px",
-    height: "360px",
+    height: "355px",
     boxShadow: "15px 15px 15px -10px #3b3a30",
   },
 });
 
 const CustomBox = styled(Box)({
-  width: "250px",
-  height: "158px",
+  width: "230px",
+  height: "140px",
 });
 
 const PokemonItem = ({ pokemon, setSelectedPokemon }) => {

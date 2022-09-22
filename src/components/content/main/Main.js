@@ -18,7 +18,7 @@ const Main = ({
   setCurrentPage,
 }) => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2}> 
       {searchedPokemon
         ? allPokemon
             .filter((pokemon) =>
@@ -46,7 +46,7 @@ const Main = ({
               </CustomLink>
             </Grid>
           ))}
-      <Grid item>
+      <Grid item xs={12}>
         <Pagination
           pokemonPerPage={pokemonPerPage}
           totalPokemon={totalPokemon}

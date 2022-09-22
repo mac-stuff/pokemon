@@ -9,7 +9,7 @@ import Register from "./register/Register";
 import Edit from "./edit/Edit";
 import NotFound from "./detail/NotFound";
 
-const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
+const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(() => {
     const localData = localStorage.getItem("selectedPokemon");
@@ -64,13 +64,10 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
         abilities,
         sprites,
       }))(data);
-      const pokemonName =
+      pokemonData.name =
         pokemonData.name[0].toUpperCase() + pokemonData.name.substring(1);
-      pokemonData.name = pokemonName;
-      const pokemonImage = pokemonData.sprites.other.dream_world.front_default;
-      pokemonData.sprites = pokemonImage;
-      const pokemonAbility = pokemonData.abilities[0].ability.name;
-      pokemonData.abilities = pokemonAbility;
+      pokemonData.sprites = pokemonData.sprites.other.dream_world.front_default;
+      pokemonData.abilities = pokemonData.abilities[0].ability.name;
       setAllPokemon((allPokemon) => [...allPokemon, pokemonData]);
     });
   };
@@ -113,7 +110,7 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
             setFavoritesPokemon={setFavoritesPokemon}
             fightingPokemon={fightingPokemon}
             setFightingPokemon={setFightingPokemon}
-            isLogged={isLogged}
+            isLoggedIn={isLoggedIn}
           />
         }
       />
@@ -140,12 +137,17 @@ const Content = ({ searchedPokemon, isLogged, setIsLogged }) => {
           />
         }
       />
-      <Route path="/Login" element={<Login setIsLogged={setIsLogged} />} />
+      <Route path="/Login" element={<Login setisLoggedIn={setisLoggedIn} />} />
       <Route path="/Register" element={<Register />} />
-      {isLogged ? (
-        <Route path="/Edit" element={<Edit allPokemon={allPokemon} searchedPokemon={searchedPokemon} />} />
+      {isLoggedIn ? (
+        <Route
+          path="/Edit"
+          element={
+            <Edit allPokemon={allPokemon} searchedPokemon={searchedPokemon} />
+          }
+        />
       ) : (
-        <Route path="/Edit" element={<Login setIsLogged={setIsLogged} />} />
+        <Route path="/Edit" element={<Login setisLoggedIn={setisLoggedIn} />} />
       )}
       <Route path="/*" element={<NotFound />} />
     </Routes>
