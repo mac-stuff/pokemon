@@ -15,6 +15,14 @@ const CustomBox = styled(Box)({
   height: "385px",
 });
 
+const CustomFavoriteIcon = styled(FavoriteIcon)(({ isLiked }) => ({
+  color: isLiked ? "tomato" : "grey",
+}));
+
+const CustomFightIcon = styled(LocalFireDepartmentIcon)(({ isFighting }) => ({
+  color: isFighting ? "tomato" : "grey",
+}));
+
 const Detail = ({
   selectedPokemon,
   setSelectedPokemon,
@@ -156,22 +164,16 @@ const Detail = ({
         </Stack>
         <Stack direction="row" spacing={5}>
           <IconButton onClick={handleClickLike}>
-            <FavoriteIcon
-              color={selectedPokemon.isLiked ? "error" : "primary"}
-            />
+            <CustomFavoriteIcon isLiked={selectedPokemon.isLiked} />
           </IconButton>
           {fightingPokemon.length < 2 ? (
             <IconButton onClick={handleClickFight}>
-              <LocalFireDepartmentIcon
-                color={selectedPokemon.isFighting ? "error" : "primary"}
-              />
+              <CustomFightIcon isFighting={selectedPokemon.isFighting} />
             </IconButton>
           ) : (
             fightingPokemon.includes(selectedPokemon) && (
               <IconButton onClick={handleClickFight}>
-                <LocalFireDepartmentIcon
-                  color={selectedPokemon.isFighting ? "error" : "primary"}
-                />
+                <CustomFightIcon isFighting={selectedPokemon.isFighting} />
               </IconButton>
             )
           )}

@@ -1,18 +1,9 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import Placeholder from "./Placeholder";
-import Main from "../main/Main";
+import PokemonCard from "./PokemonCard";
 
-const Arena = ({
-  fightingPokemon,
-  searchedPokemon,
-  setCurrentPage,
-  prevPage,
-  nextPage,
-  allPokemon,
-  setSelectedPokemon,
-  setFightingPokemon,
-}) => {
+const Arena = ({ fightingPokemon, setFightingPokemon }) => {
   const [message, setMessage] = useState();
   const [isAfterFight, setIsAfterFight] = useState(false);
 
@@ -65,21 +56,24 @@ const Arena = ({
   };
 
   return (
-    <Box flex={6} p={2}>
+    <Box>
       {fightingPokemon.length === 2 && (
-        <Grid container spacing={2} direction="column">
+        <Grid container spacing={2}>
           <Grid item>
-            <Main
-              searchedPokemon={searchedPokemon}
-              currentPagePokemon={fightingPokemon}
-              setCurrentPage={setCurrentPage}
-              prevPage={prevPage}
-              nextPage={nextPage}
-              allPokemon={allPokemon}
-              setSelectedPokemon={setSelectedPokemon}
-            />
+            <PokemonCard
+              pokemon={fightingPokemon[0]}
+              fightingPokemon={fightingPokemon}
+              setFightingPokemon={setFightingPokemon}
+            ></PokemonCard>
           </Grid>
           <Grid item>
+            <PokemonCard
+              pokemon={fightingPokemon[1]}
+              fightingPokemon={fightingPokemon}
+              setFightingPokemon={setFightingPokemon}
+            ></PokemonCard>
+          </Grid>
+          <Grid item xs={10}>
             {isAfterFight ? (
               <Button variant="contained" onClick={handleClickDelete}>
                 CLEAN
@@ -90,7 +84,7 @@ const Arena = ({
               </Button>
             )}
           </Grid>
-          <Grid item>
+          <Grid item xs={10}>
             <Typography>{message}</Typography>
           </Grid>
         </Grid>
@@ -99,15 +93,11 @@ const Arena = ({
       {fightingPokemon.length === 1 && (
         <Grid container spacing={2}>
           <Grid item>
-            <Main
-              searchedPokemon={searchedPokemon}
-              currentPagePokemon={fightingPokemon}
-              setCurrentPage={setCurrentPage}
-              prevPage={prevPage}
-              nextPage={nextPage}
-              allPokemon={allPokemon}
-              setSelectedPokemon={setSelectedPokemon}
-            />
+            <PokemonCard
+              pokemon={fightingPokemon[0]}
+              fightingPokemon={fightingPokemon}
+              setFightingPokemon={setFightingPokemon}
+            ></PokemonCard>
           </Grid>
           <Grid item>
             <Placeholder />
