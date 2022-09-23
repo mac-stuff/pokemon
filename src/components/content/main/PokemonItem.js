@@ -3,7 +3,7 @@ import { Stack } from "@mui/system";
 import styled from "styled-components";
 
 const CustomCard = styled(Card)({
-  width: "230px",
+  width: "230px", 
   height: "350px",
   backgroundColor: "#eaece5 !important",
   textAlign: "center",

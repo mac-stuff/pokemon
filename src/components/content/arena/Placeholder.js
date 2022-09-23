@@ -11,14 +11,14 @@ const CustomTypography = styled(Typography)({
   padding: "15px",
   "&:hover": {
     width: "230px",
-    height: "360px",
+    height: "355px",
     boxShadow: "15px 15px 15px -10px #3b3a30",
   },
 });
 const Placeholder = () => {
   return (
     <CustomTypography level="h2" component="div">
-      add Pokemon to start fight
+      add Pokemon to arena
     </CustomTypography>
   );
 };

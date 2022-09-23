@@ -155,19 +155,21 @@ const Detail = ({
         </Stack>
         <Stack direction="row" spacing={5}>
           <IconButton onClick={handleClickLike}>
-            <FavoriteIcon color={selectedPokemon.isLiked ? "grey" : "tomato"} />
+            <FavoriteIcon
+              color={selectedPokemon.isLiked ? "error" : "primary"}
+            />
           </IconButton>
           {fightingPokemon.length < 2 ? (
             <IconButton onClick={handleClickFight}>
               <LocalFireDepartmentIcon
-                color={selectedPokemon.isFighting ? "grey" : "tomato"}
+                color={selectedPokemon.isFighting ? "error" : "primary"}
               />
             </IconButton>
           ) : (
             fightingPokemon.includes(selectedPokemon) && (
               <IconButton onClick={handleClickFight}>
                 <LocalFireDepartmentIcon
-                  color={selectedPokemon.isFighting ? "grey" : "tomato"}
+                  color={selectedPokemon.isFighting ? "error" : "primary"}
                 />
               </IconButton>
             )
@@ -189,12 +191,3 @@ const Detail = ({
 };
 
 export default Detail;
-
-/* eslint-disable */
-// const CustomFavoriteIcon = styled(FavoriteIcon)(({ isLiked }) => ({
-//   color: isLiked ? "tomato" : "grey",
-// }));
-
-// const CustomFightIcon = styled(LocalFireDepartmentIcon)(({ isFighting }) => ({
-//   color: isFighting ? "tomato" : "grey",
-// }));

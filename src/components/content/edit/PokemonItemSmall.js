@@ -20,9 +20,9 @@ const CustomBox = styled(Box)({
   height: "80px",
 });
 
-const PokemonItemSmall = ({ pokemon, setCustomPokemon }) => {
+const PokemonItemSmall = ({ pokemon, setEditedPokemon }) => {
   const clickHandle = () => {
-    setCustomPokemon(pokemon);
+    setEditedPokemon(pokemon);
   };
 
   return (

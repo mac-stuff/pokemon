@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Grid, TextField } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../../../schemas/addSchema";
 import styled from "styled-components";
@@ -11,30 +11,33 @@ const CustomBox = styled(Box)({
 });
 
 const Edit = ({ allPokemon, searchedPokemon }) => {
-  const [customPokemon, setCustomPokemon] = useState(() => {
-    const localData = localStorage.getItem("customPokemon");
+  const [editedPokemon, setEditedPokemon] = useState(() => {
+    const localData = localStorage.getItem("editedPokemon");
     return localData ? JSON.parse(localData) : {};
   });
 
   useEffect(() => {
-    localStorage.setItem("customPokemon", JSON.stringify(customPokemon));
-  }, [customPokemon]);
+    localStorage.setItem("editedPokemon", JSON.stringify(editedPokemon));
+  }, [editedPokemon]);
 
   const formik = useFormik({
     initialValues: {
       name: "",
       height: "",
-      baseExperience: "",
+      base_experience: "",
       weight: "",
-      ability: "",
+      abilities: "",
+      sprites: editedPokemon.sprites,
+      id: editedPokemon.id + 200,
     },
+    enableReinitialize: true,
     onSubmit: (values, { resetForm }) => {
-      fetch("http://localhost:8000/createdPokemons", {
+      fetch("http://localhost:8000/edited", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        setCustomPokemon({});
+        setEditedPokemon({});
         resetForm({ values: "" });
       });
     },
@@ -42,21 +45,22 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
   });
 
   const handleClickClear = () => {
-    setCustomPokemon({});
+    setEditedPokemon({});
   };
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      {Object.keys(customPokemon).length !== 0 ? (
+      {Object.keys(editedPokemon).length !== 0 ? (
         <Grid container spacing={3} direction="row" alignItems="center" m={5}>
           <Grid item xs={5} m={2}>
             <CustomBox
               component="img"
-              src={customPokemon.sprites}
-              alt={customPokemon.name}
+              src={editedPokemon.sprites}
+              alt={editedPokemon.name}
             />
           </Grid>
           <Grid item xs={6}>
+            <Typography>{editedPokemon.name}</Typography>
             <TextField
               fullWidth
               id="name"
@@ -69,6 +73,7 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.name && formik.errors.name}
             />
+            <Typography>{editedPokemon.height}</Typography>
             <TextField
               fullWidth
               id="height"
@@ -81,28 +86,30 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.height && formik.errors.height}
             />
+            <Typography>{editedPokemon.base_experience}</Typography>
             <TextField
               fullWidth
-              id="baseExperience"
-              name="baseExperience"
-              label="change experience"
+              id="base_experience"
+              name="base_experience"
+              label="change base experience"
               margin="normal"
-              value={formik.values.baseExperience}
+              value={formik.values.base_experience}
               onChange={formik.handleChange}
               error={
-                formik.touched.baseExperience &&
-                Boolean(formik.errors.baseExperience)
+                formik.touched.base_experience &&
+                Boolean(formik.errors.base_experience)
               }
               onBlur={formik.handleBlur}
               helperText={
-                formik.touched.baseExperience && formik.errors.baseExperience
+                formik.touched.base_experience && formik.errors.base_experience
               }
             />
+            <Typography>{editedPokemon.weight}</Typography>
             <TextField
               fullWidth
               id="weight"
               name="weight"
-              label="change weigth"
+              label="change weight"
               margin="normal"
               value={formik.values.weight}
               onChange={formik.handleChange}
@@ -110,38 +117,43 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
               onBlur={formik.handleBlur}
               helperText={formik.touched.weight && formik.errors.weight}
             />
+            <Typography>{editedPokemon.abilities}</Typography>
             <TextField
               fullWidth
-              id="ability"
-              name="ability"
-              label="change ability"
+              id="abilities"
+              name="abilities"
+              label="change abilities"
               margin="normal"
-              value={formik.values.ability}
+              value={formik.values.abilities}
               onChange={formik.handleChange}
-              error={formik.touched.ability && Boolean(formik.errors.ability)}
+              error={
+                formik.touched.abilities && Boolean(formik.errors.abilities)
+              }
               onBlur={formik.handleBlur}
-              helperText={formik.touched.ability && formik.errors.ability}
+              helperText={formik.touched.abilities && formik.errors.abilities}
             />
           </Grid>
-          <Grid item xs={6}>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={handleClickClear}
-            >
-              CANCEL
-            </Button>
-          </Grid>
-          <Grid item xs={6}>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              disabled={!formik.isValid}
-            >
-              SUBMIT
-            </Button>
+          <Grid container spacing={3} mt={4}>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={handleClickClear}
+              >
+                CANCEL
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={!formik.isValid}
+              >
+                SUBMIT
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       ) : (
@@ -158,7 +170,7 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
                   <Grid item key={pokemon.name}>
                     <PokemonItemSmall
                       pokemon={pokemon}
-                      setCustomPokemon={setCustomPokemon}
+                      setEditedPokemon={setEditedPokemon}
                     />
                   </Grid>
                 ))
@@ -166,7 +178,7 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
                 <Grid item key={pokemon.name}>
                   <PokemonItemSmall
                     pokemon={pokemon}
-                    setCustomPokemon={setCustomPokemon}
+                    setEditedPokemon={setEditedPokemon}
                   />
                 </Grid>
               ))}

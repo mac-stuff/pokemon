@@ -1,16 +1,10 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import { useState } from "react";
-import styled from "styled-components";
+import { Fragment, useState } from "react";
 import registerSchema from "../../../schemas/registerSchema";
 
-const CustomGrid = styled(Grid)({
-  paddingTop: "100px",
-  paddingBottom: "25px",
-});
-
 const Register = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Please register.");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -32,80 +26,88 @@ const Register = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <CustomGrid container spacing={2} alignItems="center">
-        <Grid item>
-          <TextField
-            id="name"
-            name="name"
-            label="name"
-            margin="normal"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            onBlur={formik.handleBlur}
-            helperText={formik.touched.name && formik.errors.name}
-          />
+    <Fragment>
+      <form onSubmit={formik.handleSubmit}>
+        <Grid container spacing={2} mt={5}>
+          <Grid item>
+            <TextField
+              id="name"
+              name="name"
+              label="name"
+              margin="normal"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.name && formik.errors.name}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="email"
+              name="email"
+              label="email"
+              margin="normal"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+          </Grid>
         </Grid>
-        <Grid item>
-          <TextField
-            id="password"
-            name="password"
-            label="password"
-            margin="normal"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            onBlur={formik.handleBlur}
-            helperText={formik.touched.password && formik.errors.password}
-          />
+        <Grid container spacing={2}>
+          <Grid item>
+            <TextField
+              id="password"
+              name="password"
+              label="password"
+              margin="normal"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.password && formik.errors.password}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="confirmPassword"
+              name="confirmPassword"
+              label="confirm password"
+              margin="normal"
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.confirmPassword &&
+                Boolean(formik.errors.confirmPassword)
+              }
+              onBlur={formik.handleBlur}
+              helperText={
+                formik.touched.confirmPassword && formik.errors.confirmPassword
+              }
+            />
+          </Grid>
         </Grid>
-        <Grid item>
-          <TextField
-            id="email"
-            name="email"
-            label="email"
-            margin="normal"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            onBlur={formik.handleBlur}
-            helperText={formik.touched.email && formik.errors.email}
-          />
+        <Grid container mt={2}>
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={!formik.isValid}
+            >
+              SUBMIT
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <TextField
-            id="confirmPassword"
-            name="confirmPassword"
-            label="confirm password"
-            margin="normal"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            error={
-              formik.touched.confirmPassword &&
-              Boolean(formik.errors.confirmPassword)
-            }
-            onBlur={formik.handleBlur}
-            helperText={
-              formik.touched.confirmPassword && formik.errors.confirmPassword
-            }
-          />
+        <Grid container mt={2}>
+          <Grid item xs={12}>
+            <Typography>{message}</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={11}>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            disabled={!formik.isValid}
-          >
-            SUBMIT
-          </Button>
-        </Grid>
-        <Grid>
-          <Typography>{message}</Typography>
-        </Grid>
-      </CustomGrid>
-    </form>
+      </form>
+    </Fragment>
   );
 };
 

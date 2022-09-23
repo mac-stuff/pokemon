@@ -10,10 +10,7 @@ import Edit from "./edit/Edit";
 import NotFound from "./detail/NotFound";
 
 const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
-  const [allPokemon, setAllPokemon] = useState(() => {
-    const localData = localStorage.getItem("allPokemon");
-    return localData ? JSON.parse(localData) : [];
-  });
+  const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(() => {
     const localData = localStorage.getItem("selectedPokemon");
     return localData ? JSON.parse(localData) : {};
@@ -42,6 +39,7 @@ const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
         `https://pokeapi.co/api/v2/pokemon?limit=151`
       ).then((res) => res.json());
       setPokemons(data.results);
+      setPokemonsFromDB();
     })();
   }, []);
 
@@ -75,9 +73,15 @@ const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
     });
   };
 
-  useEffect(() => {
-    localStorage.setItem("allPokemon", JSON.stringify(allPokemon));
-  }, [allPokemon]);
+  const setPokemonsFromDB = async () => {
+    const editedPokemon = await fetch(`http://localhost:8000/edited`).then(
+      (res) => res.json()
+    );
+    editedPokemon.forEach((pokemon) => {
+      pokemon.name = pokemon.name[0].toUpperCase() + pokemon.name.substring(1);
+      setAllPokemon((allPokemon) => [...allPokemon, pokemon]);
+    });
+  };
 
   useEffect(() => {
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
