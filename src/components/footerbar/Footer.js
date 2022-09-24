@@ -1,5 +1,5 @@
-import { AppBar, Button } from "@mui/material";
-import React from "react";
+import { AppBar, Switch, Typography } from "@mui/material";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const CustomToolbar = styled(AppBar)({
@@ -10,15 +10,19 @@ const CustomToolbar = styled(AppBar)({
 });
 
 const Footer = ({ themeColor, setThemeColor }) => {
+  const [checked, setChecked] = useState(true);
+  const handleChange = () => {
+    setChecked(!checked);
+    setThemeColor(!themeColor);
+  };
   return (
     <CustomToolbar position="sticky">
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setThemeColor(!themeColor)}
-      >
-        CHANGE COLOR
-      </Button>
+      <Typography>CHANGE THEME COLOR</Typography>
+      <Switch
+        color={checked ? "secondary" : "primary"}
+        checked={checked}
+        onChange={handleChange}
+      />
     </CustomToolbar>
   );
 };

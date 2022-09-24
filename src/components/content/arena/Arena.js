@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Placeholder from "./Placeholder";
 import PokemonCard from "./PokemonCard";
 
@@ -58,28 +58,33 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
   return (
     <Box>
       {fightingPokemon.length === 2 && (
-        <Grid container spacing={2}>
-          <Grid item>
-            <PokemonCard pokemon={fightingPokemon[0]}></PokemonCard>
+        <Fragment>
+          <Grid container spacing={2}>
+            <Grid item>
+              <PokemonCard pokemon={fightingPokemon[0]}></PokemonCard>
+            </Grid>
+            <Grid item>
+              <PokemonCard pokemon={fightingPokemon[1]}></PokemonCard>
+            </Grid>
           </Grid>
-          <Grid item>
-            <PokemonCard pokemon={fightingPokemon[1]}></PokemonCard>
+          <Grid mt={2} container spacing={2}>
+            <Grid item xs={12}>
+              {isAfterFight ? (
+                <Button variant="contained" onClick={handleClickDelete}>
+                  CLEAN
+                </Button>
+              ) : (
+                <Button variant="contained" onClick={handleClickFight}>
+                  FIGHT
+                </Button>
+              )}
+            </Grid>
+
+            <Grid item xs={12}>
+              <Typography>{message}</Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={10}>
-            {isAfterFight ? (
-              <Button variant="contained" onClick={handleClickDelete}>
-                CLEAN
-              </Button>
-            ) : (
-              <Button variant="contained" onClick={handleClickFight}>
-                FIGHT
-              </Button>
-            )}
-          </Grid>
-          <Grid item xs={10}>
-            <Typography>{message}</Typography>
-          </Grid>
-        </Grid>
+        </Fragment>
       )}
 
       {fightingPokemon.length === 1 && (
