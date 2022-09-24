@@ -15,7 +15,7 @@ const CustomStack = styled(Stack)({
   textAlign: "center",
 });
 
-const Layout = () => {
+const Layout = ({ themeColor, setThemeColor }) => {
   const [searchedPokemon, setSearchedPokemon] = useState();
   const [isLoggedIn, setisLoggedIn] = useState(() => {
     const localData = localStorage.getItem("isLoggedIn");
@@ -38,7 +38,7 @@ const Layout = () => {
             setisLoggedIn={setisLoggedIn}
           />
         </CustomStack>
-        <Footerbar />
+        <Footerbar themeColor={themeColor} setThemeColor={setThemeColor} />
       </Container>
     </BrowserRouter>
   );

@@ -1,7 +1,8 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useState } from "react";
 import Layout from "./components/Layout";
 
-const theme = createTheme({
+const themeLight = createTheme({
   palette: {
     primary: {
       main: "#b2c2bf",
@@ -12,10 +13,23 @@ const theme = createTheme({
   },
 });
 
+const themeDark = createTheme({
+  palette: {
+    primary: {
+      main: "#3b3a30",
+    },
+    secondary: {
+      main: "#b2c2bf",
+    },
+  },
+});
+
 function App() {
+  const [themeColor, setThemeColor] = useState(true);
+
   return (
-    <ThemeProvider theme={theme}>
-      <Layout />
+    <ThemeProvider theme={themeColor ? themeLight : themeDark}>
+      <Layout themeColor={themeColor} setThemeColor={setThemeColor} />
     </ThemeProvider>
   );
 }
