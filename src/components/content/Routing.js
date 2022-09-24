@@ -9,7 +9,7 @@ import Register from "./register/Register";
 import Edit from "./edit/Edit";
 import NotFound from "./detail/NotFound";
 
-const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
+const Routing = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(() => {
     const localData = localStorage.getItem("selectedPokemon");
@@ -97,11 +97,6 @@ const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
   }, [favoritesPokemon]);
 
   useEffect(() => {
-    (async function () {
-      await fetch(`http://localhost:8000/arena`)
-        .then((res) => res.json())
-        .then((response) => setFightingPokemon(response));
-    })();
     localStorage.setItem("fightingPokemon", JSON.stringify(fightingPokemon));
   }, [fightingPokemon]);
 
@@ -151,9 +146,6 @@ const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
         element={
           <Arena
             fightingPokemon={fightingPokemon}
-            searchedPokemon={searchedPokemon}
-            allPokemon={allPokemon}
-            setSelectedPokemon={setSelectedPokemon}
             setFightingPokemon={setFightingPokemon}
           />
         }
@@ -175,4 +167,4 @@ const Content = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
   );
 };
 
-export default Content;
+export default Routing;

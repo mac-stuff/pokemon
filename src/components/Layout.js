@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./navbar";
 import Searchbar from "./searchbar";
-import Content from "./content/Content";
+import Routing from "./content/Routing";
 import Footerbar from "./footerbar";
 import styled from "styled-components";
 
@@ -32,7 +32,7 @@ const Layout = ({ themeColor, setThemeColor }) => {
         <Navbar isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
         <Searchbar setSearchedPokemon={setSearchedPokemon} />
         <CustomStack>
-          <Content
+          <Routing
             searchedPokemon={searchedPokemon}
             isLoggedIn={isLoggedIn}
             setisLoggedIn={setisLoggedIn}

@@ -46,12 +46,6 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
     fightingPokemon[1].isFighting = false;
     fightingPokemon[0].isLoser = false;
     fightingPokemon[1].isLoser = false;
-    fetch(`http://localhost:8000/arena/${fightingPokemon[0].id}/`, {
-      method: "DELETE",
-    });
-    fetch(`http://localhost:8000/arena/${fightingPokemon[1].id}/`, {
-      method: "DELETE",
-    });
     setFightingPokemon([]);
   };
 
@@ -61,10 +55,18 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
         <Fragment>
           <Grid container spacing={2}>
             <Grid item>
-              <PokemonCard pokemon={fightingPokemon[0]}></PokemonCard>
+              <PokemonCard
+                pokemon={fightingPokemon[0]}
+                fightingPokemon={fightingPokemon}
+                setFightingPokemon={setFightingPokemon}
+              ></PokemonCard>
             </Grid>
             <Grid item>
-              <PokemonCard pokemon={fightingPokemon[1]}></PokemonCard>
+              <PokemonCard
+                pokemon={fightingPokemon[1]}
+                fightingPokemon={fightingPokemon}
+                setFightingPokemon={setFightingPokemon}
+              ></PokemonCard>
             </Grid>
           </Grid>
           <Grid mt={2} container spacing={2}>
@@ -79,7 +81,6 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
                 </Button>
               )}
             </Grid>
-
             <Grid item xs={12}>
               <Typography>{message}</Typography>
             </Grid>
@@ -90,7 +91,11 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
       {fightingPokemon.length === 1 && (
         <Grid container spacing={2}>
           <Grid item>
-            <PokemonCard pokemon={fightingPokemon[0]}></PokemonCard>
+            <PokemonCard
+              pokemon={fightingPokemon[0]}
+              fightingPokemon={fightingPokemon}
+              setFightingPokemon={setFightingPokemon}
+            ></PokemonCard>
           </Grid>
           <Grid item>
             <Placeholder />

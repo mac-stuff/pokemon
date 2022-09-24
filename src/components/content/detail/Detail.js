@@ -1,4 +1,11 @@
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { useNavigate } from "react-router-dom";
@@ -64,7 +71,7 @@ const Detail = ({
           removeFromDB("arena", selectedPokemon);
         } else {
           selectedPokemon.isFighting = true;
-          setFightingPokemon((fightingPokemon) => [
+          setFightingPokemon((fightingPokemon) => [ 
             ...fightingPokemon,
             selectedPokemon,
           ]);
@@ -102,89 +109,91 @@ const Detail = ({
   };
 
   return Object.keys(selectedPokemon).length !== 0 ? (
-    <Stack direction="row" spacing={5} mt={5} mb={5}>
-      <Stack spacing={5} mt={5} mb={5}>
+    <Grid container mt={5}>
+      <Grid item>
         <CustomBox
           component="img"
           src={selectedPokemon.sprites}
           alt={selectedPokemon.name}
         />
-      </Stack>
-      <Stack
-        spacing={5}
-        mt={5}
-        mb={5}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Typography variant="h3" gutterBottom color="textSecondary">
-          {selectedPokemon.name}
-        </Typography>
-        <Stack direction="row" spacing={5}>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Height
+      </Grid>
+      <Grid item>
+        <Stack
+          spacing={5}
+          mt={5}
+          mb={5}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Typography variant="h3" gutterBottom color="textSecondary">
+            {selectedPokemon.name}
           </Typography>
-          <Typography
-            align="justify"
-            variant="h6"
-            gutterBottom
-            color="textSecondary"
-          >
-            {selectedPokemon.height}
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Base experience
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.base_experience}
-          </Typography>
-        </Stack>
-        <Stack direction="row" spacing={5}>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Weight
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.weight}
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Ability
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.abilities}
-          </Typography>
-        </Stack>
-        <Stack direction="row" spacing={5}>
-          <IconButton onClick={handleClickLike}>
-            <FavoriteIcon
-              color={selectedPokemon.isLiked ? "error" : "primary"}
-            />
-          </IconButton>
-          {fightingPokemon.length < 2 ? (
-            <IconButton onClick={handleClickFight}>
-              <LocalFireDepartmentIcon
-                color={selectedPokemon.isFighting ? "error" : "primary"}
+          <Stack direction="row" spacing={5}>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Height
+            </Typography>
+            <Typography
+              align="justify"
+              variant="h6"
+              gutterBottom
+              color="textSecondary"
+            >
+              {selectedPokemon.height}
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Base experience
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.base_experience}
+            </Typography>
+          </Stack>
+          <Stack direction="row" spacing={5}>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Weight
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.weight}
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Ability
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.abilities}
+            </Typography>
+          </Stack>
+          <Stack direction="row" spacing={5}>
+            <IconButton onClick={handleClickLike}>
+              <FavoriteIcon
+                color={selectedPokemon.isLiked ? "error" : "primary"}
               />
             </IconButton>
-          ) : (
-            fightingPokemon.includes(selectedPokemon) && (
+            {fightingPokemon.length < 2 ? (
               <IconButton onClick={handleClickFight}>
                 <LocalFireDepartmentIcon
                   color={selectedPokemon.isFighting ? "error" : "primary"}
                 />
               </IconButton>
-            )
-          )}
+            ) : (
+              fightingPokemon.includes(selectedPokemon) && (
+                <IconButton onClick={handleClickFight}>
+                  <LocalFireDepartmentIcon
+                    color={selectedPokemon.isFighting ? "error" : "primary"}
+                  />
+                </IconButton>
+              )
+            )}
+          </Stack>
+          <Stack direction="row" spacing={5}>
+            <Typography>{message}</Typography>
+          </Stack>
+          <Stack direction="row" spacing={5}>
+            <CustomButton variant="contained" onClick={handleClickBackButton}>
+              MAIN PAGE
+            </CustomButton>
+          </Stack>
         </Stack>
-        <Stack direction="row" spacing={5}>
-          <Typography>{message}</Typography>
-        </Stack>
-        <Stack direction="row" spacing={5}>
-          <CustomButton variant="contained" onClick={handleClickBackButton}>
-            MAIN PAGE
-          </CustomButton>
-        </Stack>
-      </Stack>
-    </Stack>
+      </Grid>
+    </Grid>
   ) : (
     <NotFound />
   );

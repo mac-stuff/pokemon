@@ -20,17 +20,26 @@
       "isLiked": true
     },
     {
-      "name": "Smok",
-      "height": "123",
-      "base_experience": "4",
-      "weight": "55",
-      "abilities": "9",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg",
-      "id": 205,
+      "id": 37,
+      "name": "Vulpix",
+      "height": 6,
+      "weight": 99,
+      "base_experience": 60,
+      "abilities": "flash-fire",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/37.svg",
+      "isLiked": true
+    },
+    {
+      "id": 40,
+      "name": "Wigglytuff",
+      "height": 10,
+      "weight": 120,
+      "base_experience": 218,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/40.svg",
       "isLiked": true
     }
   ],
-  "arena": [],
   "edited": [
     {
       "name": "smok",
@@ -41,5 +50,6 @@
       "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg",
       "id": 205
     }
-  ]
+  ],
+  "history": []
 }
