@@ -1,33 +1,22 @@
 {
   "users": [
     {
-      "name": "Marika",
-      "email": "mrk.soleri@gmail.com",
-      "password": "MarikaSol123",
-      "confirmPassword": "MarikaSol123",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "Admin123",
+      "confirmPassword": "Admin123",
       "id": "AtLlYUd"
     }
   ],
   "favorites": [
     {
-      "id": 37,
-      "name": "Vulpix",
-      "height": 6,
-      "weight": 99,
-      "base_experience": 60,
+      "id": 38,
+      "name": "Ninetales",
+      "height": 11,
+      "weight": 199,
+      "base_experience": 177,
       "abilities": "flash-fire",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/37.svg",
-      "isLiked": true
-    },
-    {
-      "id": 98,
-      "name": "Krabby",
-      "height": 4,
-      "weight": 65,
-      "base_experience": 65,
-      "abilities": "hyper-cutter",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/98.svg",
-      "isFighting": true,
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/38.svg",
       "isLiked": true
     },
     {
@@ -39,10 +28,53 @@
       "abilities": "poison-point",
       "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/32.svg",
       "isLiked": true,
+      "isFighting": false
+    },
+    {
+      "id": 36,
+      "name": "Clefable",
+      "height": 13,
+      "weight": 400,
+      "base_experience": 242,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/36.svg",
+      "isLiked": true
+    },
+    {
+      "id": 31,
+      "name": "Nidoqueen",
+      "height": 13,
+      "weight": 600,
+      "base_experience": 253,
+      "abilities": "poison-point",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
+      "isLiked": true
+    }
+  ],
+  "arena": [
+    {
+      "id": 38,
+      "name": "Ninetales",
+      "height": 11,
+      "weight": 199,
+      "base_experience": 177,
+      "abilities": "flash-fire",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/38.svg",
+      "isLiked": true,
+      "isFighting": true
+    },
+    {
+      "id": 36,
+      "name": "Clefable",
+      "height": 13,
+      "weight": 400,
+      "base_experience": 242,
+      "abilities": "cute-charm",
+      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/36.svg",
+      "isLiked": true,
       "isFighting": true
     }
   ],
-  "arena": [],
   "edited": [
     {
       "name": "smok",

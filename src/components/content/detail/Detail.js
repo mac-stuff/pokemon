@@ -11,6 +11,9 @@ const CustomButton = styled(Button)({
   "@media (max-width: 780px)": {
     width: "250px",
   },
+  "@media (max-width: 360px)": {
+    width: "150px",
+  },
 });
 
 const CustomBox = styled(Box)({
@@ -83,6 +86,9 @@ const Detail = ({
     localStorage.setItem("selectedPokemon", JSON.stringify(selectedPokemon));
   };
 
+  const handleClickInactive = () => {
+    setMessage("You can't add Pokemon, the list of fighting pokemons is full.");
+  };
   const handleClickBackButton = () => {
     setSelectedPokemon({});
     navigate("/");
@@ -111,79 +117,75 @@ const Detail = ({
   };
 
   return Object.keys(selectedPokemon).length !== 0 ? (
-    <Grid container mt={5} justifyContent="center">
-      <Grid container justifyContent="center">
+    <Grid container mt={5} justifyContent="center" direction="row">
+      <Grid item mt={5}>
         <CustomBox
           component="img"
           src={selectedPokemon.sprites}
           alt={selectedPokemon.name}
         />
       </Grid>
-      <Grid container justifyContent="center" xs={8} mt={5}>
+      <Grid item mt={5}>
         <Typography variant="h3" gutterBottom color="textSecondary">
           {selectedPokemon.name}
         </Typography>
-      </Grid>
-      <Grid container justifyContent="center" spacing={2} mt={5}>
-        <Grid item xs={7} md={5}>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Height
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.height}
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Base experience
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.base_experience}
-          </Typography>
-        </Grid>
-        <Grid item xs={7} md={5}>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Weight
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.weight}
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textPrimary">
-            Ability
-          </Typography>
-          <Typography variant="h6" gutterBottom color="textSecondary">
-            {selectedPokemon.abilities}
-          </Typography>
-        </Grid>
-        <Grid item xs={7} md={5}>
-          <IconButton onClick={handleClickLike}>
-            <FavoriteIcon
-              color={selectedPokemon.isLiked ? "error" : "primary"}
-            />
-          </IconButton>
-          {fightingPokemon.length < 2 ? (
-            <IconButton onClick={handleClickFight}>
-              <LocalFireDepartmentIcon
-                color={selectedPokemon.isFighting ? "error" : "primary"}
+        <Grid container justifyContent="center" spacing={2} mt={5}>
+          <Grid item m={2} xs={7} md={5}>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.height}
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Height
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.weight}
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Weight
+            </Typography>
+          </Grid>
+          <Grid item m={2} xs={7} md={5}>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.base_experience}
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Base experience
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textSecondary">
+              {selectedPokemon.abilities}
+            </Typography>
+            <Typography variant="h6" gutterBottom color="textPrimary">
+              Ability
+            </Typography>
+          </Grid>
+          <Grid item xs={7} md={5}>
+            <IconButton onClick={handleClickLike}>
+              <FavoriteIcon
+                color={selectedPokemon.isLiked ? "error" : "primary"}
               />
             </IconButton>
-          ) : (
-            fightingPokemon.includes(selectedPokemon) && (
+            {fightingPokemon.length < 2 ? (
               <IconButton onClick={handleClickFight}>
                 <LocalFireDepartmentIcon
                   color={selectedPokemon.isFighting ? "error" : "primary"}
                 />
               </IconButton>
-            )
-          )}
+            ) : (
+              <IconButton onClick={handleClickInactive}>
+                <LocalFireDepartmentIcon color="inherit" />
+              </IconButton>
+            )}
+          </Grid>
         </Grid>
-        <Grid container justifyContent="center" direction="column" mt={2}>
-          <Grid item mt={2}>
-            <Typography>{message}</Typography>
-          </Grid>
-          <Grid item mt={2}>
-            <CustomButton variant="contained" onClick={handleClickBackButton}>
-              MAIN PAGE
-            </CustomButton>
-          </Grid>
+      </Grid>
+      <Grid container justifyContent="center" direction="column" mt={2}>
+        <Grid item mt={2}>
+          <Typography>{message}</Typography>
+        </Grid>
+        <Grid item mt={2}>
+          <CustomButton variant="contained" onClick={handleClickBackButton}>
+            MAIN PAGE
+          </CustomButton>
         </Grid>
       </Grid>
     </Grid>
