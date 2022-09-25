@@ -8,80 +8,15 @@
       "id": "AtLlYUd"
     }
   ],
-  "favorites": [
-    {
-      "id": 38,
-      "name": "Ninetales",
-      "height": 11,
-      "weight": 199,
-      "base_experience": 177,
-      "abilities": "flash-fire",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/38.svg",
-      "isLiked": true
-    },
-    {
-      "id": 32,
-      "name": "Nidoran-m",
-      "height": 5,
-      "weight": 90,
-      "base_experience": 55,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/32.svg",
-      "isLiked": true,
-      "isFighting": false
-    },
-    {
-      "id": 36,
-      "name": "Clefable",
-      "height": 13,
-      "weight": 400,
-      "base_experience": 242,
-      "abilities": "cute-charm",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/36.svg",
-      "isLiked": true
-    },
-    {
-      "id": 31,
-      "name": "Nidoqueen",
-      "height": 13,
-      "weight": 600,
-      "base_experience": 253,
-      "abilities": "poison-point",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg",
-      "isLiked": true
-    }
-  ],
-  "arena": [
-    {
-      "id": 38,
-      "name": "Ninetales",
-      "height": 11,
-      "weight": 199,
-      "base_experience": 177,
-      "abilities": "flash-fire",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/38.svg",
-      "isLiked": true,
-      "isFighting": true
-    },
-    {
-      "id": 36,
-      "name": "Clefable",
-      "height": 13,
-      "weight": 400,
-      "base_experience": 242,
-      "abilities": "cute-charm",
-      "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/36.svg",
-      "isLiked": true,
-      "isFighting": true
-    }
-  ],
+  "favorites": [],
+  "arena": [],
   "edited": [
     {
-      "name": "smok",
+      "name": "Dragon",
       "height": "123",
       "base_experience": "4",
       "weight": "55",
-      "abilities": "9",
+      "abilities": "flash-fire",
       "sprites": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/5.svg",
       "id": 205
     }

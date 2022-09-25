@@ -21,7 +21,7 @@ const Favorites = ({
       setSelectedPokemon={setSelectedPokemon}
     />
   ) : (
-    <Typography>add Pokemon to favorites</Typography>
+    <Typography>Add Pokemon to favorites.</Typography>
   );
 };
 

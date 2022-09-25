@@ -11,10 +11,12 @@ const CustomToolbar = styled(AppBar)({
 
 const Footer = ({ themeColor, setThemeColor }) => {
   const [checked, setChecked] = useState(true);
+
   const handleChange = () => {
     setChecked(!checked);
     setThemeColor(!themeColor);
   };
+
   return (
     <CustomToolbar position="sticky">
       <Typography>CHANGE APP COLOR</Typography>

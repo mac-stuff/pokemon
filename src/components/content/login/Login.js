@@ -7,7 +7,6 @@ import loginSchema from "../../../schemas/loginSchema";
 const Login = ({ setisLoggedIn }) => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  ("please login");
 
   const successfulLogin = () => {
     setisLoggedIn(true);

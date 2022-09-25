@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { Fragment } from "react";
 
 const Pagination = ({ pokemonPerPage, totalPokemon, setCurrentPage }) => {
   const pageNumber = [];
@@ -9,7 +9,7 @@ const Pagination = ({ pokemonPerPage, totalPokemon, setCurrentPage }) => {
   }
 
   return (
-    <nav>
+    <Fragment>
       {pageNumber.map((number) => {
         return (
           <Button
@@ -21,7 +21,7 @@ const Pagination = ({ pokemonPerPage, totalPokemon, setCurrentPage }) => {
           </Button>
         );
       })}
-    </nav>
+    </Fragment>
   );
 };
 
