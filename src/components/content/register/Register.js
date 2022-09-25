@@ -3,8 +3,9 @@ import { useFormik } from "formik";
 import { Fragment, useState } from "react";
 import registerSchema from "../../../schemas/registerSchema";
 
-const Register = () => {
-  const [message, setMessage] = useState("Please register.");
+const Register = ({}) => {
+  const [message, setMessage] = useState("");
+  ("please register");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -18,7 +19,7 @@ const Register = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       }).then(() => {
-        setMessage("You are successfully register now! Please login.");
+        setMessage("you are successfully register now, please login");
         resetForm({ values: "" });
       });
     },

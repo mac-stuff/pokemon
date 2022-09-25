@@ -30,7 +30,7 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
     setIsAfterFight(true);
   };
 
-  const handleClickDelete = () => {
+  const handleClickDelete = async () => {
     if (fightingPokemon[0].isLoser) {
       fightingPokemon[1].base_experience =
         fightingPokemon[1].base_experience + 10;
@@ -47,6 +47,12 @@ const Arena = ({ fightingPokemon, setFightingPokemon }) => {
     fightingPokemon[0].isLoser = false;
     fightingPokemon[1].isLoser = false;
     setFightingPokemon([]);
+    await fetch(`http://localhost:8000/arena/${fightingPokemon[0].id}/`, {
+      method: "DELETE",
+    });
+    await fetch(`http://localhost:8000/arena/${fightingPokemon[1].id}/`, {
+      method: "DELETE",
+    });
   };
 
   return (

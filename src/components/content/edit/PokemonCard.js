@@ -20,7 +20,7 @@ const CustomBox = styled(Box)({
   height: "80px",
 });
 
-const PokemonItemSmall = ({ pokemon, setEditedPokemon }) => {
+const PokemonCard = ({ pokemon, setEditedPokemon }) => {
   const clickHandle = () => {
     setEditedPokemon(pokemon);
   };
@@ -37,4 +37,4 @@ const PokemonItemSmall = ({ pokemon, setEditedPokemon }) => {
   );
 };
 
-export default PokemonItemSmall;
+export default PokemonCard;

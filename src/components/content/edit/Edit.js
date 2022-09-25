@@ -1,25 +1,25 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import addSchema from "../../../schemas/addSchema";
 import styled from "styled-components";
-import PokemonItemSmall from "./PokemonItemSmall";
+import PokemonItemSmall from "./PokemonCard";
 
 const CustomBox = styled(Box)({
   width: "250px",
   height: "185px",
+  "@media (max-width: 780px)": {
+    width: "250px",
+    height: "185px",
+  },
 });
 
-const Edit = ({ allPokemon, searchedPokemon }) => {
-  const [editedPokemon, setEditedPokemon] = useState(() => {
-    const localData = localStorage.getItem("editedPokemon");
-    return localData ? JSON.parse(localData) : {};
-  });
-
-  useEffect(() => {
-    localStorage.setItem("editedPokemon", JSON.stringify(editedPokemon));
-  }, [editedPokemon]);
-
+const Edit = ({
+  allPokemon,
+  searchedPokemon,
+  editedPokemon,
+  setEditedPokemon,
+}) => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -52,7 +52,7 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
         {Object.keys(editedPokemon).length !== 0 ? (
-          <Grid container justifyContent="center" alignItems="center" m={5}>
+          <Grid container mt={5} justifyContent="center">
             <Grid container justifyContent="center">
               <CustomBox
                 component="img"
@@ -60,7 +60,7 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
                 alt={editedPokemon.name}
               />
             </Grid>
-            <Grid item mt={5} xs={5} md={10}>
+            <Grid container justifyContent="center" xs={8} mt={5}>
               <Typography variant="h5" gutterBottom color="textSecondary">
                 {editedPokemon.name}
               </Typography>
@@ -77,8 +77,8 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
                 helperText={formik.touched.name && formik.errors.name}
               />
             </Grid>
-            <Grid container spacing={2} justifyContent="center">
-              <Grid item xs={3} md={5}>
+            <Grid container justifyContent="center" spacing={2} mt={5}>
+              <Grid item xs={7} md={5}>
                 <Typography variant="body6" gutterBottom color="textPrimary">
                   Height
                 </Typography>
@@ -121,16 +121,8 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
                     formik.errors.base_experience
                   }
                 />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  onClick={handleClickClear}
-                >
-                  CANCEL
-                </Button>
               </Grid>
-              <Grid item xs={3} md={5}>
+              <Grid item xs={7} md={5}>
                 <Typography variant="body6" gutterBottom color="textPrimary">
                   Weight
                 </Typography>
@@ -171,15 +163,27 @@ const Edit = ({ allPokemon, searchedPokemon }) => {
                     formik.touched.abilities && formik.errors.abilities
                   }
                 />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  disabled={!formik.isValid}
-                >
-                  SAVE
-                </Button>
               </Grid>
+            </Grid>
+            <Grid container justifyContent="center" mt={5}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={!formik.isValid}
+              >
+                SAVE
+              </Button>
+            </Grid>
+            <Grid container justifyContent="center" mt={5}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={handleClickClear}
+              >
+                CANCEL
+              </Button>
             </Grid>
           </Grid>
         ) : (

@@ -17,7 +17,7 @@ const Footer = ({ themeColor, setThemeColor }) => {
   };
   return (
     <CustomToolbar position="sticky">
-      <Typography>CHANGE THEME COLOR</Typography>
+      <Typography>CHANGE APP COLOR</Typography>
       <Switch
         color={checked ? "secondary" : "primary"}
         checked={checked}

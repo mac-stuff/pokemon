@@ -13,10 +13,16 @@ const CustomStack = styled(Stack)({
   minHeight: "1000px",
   alignItems: "center",
   textAlign: "center",
+  display: "flex",
 });
 
 const Layout = ({ themeColor, setThemeColor }) => {
   const [searchedPokemon, setSearchedPokemon] = useState();
+  const [editedPokemon, setEditedPokemon] = useState(() => {
+    const localData = localStorage.getItem("editedPokemon");
+    return localData ? JSON.parse(localData) : {};
+  });
+
   const [isLoggedIn, setisLoggedIn] = useState(() => {
     const localData = localStorage.getItem("isLoggedIn");
     return localData ? JSON.parse(localData) : false;
@@ -26,16 +32,26 @@ const Layout = ({ themeColor, setThemeColor }) => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
   }, [isLoggedIn]);
 
+  useEffect(() => {
+    localStorage.setItem("editedPokemon", JSON.stringify(editedPokemon));
+  }, [editedPokemon]);
+
   return (
     <BrowserRouter>
       <Container>
-        <Navbar isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
+        <Navbar
+          isLoggedIn={isLoggedIn}
+          setisLoggedIn={setisLoggedIn}
+          setEditedPokemon={setEditedPokemon}
+        />
         <Searchbar setSearchedPokemon={setSearchedPokemon} />
         <CustomStack>
           <Routing
             searchedPokemon={searchedPokemon}
             isLoggedIn={isLoggedIn}
             setisLoggedIn={setisLoggedIn}
+            editedPokemon={editedPokemon}
+            setEditedPokemon={setEditedPokemon}
           />
         </CustomStack>
         <Footerbar themeColor={themeColor} setThemeColor={setThemeColor} />

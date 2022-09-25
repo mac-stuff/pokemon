@@ -10,6 +10,7 @@ const Favorites = ({
   allPokemon,
   setSelectedPokemon,
 }) => {
+  ("here are your favorite Pokemon");
   return favoritesPokemon.length > 0 ? (
     <Main
       searchedPokemon={searchedPokemon}

@@ -29,10 +29,14 @@ const CustomIconButton = styled(IconButton)({
 });
 
 const PokemonCard = ({ pokemon, fightingPokemon, setFightingPokemon }) => {
-  const clickHandle = () => {
+  const clickHandle = async () => {
+    pokemon.isFighting = false;
     setFightingPokemon(
       fightingPokemon.filter((item) => item.name !== pokemon.name)
     );
+    await fetch(`http://localhost:8000/arena/${pokemon.id}/`, {
+      method: "DELETE",
+    });
   };
 
   return (

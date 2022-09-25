@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import loginSchema from "../../../schemas/loginSchema";
 
 const Login = ({ setisLoggedIn }) => {
-  const [message, setMessage] = useState("Please login.");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  ("please login");
 
   const successfulLogin = () => {
     setisLoggedIn(true);
@@ -26,7 +27,7 @@ const Login = ({ setisLoggedIn }) => {
             data.length === 1 && data[0].password === values.password
               ? successfulLogin()
               : setMessage(
-                  "Login or password are incorrect. Please try again."
+                  "login or password are incorrect, please try again."
                 );
           });
       } catch (error) {

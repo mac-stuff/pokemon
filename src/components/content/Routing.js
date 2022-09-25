@@ -9,7 +9,13 @@ import Register from "./register/Register";
 import Edit from "./edit/Edit";
 import NotFound from "./detail/NotFound";
 
-const Routing = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
+const Routing = ({
+  searchedPokemon,
+  isLoggedIn,
+  setisLoggedIn,
+  editedPokemon,
+  setEditedPokemon,
+}) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(() => {
     const localData = localStorage.getItem("selectedPokemon");
@@ -156,7 +162,12 @@ const Routing = ({ searchedPokemon, isLoggedIn, setisLoggedIn }) => {
         <Route
           path="/Edit"
           element={
-            <Edit allPokemon={allPokemon} searchedPokemon={searchedPokemon} />
+            <Edit
+              allPokemon={allPokemon}
+              searchedPokemon={searchedPokemon}
+              editedPokemon={editedPokemon}
+              setEditedPokemon={setEditedPokemon}
+            />
           }
         />
       ) : (

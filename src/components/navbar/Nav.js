@@ -23,11 +23,13 @@ const CustomTypography = styled(Typography)({
   color: "secondary",
 });
 
-const Nav = ({ isLoggedIn, setisLoggedIn }) => {
+const Nav = ({ isLoggedIn, setisLoggedIn, setEditedPokemon }) => {
   const loginButtons = ["Favorites", "Arena", "Edit", "Logout"];
   const logoutButtons = ["Favorites", "Arena", "Login", "Register"];
 
   const handleLoguotButton = () => {
+    localStorage.removeItem("editedPokemon");
+    setEditedPokemon({});
     localStorage.removeItem("isLoggedIn");
     setisLoggedIn(false);
   };
