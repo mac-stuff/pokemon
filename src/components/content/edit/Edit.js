@@ -60,7 +60,7 @@ const Edit = ({
                 alt={editedPokemon.name}
               />
             </Grid>
-            <Grid container justifyContent="center" xs={8} mt={5}>
+            <Grid container justifyContent="center" mt={5}>
               <Typography variant="h5" gutterBottom color="textSecondary">
                 {editedPokemon.name}
               </Typography>
